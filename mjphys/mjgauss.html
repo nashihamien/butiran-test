@@ -1,0 +1,253 @@
+<!DOCTYPE hmlt>
+<!--
+	mjgauss.html
+	Create dynamics example problem for Gauss law in HTML
+	using JavaScript and 	MathJax
+	
+	Sparisoma Viridi | https://dudung.github.io
+	
+	20171205
+	Create this code and it has not yet been finished.
+-->
+<html>
+<head>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>
+	body {
+		padding: 10px;
+		text-align: justify;
+	}
+	h1 {
+		text-align: center;
+	}
+	p, ol {
+    margin-top: 0px;
+	}
+</style>
+
+<script>
+// Generate a random number in [min, max]
+function randInt(min, max) {
+	var len = max - min + 1;
+	var num = min + parseInt(Math.random() * len);
+	return num;
+}
+
+// Generate N random numbers in [min, max]
+function nRandInt(N, min, max) {
+	var x = new Array(N);
+	for(var i = 0; i < N; i++) {
+		var xx = randInt(min, max);
+		x[i] = xx;
+	}
+	return x;
+}
+
+// Generate N non-zero random numbers in [min, max]
+function nNZRandInt(N, min, max) {
+	var x = new Array(N);
+	for(var i = 0; i < N; i++) {
+		var xx = 0;
+		while(xx == 0) {
+			xx = randInt(min, max);
+		}
+		x[i] = xx;
+	}
+	return x;
+}
+
+// Generate N difference random numbers in [min, max]
+function nDifferRandInt(N, min, max) {
+	var x = new Array(N);
+	var i = 0;
+	x[i] = randInt(min, max);
+	i++;
+	while(i < N) {
+		var xx = randInt(min, max);
+		var DIFFERENT = true;
+		for(var j = 0; j < i; j++) {
+			if(x[j] == xx) {
+				DIFFERENT = false;
+			}
+		}
+		if(DIFFERENT) {
+			x[i] = xx;
+			i++;
+		}
+	}
+	return x;
+}
+
+// Convert array to string with prefix and sufix
+function strVarValUnit(x, symbol, unit) {
+	var N = x.length;
+	var str = new Array(N);
+	for(var i = 0; i < N; i++) {
+		var j = i + 1;
+		var s = "$" + symbol + "_" + j + " = " + x[i] + " ";
+		s = s + "$ " + unit;
+		str[i] = s;
+	}
+	var sstr = str.join(", ");
+	return sstr;
+}
+</script>
+
+</head>
+<body>
+
+<script>
+// Define some variables
+var Nmin = 3;
+var Nmax = 5;
+var N = randInt(Nmin, Nmax);
+
+// Generate positions
+var x = new Array(N);
+var xmin = 0;
+var xmax = 10;
+var x = nDifferRandInt(N, xmin + 1, xmax - 1);
+x.sort();
+
+// Generate charges
+var q = new Array(N);
+var qmin = -2;
+var qmax = 2;
+var q = nNZRandInt(N, qmin, qmax);
+
+// Define vertical coordinates
+var ymin = 0;
+var ymax = 1;
+</script>
+
+<h1>Medan listrik oleh susunan sejajar pelat luas bermuatan</h1>
+
+<b>Soal 1</b>. Terdapat <num id="N1"></num> buah pelat luas sejajar yang terletak pada posisi-posisi <script>document.write(strVarValUnit(x, "x", "mm"))</script> dengan muatan-muatannya adalah <script>document.write(strVarValUnit(q, "q", "&micro;C"))</script>.
+
+<ol type="a" style="padding-left: 15px;">
+<li>Gambarkanlah posisi pelat-pelat tersebut dan cantumkan nilai muatannya.
+</li>
+<li>Tuliskan persamaan-persamaan yang menggambarkan medan listrik $E_i$ akibat adanya muatan $q_i$ untuk $x < x_i$ dan $x > x_i$, dengan $i = 1, ~..,$ <num id="N2"></num>.
+</li>
+<li>
+Tuliskan dengan lengkap medan listrik pada setiap rentang $x$.
+</li>
+</ol>
+
+<script>
+document.getElementById("N1").innerHTML = N;
+document.getElementById("N2").innerHTML = N;
+</script>
+
+<b>Jawab 1</b>.
+
+<ol type="a" style="padding-left: 15px;">
+<li id="ja">
+	Posisi pelat-pelat adalah sebagai berikut<br/>
+</li>
+<li>
+</li>
+<li>
+</li>
+</ol>
+
+<script>
+// Create canvas in the position of answer point a
+var cv = document.createElement("canvas");
+cv.id = "canvas1";
+var ly = 120;
+cv.width = (window.innerWidth - ly);
+cv.height = "100";
+cv.style.border = "1px solid #ccf";
+document.getElementById("ja").appendChild(cv);
+var XMIN = 0;
+var XMAX = cv.width;
+var YMIN = cv.height;
+var YMAX = 0;
+</script>
+
+<script>
+// Draw plates
+drawPlates("canvas1", x, q);
+
+var dv = document.createElement("div");
+dv.style.height = cv.height;
+dv.style.width = "20px";
+dv.style.float = "left";
+dv.style.border = "1px solid #ccf";
+document.getElementById("ja").appendChild(dv);
+dv.style.textAlign = "center";
+dv.innerHTML = "$q_i$ <br/><br/><br/><br/><br/> $x_i$";
+
+// Transform x coordinate
+function tx(x) {
+	var X = (x - xmin) / (xmax - xmin) * (XMAX - XMIN) + XMIN;
+	return X;
+}
+
+// Transform y coordinate
+function ty(y) {
+	var Y = (y - ymin) / (ymax - ymin) * (YMAX - YMIN) + YMIN;
+	return Y;
+}
+
+function drawPlates(id, pos, charge) {
+	var cv = document.getElementById(id);
+	var ctx = cv.getContext("2d");
+	
+	// Draw vertical lines
+	var Y1 = ty(0.2 * (ymax - ymin) + ymin);
+	var Y2 = ty(0.8 * (ymax - ymin) + ymin);
+	for(var i = 0; i < N; i++) {
+		var X = tx(x[i]);
+		ctx.moveTo(X, Y1);
+		ctx.lineTo(X, Y2);
+		ctx.stroke();
+	}
+	
+	// Draw labels
+	var Y3 = ty(0.05 * (ymax - ymin) + ymin);
+	var Y4 = ty(0.85 * (ymax - ymin) + ymin);
+	for(var i = 0; i < N; i++) {
+		var X = tx(x[i]);
+		var str3 = x[i] + " mm";
+		ctx.font = "normal 12px Times";
+		ctx.textAlign = "center";
+		ctx.fillText(str3, X, Y3);
+		var str4 = q[i] + " μC";
+		ctx.font = "normal 12px Times";
+		ctx.textAlign = "center";
+		ctx.fillText(str4, X, Y4);
+	}
+}
+</script>
+
+</body>
+</html>
+
+<!--
+<h1>Gauss law</h1>
+
+Gauss law states that
+
+\begin{equation}
+\label{eq:law-gauss}
+\oint \vec{E} \cdot d\vec{A} = \frac{q_{\rm in}}{\epsilon_0},
+\end{equation}
+
+with $\vec{E}$ is electric field, $d\vec{A}$ is element of closed surface, $q_{\rm in}$ is enclosed charge, and $\epsilon_0 = 8.854187817 \times 10^{-12} ~ {\rm F}\cdot{\rm m}^{-1}$ is vacuum permittivity.
+-->

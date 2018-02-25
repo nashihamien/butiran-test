@@ -1,0 +1,80 @@
+<DOCTYPE html>
+<!--
+	doppler2.html
+	Example of physics problem related to Doppler effect
+	created using HTML and JavaScript (random)
+	
+	Sparisoma Viridi | dudung@gmail.com
+	
+	20171207
+	Create this HTML by advancing doppler1.html with
+	randInt(min, max) from mjgauss.html.
+-->
+<html>
+<head>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script>
+// Generate a random number in [min, max]
+function randInt(min, max) {
+	var len = max - min + 1;
+	var num = min + parseInt(Math.random() * len);
+	return num;
+}
+</script>
+
+<title>Contoh Soal Efek Doppler</title>
+
+</head>
+<body>
+
+<script>
+// Define global variables
+var T = randInt(0, 25); // oC
+var v = (331.2 + 0.06 * T); // m/s
+var fs = randInt(200, 300); // Hz
+var up = randInt(-20, 20); // m/s
+var us = randInt(-20, 20); // m/s
+var fp = fs * (v + up) / (v + us);
+
+// Write value to html
+function out(x, name, unit, digit) {
+	var xx = x.toFixed(digit);
+	var str = name + " = " + xx + " " + unit;
+	document.write(str);
+} 
+</script>
+
+<h1>Efek Doppler (soal acak)</h1>
+
+<p>
+<b>Soal 1</b>. Pengamat $p$ yang berada di sebelah kiri sumber bunyi $s$ bergerak dengan kecepatan <script>out(up, "$u_p$", "m/s", 0);</script> dengan sumber bunyi yang berada di sebelah kanannya sedang bergerak dengan kecepatan <script>out(us, "$u_s$", "m/s", 0);</script>. Lingkungan merupakan udara kering dengan temperatur <script>out(T, "$T$", "&deg;C", 0);</script>.Bila frekuensi sumber bunyi <script>out(fs, "$f_s$", "Hz", 0);</script> tentukanlah frekuensi yang terdengar pengamat $fp$.
+</p>
+
+<p>
+<b>Jawab 1</b>. Efek Doppler diberikan oleh
+</p>
+
+\begin{equation}
+f_p = f_s \frac{v \pm u_p}{v \mp u_s}.
+\label{eq:Doppler-effect}
+\end{equation}
+
+<p>
+Dengan menggunakan Persamaan \eqref{eq:Doppler-effect} dapat diperoleh bahwa frekuensi yang terdengar oleh pengamat <script>out(fp, "$f_p$", "Hz", 2);</script>.
+</p>
+
+</body>
+</html>

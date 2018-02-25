@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+	mjnernst.html
+	Learn about Nernst equation and the material is displayed
+	using MathJax
+	
+	Sparisoma Viridi | dudung@gmail.com
+	
+	20171204
+	Create this HTML.
+-->
+<html>
+	<head>
+		<style>
+			body {
+				padding: 10px;
+			}
+			.equation {
+				text-align: center;
+			}
+			.equation_number {
+				float: right;
+			}
+		</style>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				TeX: {
+					equationNumbers: { autoNumber: "AMS" } }
+			});
+		</script>
+		<script type="text/javascript"
+			async
+			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+		</script>
+	</head>
+	<body>
+		<h1>Nernst equation</h1>
+	
+		Nernst equation states the relation
+		
+		\begin{equation}
+		E_{\rm cell} = E^0_{\rm cell} - 2.303 \frac{\displaystyle RT }{\displaystyle zF} \ln Q
+		\end{equation}
+		
+		with cell potential $E_{\rm cell}$, standard cell reduction potential $ E^0_{\rm cell}$, universal gas constant $R = 8.314 ~ {\rm J}\cdot{K}^{-1}\cdot{\rm mol}^{-1}$, temperature in kelvin $T$, number of electrons transferred in the cell reaction $z$, Faraday constant $F = 9.649 \times 10^4 ~ {\rm C}\cdot{\rm mol}^{-1}$, and reaction quotient of the cell reaction $Q$. For a reaction
+		
+		\begin{equation}
+		\alpha A + \beta B \leftrightharpoons \gamma D + \delta D,
+		\end{equation}
+		
+		the reaction quotient is
+		
+		\begin{equation}
+		Q = \frac{\displaystyle [C]^\gamma ~ [D]^\delta}{\displaystyle [A]^\alpha ~ [B]^\beta}.
+		\end{equation}
+		
+		And standar cell potential is
+		
+		\begin{equation}
+		E^0_{\rm cell} = E^0_{\rm cathode} - E^0_{\rm anode}.
+		\end{equation}
+		
+		Reduction reaction occurs at cathode, while oxidation reaction occurs at anode.
+		
+	</body>
+</html>

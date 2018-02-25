@@ -1,0 +1,171 @@
+<DOCTYPE html>
+<html>
+<!--
+	kinematics.html
+	
+	Sparisoma Viridi | dudung@gmail.com
+	
+	20180217
+	Create this chapter.
+-->
+
+<head>
+<title>Kinematika</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+body {
+	text-align: justify;
+}
+</style>
+</head>
+
+<body>
+
+<h1>1 Kinematika 1-d</h1>
+
+Dalam sistem koordinat 1-d besaran-besaran fisis yang umumnya dibahas adalah posisi posisi $x$, kecepatan $v$, dan percepatan $a$, yang semuanya adalah fungsi waktu $t$. Salah satu notasi yang sering digunakan untuk menyatakan besaran-besaran tersebut pada keadaan awal $t = 0$ dan saat waktu $t$ tertentu adalah $x_0$, $x_t$, $v_0$, $v_t$, dan $a$. Tidak terdapatnya $a_0$ dan $a_t$ karena permasalahan untuk saat ini dibatasi hanya untuk gerak lurus dengan percepatan tetap
+
+\begin{equation}
+a_t = a_0 = a \Rightarrow \frac{da}{dt} = 0.
+\tag{1.1}
+\label{eq:a-constant}
+\end{equation}
+
+
+<h2>1.1 Gerak lurus berubah beraturan</h2>
+
+Dalam gerak lurus berubah beraturan (GLBB) terdapat hubungan-hubungan berikut
+
+\begin{equation}
+\tag{1.2}
+v_t = v_0 + at,
+\label{eq:nusm-1}
+\end{equation}
+
+\begin{equation}
+\tag{1.3}
+x_t = x_0 + v_0 t + \frac{1}{2} at^2,
+\label{eq:nusm-2}
+\end{equation}
+
+\begin{equation}
+\tag{1.4}
+v_t^2 = v_0^2 + 2a(x_t - x_0),
+\label{eq:nusm-3}
+\end{equation}
+
+\begin{equation}
+\tag{1.5}
+x_t = x_0 + \frac{1}{2} (v_0 + v_t) t,
+\label{eq:nusm-4}
+\end{equation}
+
+\begin{equation}
+\tag{1.6}
+x_t = x_0 + v_t t - \frac{1}{2} at^2.
+\label{eq:nusm-5}
+\end{equation}
+
+
+<h2>1.2 Gerak lurus beraturan</h2>
+
+Dan untuk gerak lurus beraturan (GLB), yang merupakan hal khusus dari GLBB dengan $a = 0$, maka Persamaan (\ref{eq:nusm-1}) - (\ref{eq:nusm-5}) akan tereduksi menjadi
+
+\begin{equation}
+\tag{1.7}
+x_t = x_0 + v t,
+\label{eq:usm-1}
+\end{equation}
+
+dengan $v_t = v_0 = v$.
+
+
+<h2>1.3 Gerak melingkar berubah beraturan</h2>
+
+Mirip dengan GLBB, dalam gerak melingkar berubah beraturan (GMBB) terdapat hubungan-hubungan berikut
+
+\begin{equation}
+\tag{1.8}
+\omega_t = \omega_0 + \alpha t,
+\label{eq:nucm-1}
+\end{equation}
+
+\begin{equation}
+\tag{1.9}
+\theta_t = \theta_0 + \omega_0 t + \frac{1}{2} \alpha t^2,
+\label{eq:nucm-2}
+\end{equation}
+
+\begin{equation}
+\tag{1.10}
+\omega_t^2 = \omega_0^2 + 2 \alpha (\theta_t - \theta_0),
+\label{eq:nucm-3}
+\end{equation}
+
+\begin{equation}
+\tag{1.11}
+\theta_t = \theta_0 + \frac{1}{2} (\omega_0 + \omega_t) t,
+\label{eq:nucm-4}
+\end{equation}
+
+\begin{equation}
+\tag{1.12}
+\theta_t = \theta_0 + \omega_t t - \frac{1}{2} \alpha t^2.
+\label{eq:nucm-5}
+\end{equation}
+
+
+<h2>1.4 Gerak melingkar beraturan</h2>
+
+Mirip dengan GLB, dan untuk gerak melingkar beraturan (GMB), yang merupakan hal khusus dari GMBB dengan $\alpha = 0$, maka Persamaan (\ref{eq:nucm-1}) - (\ref{eq:nucm-5}) akan tereduksi menjadi
+
+\begin{equation}
+\tag{1.13}
+\theta_t = \theta_0 + \omega t,
+\label{eq:ucm-1}
+\end{equation}
+
+dengan $\omega_t = \omega_0 = \omega$.
+
+
+<h2>1.5 Hubungan antara gerak melingkar dan gerak lurus</h2>
+
+Dengan jari-jari lintasan melingkar adalah $R$ besaran-besaran gerak melingkar dan gerak lurus dapat dihubungkan melalui
+
+\begin{equation}
+\tag{1.14}
+x = \theta R,
+\label{eq:sm-cm-1}
+\end{equation}
+
+\begin{equation}
+\tag{1.15}
+v = \omega R,
+\label{eq:sm-cm-2}
+\end{equation}
+
+\begin{equation}
+\tag{1.16}
+a = \alpha R.
+\label{eq:sm-cm-3}
+\end{equation}
+
+
+<h2>1.6 Contoh soal</h2>
+
+
+
+</body>
+
+</html>

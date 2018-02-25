@@ -1,0 +1,702 @@
+<DOCTYPE html>
+<html>
+<!--
+	lingkaran.html
+	
+	Sparisoma Viridi | dudung@gmail.com
+	
+	20180218
+	Create this chapter for secondary school students.
+	Add to OSF and get http://doi.org/10.17605/osf.io/hg2dc
+	but unfortunately about 2034 is still not working, 20
+	minutes after the project was created.
+-->
+
+<head>
+<title>Lingkaran</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+body {
+	text-align: justify;
+	padding: 10px;
+}
+a:visited, a:link {
+	color: #00f;
+	text-decoration: none;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Belajar lingkaran dengan JavaScript</h1>
+Dalam modul diberikan contoh-contoh pengenalan mengenai lingkaran dengan berbantuan JavaScript sehingga pengguna dapat berinteraksi dengan mengubah-ubah beberapa parameter dan melihat hasil pengubahannya tersebut, yang diharapkan dapat membantu pembahamannya akan materi ini.
+
+
+<h2>Definisi</h2>
+
+Lingkaran adalah kumpulan titik-titik yang memiliki jarak yang tetap terhadap suatu titik tetap.
+
+<div id="fg:circle-radius-center"></div>
+
+Jarak yang tetap tersebut dikenal dengan istilah jari-jari, jejari, atau radius dengan lambang $R$ dan titik tetapnya dikenal sebagai titik pusat lingkaran atau titik $O$.
+
+<script>
+drawFigure1();
+
+function drawFigure1() {
+	var div = document.getElementById("fg:circle-radius-center");
+	div.style.textAlign = "center";
+	div.style.padding = "10px";
+	var can = document.createElement("canvas");
+	can.style.background = "#fff";
+	can.width = "150";
+	can.height = "150";
+	can.style.width = "150px";
+	can.style.height = "150px";
+	div.appendChild(can);
+	var cx = can.getContext("2d");
+	cx.strokeStyle = "#f00";
+	cx.beginPath();
+	cx.arc(75, 75, 74, 0, 2 * Math.PI);
+	cx.stroke();
+	cx.beginPath();
+	cx.strokeStyle = "#00f";
+	cx.moveTo(75, 75);
+	cx.lineTo(75 + 74 * 0.6, 75 - 74 * 0.8);
+	cx.stroke();
+	cx.strokeStyle = "#000";
+	cx.beginPath();
+	cx.arc(75, 75, 1, 0, 2 * Math.PI);
+	cx.stroke();
+	cx.font = "italic 12px Times";
+	cx.textAlign = "center";
+	cx.fillText("O", 70, 90);
+	cx.stroke();
+	cx.fillText("R", 95, 65);
+	cx.stroke();
+	var br = document.createElement("br");
+	div.appendChild(br);
+	var cap = document.createElement("text");
+	cap.innerHTML = "Gambar 1 Lingkaran berpusat di $O$ dan berjari-jari $R$.";
+	cap.setAttribute('name', div.id);
+	div.appendChild(cap);
+}
+</script>
+
+
+<h2>Menggambar lingkaran</h2>
+
+Lingkaran dapat digambarkan dengan terlebih dahulu menentukan suatu titik tetap atau titik $O$, kemudian menentukan jarak tetap atau jari-jari $R$, dan mulai membuat titik demi titik yang jaraknya selalu sama $R$ terhadap titik $O$. Masukkan nilai-nilai $x_O$, $y_O$, dan $R$ pada gambar berikut.
+
+<div id="fg:circle-drawing"></div>
+
+<script>
+drawFigure2();
+
+function drawFigure2() {
+	var div = document.getElementById("fg:circle-drawing");
+	div.style.textAlign = "center";
+	div.style.padding = "10px";
+
+	var leftPanel = document.createElement("div");
+	leftPanel.style.width = "50%";
+	leftPanel.style.float = "left";
+	leftPanel.style.textAlign = "center";
+	div.appendChild(leftPanel);
+
+	var rightPanel = document.createElement("div");
+	rightPanel.style.width = "50%";
+	rightPanel.style.float = "right";
+	rightPanel.style.textAlign = "left";
+	div.appendChild(rightPanel);
+
+	var can = document.createElement("canvas");
+	can.width = "200";
+	can.height = "200";
+	can.style.width = "200px";
+	can.style.height = "200px";
+	leftPanel.appendChild(can);
+
+	var br;
+	var labelX = document.createElement("text");
+	labelX.innerHTML = "Koodinat $x_O$ ";
+	rightPanel.appendChild(labelX);
+	var valueX = document.createElement("input");
+	valueX.style.width = "80px";
+	valueX.placeholder = "0 < x < 200";
+	valueX.tabIndex = 1;
+	rightPanel.appendChild(valueX);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var labelY = document.createElement("text");
+	labelY.innerHTML = "Koodinat $y_O$ ";
+	rightPanel.appendChild(labelY);
+	var valueY = document.createElement("input");
+	valueY.style.width = "80px";
+	valueY.placeholder = "0 < y < 200";
+	valueY.tabIndex = 2;
+	rightPanel.appendChild(valueY);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var labelR = document.createElement("text");
+	labelR.innerHTML = "Jari-jari $R$ &nbsp;&nbsp;";
+	rightPanel.appendChild(labelR);
+	var valueR = document.createElement("input");
+	valueR.style.width = "80px";
+	valueR.placeholder = "0 < R < 100";
+	valueR.tabIndex = 3;
+	rightPanel.appendChild(valueR);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnDraw = document.createElement("button");
+	btnDraw.innerHTML = "Gambar";
+	btnDraw.tabIndex = 4;
+	btnDraw.addEventListener("click", drawCanvas);
+	rightPanel.appendChild(btnDraw);
+	var btnClear = document.createElement("button");
+	btnClear.innerHTML = "Hapus";
+	btnClear.tabIndex = 5;
+	btnClear.addEventListener("click", clearCanvas);
+	rightPanel.appendChild(btnClear);
+
+	function drawCanvas() {
+		var x = parseInt(valueX.value);
+		var y = 200 - parseInt(valueY.value);
+		var R = parseInt(valueR.value);
+		var cx = can.getContext("2d");
+		cx.strokeStyle = "#f00";
+		cx.beginPath();
+		cx.arc(x, y, R, 0, 2 * Math.PI);
+		cx.stroke();
+		cx.beginPath();
+		cx.strokeStyle = "#00f";
+		cx.moveTo(x, y);
+		cx.lineTo(x + R * 0.6, y - R * 0.8);
+		cx.stroke();
+		cx.strokeStyle = "#000";
+		cx.beginPath();
+		cx.arc(x, y, 1, 0, 2 * Math.PI);
+		cx.stroke();
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillStyle = "#000";
+		cx.fillText("O", x + 10, y + 10);
+		cx.stroke();
+		cx.fillText("R", x + R * 0.3 - 7, y - R * 0.4);
+		cx.stroke();
+		cx.font = "normal 12px Times";
+		cx.textAlign = "bottom";
+		cx.fillText(x, x, 200);
+		cx.textAlign = "left";
+		cx.fillText(200 - y, 0, y);
+		
+		cx.save();
+		cx.strokeStyle = "#0f0";
+		cx.setLineDash([5, 5]);
+		cx.beginPath();
+		cx.moveTo(x, 200 - 15);
+		cx.lineTo(x, y);
+		cx.stroke();
+		cx.beginPath();
+		cx.moveTo(0 + 15, y);
+		cx.lineTo(x - 0.5, y);
+		cx.stroke();
+		cx.restore();
+	}
+
+	function clearCanvas() {
+		var cx = can.getContext("2d");
+		cx.fillStyle = "#fff";
+		cx.clearRect(0, 0, can.width, can.height);
+	}
+
+	var brall = document.createElement("br");
+	brall.clear = "all";
+	div.appendChild(brall);
+	var cap = document.createElement("text");
+	cap.innerHTML = "Gambar 2 Menggambar lingkaran yang berpusat di $O$ ($x_O$, $y_O$) dan memiliki jari-jari $R$.";
+	cap.setAttribute('name', div.id);
+	div.appendChild(cap);
+}
+</script>
+
+Koordinat ($x$, $y$) bernilai (0, 0) di ujung kiri bawah gambar dan (200, 200) di ujung kanan atas gambar sebagaimana diberikan dalam buku ajar.
+
+
+<h2>Persamaan lingkaran</h2>
+
+Dengan melihat Gambar <a href="#fg:circle-radius-center">1</a> dan <a href="#fg:circle-drawing">2</a> dapat dituliskankan persamaan yang mengaitkan setiap titik $(x, y)$ pada lingkaran dengan pusatnya $O$ $(x_O, y_O)$ dan jari-jarinya $R$ melalui
+
+\begin{equation}
+(x - x_O)^2 + (y - y_O)^2 = R^2,
+\label{eq:circle-equation}
+\end{equation}
+
+yang untuk saat ini cukuplah mengetahui bahwa Persamaan (\ref{eq:circle-equation}) ini ada dan kelak baru akan dibahas.
+
+
+<h2>Bagian-bagian lingkaran</h2>
+
+Terdapat bagian-bagian lingkaran yang perlu diketahui misalnya adalah pusat lingkaran, jari-jari, diameter, keliling, juring, tembereng, tali busur, apotema, sagita.
+
+<div id="fg:circle-elements"></div>
+
+<script>
+drawFigure3();
+
+function drawFigure3() {
+	var div = document.getElementById("fg:circle-elements");
+	div.style.textAlign = "center";
+	div.style.padding = "10px";
+
+	var leftPanel = document.createElement("div");
+	leftPanel.style.width = "50%";
+	leftPanel.style.float = "left";
+	leftPanel.style.textAlign = "center";
+	div.appendChild(leftPanel);
+
+	var rightPanel = document.createElement("div");
+	rightPanel.style.width = "50%";
+	rightPanel.style.float = "right";
+	rightPanel.style.textAlign = "left";
+	div.appendChild(rightPanel);
+
+	var can = document.createElement("canvas");
+	can.width = "200";
+	can.height = "200";
+	can.style.background = "#fcfcff";
+	can.style.width = "200px";
+	can.style.height = "200px";
+	leftPanel.appendChild(can);
+
+	var btnFColor;
+	var btnBColor;
+	var br;
+	var btnCenter = document.createElement("button");
+	btnCenter.id = "Pusat";
+	btnCenter.innerHTML = "Pusat";
+	btnCenter.addEventListener("click", buttonClick);
+	btnFColor = btnCenter.style.color;
+	btnBColor = btnCenter.style.background;
+	rightPanel.appendChild(btnCenter);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnRadius = document.createElement("button");
+	btnRadius.id = "Radius";
+	btnRadius.innerHTML = "Jari-jari";
+	btnRadius.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnRadius);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnDiameter = document.createElement("button");
+	btnDiameter.id = "Diameter";
+	btnDiameter.innerHTML = "Diameter";
+	btnDiameter.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnDiameter);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnCircum = document.createElement("button");
+	btnCircum.id = "Keliling";
+	btnCircum.innerHTML = "Keliling";
+	btnCircum.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnCircum);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnJuring = document.createElement("button");
+	btnJuring.id = "Juring";
+	btnJuring.innerHTML = "Juring";
+	btnJuring.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnJuring);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnTembereng = document.createElement("button");
+	btnTembereng.id = "Tembereng";
+	btnTembereng.innerHTML = "Tembereng";
+	btnTembereng.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnTembereng);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnBusur = document.createElement("button");
+	btnBusur.id = "Busur";
+	btnBusur.innerHTML = "Busur";
+	btnBusur.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnBusur);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnTaliBusur = document.createElement("button");
+	btnTaliBusur.id = "TaliBusur";
+	btnTaliBusur.innerHTML = "Tali Busur";
+	btnTaliBusur.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnTaliBusur);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnApotema = document.createElement("button");
+	btnApotema.id = "Apotema";
+	btnApotema.innerHTML = "Apotema";
+	btnApotema.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnApotema);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	var btnSagita = document.createElement("button");
+	btnSagita.id = "Sagita";
+	btnSagita.innerHTML = "Sagita";
+	btnSagita.addEventListener("click", buttonClick);
+	rightPanel.appendChild(btnSagita);
+	br = document.createElement("br");
+	rightPanel.appendChild(br);
+	
+	var blurColor = "#eee";
+	var blurColor2 = "#f8f8f8";
+	var R = 80;
+	var xO = 100;
+	var yO = 100;
+	drawAllInBlur();
+			
+	function buttonClick() {
+		var target = event.target;
+		if(target.pressed == undefined || !target.pressed) {
+			target.pressed = true;
+			target.style.background = "blue";
+			target.style.color = "white";
+		} else if(target.pressed) {
+			target.pressed = false;
+			target.style.background = btnBColor;
+			target.style.color = btnFColor;
+		}
+		clearCanvas();
+		drawAllInBlur();
+		drawAll();
+	}
+	
+	function drawAllInBlur() {
+		drawCircle(blurColor);
+		drawCenter(blurColor);
+		drawRadius(blurColor);
+		drawDiameter(blurColor);
+		drawSector(blurColor, blurColor2);
+		drawSegment(blurColor, blurColor2);
+		drawArc(blurColor);
+		drawChord(blurColor);
+		drawApotema(blurColor, blurColor2);
+		drawSagita(blurColor, blurColor2);
+	}
+	
+	function drawAll() {
+		if(btnCircum.pressed) {
+			drawCircle("#0af");
+		}
+		if(btnCenter.pressed) {
+			drawCenter("#000");
+		}
+		if(btnRadius.pressed) {
+			drawRadius("#0a0");
+		}
+		if(btnDiameter.pressed) {
+			drawDiameter("#aa0");
+		}
+		if(btnJuring.pressed) {
+			drawSector("#f22", "#fcc");
+		}
+		if(btnTembereng.pressed) {
+			drawSegment("#2f2", "#cfc");
+		}
+		if(btnBusur.pressed) {
+			drawArc("#22f", "#ccf");
+		}
+		if(btnTaliBusur.pressed) {
+			drawChord("#22f", "#ccf");
+		}
+		if(btnApotema.pressed) {
+			drawApotema("#cff", "#088");
+		}
+		if(btnSagita.pressed) {
+			drawSagita("#fcf", "#505");
+		}
+	}
+	
+	function drawSagita(color, color2) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(-90);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(-150);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		var p3 = pointCircumXY(-120);
+		var xx3 = p3.x;
+		var yy3 = p3.y;
+		var xx = 0.5 * (p1.x + p2.x);
+		var yy = 0.5 * (p1.y + p2.y);
+		
+		var th1 = -150 / 180 * Math.PI;
+		var th2 = -90 / 180 * Math.PI;
+		
+		cx.beginPath();
+		cx.moveTo(p1.x, p1.y);
+		cx.lineTo(p2.x, p2.y);
+		cx.arc(xO, yO, R, th1, th2);
+		cx.stroke();
+		
+		cx.strokeStyle = color2;
+		cx.beginPath();
+		cx.moveTo(xx, yy);
+		cx.lineTo(xx3, yy3);
+		cx.stroke();
+		
+		cx.fillStyle = color2;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("F", p2.x - 5, p2.y - 7);
+		cx.fillText("E", p1.x, p1.y - 8);
+	}
+	
+	function drawApotema(color, color2) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(-90);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(-150);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		var xx = 0.5 * (p1.x + p2.x);
+		var yy = 0.5 * (p1.y + p2.y);
+		
+		cx.beginPath();
+		cx.moveTo(p1.x, p1.y);
+		cx.lineTo(p2.x, p2.y);
+		cx.moveTo(xO, yO);
+		cx.lineTo(p2.x, p2.y);
+		cx.moveTo(xO, yO);
+		cx.lineTo(p1.x, p1.y);
+		cx.stroke();
+		
+		cx.strokeStyle = color2;
+		cx.beginPath();
+		cx.moveTo(xO, yO);
+		cx.lineTo(xx, yy);
+		cx.stroke();
+		
+		cx.fillStyle = color2;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("F", p2.x - 5, p2.y - 7);
+		cx.fillText("E", p1.x, p1.y - 8);
+	}
+	
+	function drawArc(color) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(30);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(-60);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		var th1 = -60 / 180 * Math.PI;
+		var th2 = 30 / 180 * Math.PI;
+		cx.beginPath();
+		cx.arc(xO, yO, R, th1, th2);
+		cx.stroke();
+		
+		cx.fillStyle = color;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("D", p2.x, p2.y - 7);
+		cx.fillText("C", p1.x + 5, p1.y + 15);
+	}
+	
+	function drawChord(color) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(30);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(-60);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		cx.beginPath();
+		cx.moveTo(p1.x, p1.y);
+		cx.lineTo(p2.x, p2.y);
+		cx.closePath();
+		cx.stroke();
+		
+		cx.fillStyle = color;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("D", p2.x, p2.y - 7);
+		cx.fillText("C", p1.x + 5, p1.y + 15);
+	}
+	
+	function drawSegment(color, color2) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(30);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(-60);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		var th1 = -60 / 180 * Math.PI;
+		var th2 = 30 / 180 * Math.PI;
+		cx.fillStyle = color2;
+		cx.beginPath();
+		cx.arc(xO, yO, R, th1, th2);
+		cx.closePath();
+		cx.fill();
+		cx.stroke();
+		
+		cx.fillStyle = color;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("D", p2.x, p2.y - 7);
+		cx.fillText("C", p1.x + 5, p1.y + 15);
+	}
+	
+	function drawSector(color, color2) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(30);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(90);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		
+		var th1 = 30 / 180 * Math.PI;
+		var th2 = 90 / 180 * Math.PI;
+		cx.fillStyle = color2;
+		cx.beginPath();
+		cx.arc(xO, yO, R, th1, th2);
+		cx.lineTo(xO, yO);
+		cx.closePath();
+		cx.fill();
+		cx.stroke();
+		
+		cx.fillStyle = color;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("B", p2.x, p2.y + 15);
+		cx.fillText("C", p1.x + 5, p1.y + 15);
+	}
+	
+	function drawDiameter(color) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		var p1 = pointCircumXY(-90);
+		cx.beginPath();
+		cx.arc(p1.x, p1.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		var p2 = pointCircumXY(90);
+		cx.beginPath();
+		cx.arc(p2.x, p2.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		cx.fillStyle = color;
+		cx.font = "italic 12px Times";
+		cx.textAlign = "center";
+		cx.fillText("B", p2.x, p2.y + 15);
+		cx.fillText("E", p1.x, p1.y - 8);
+		cx.beginPath();
+		cx.moveTo(p1.x, p1.y);
+		cx.lineTo(p2.x, p2.y);
+		cx.stroke();
+	}
+	
+	function drawRadius(color) {
+		var p = pointCircumXY(120);
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		cx.beginPath();
+		cx.arc(p.x, p.y, 1, 0, 2 * Math.PI);		
+		cx.stroke();
+		cx.font = "italic 12px Times";
+		cx.textAlign = "end";
+		cx.fillStyle = color;
+		cx.fillText("A", p.x - 3, p.y + 10);
+		cx.beginPath();
+		cx.moveTo(p.x, p.y);
+		cx.lineTo(xO, yO);
+		cx.stroke();
+	}
+	
+	function drawCenter(color) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		cx.beginPath();
+		cx.arc(xO, yO, 1, 0, 2 * Math.PI);
+		cx.stroke();
+		cx.font = "italic 12px Times";
+		cx.textAlign = "start";
+		cx.fillStyle = color;
+		cx.fillText("O", xO + 5, yO);
+	}
+
+	function drawCircle(color) {
+		var cx = can.getContext("2d");
+		cx.strokeStyle = color;
+		cx.beginPath();
+		cx.arc(xO, yO, R - 1, 0, 2 * Math.PI);
+		cx.stroke();
+	}
+	
+	function pointCircumXY(theta) {
+		var lx = R * Math.cos(theta / 180 * Math.PI);
+		var ly = R * Math.sin(theta / 180 * Math.PI);
+		var x = xO + lx;
+		var y = yO + ly;
+		return {x: x, y: y};
+	}
+
+	function clearCanvas() {
+		var cx = can.getContext("2d");
+		cx.fillStyle = "#fff";
+		cx.clearRect(0, 0, can.width, can.height);
+	}
+	
+	var brall = document.createElement("br");
+	brall.clear = "all";
+	div.appendChild(brall);
+	var cap = document.createElement("text");
+	cap.innerHTML = "Gambar 3 Bagian-bagian lingkaran.";
+	cap.setAttribute('name', div.id);
+	div.appendChild(cap);
+}
+</script>
+
+Gunakan tombol-tombol dalam Gambar <a href="#fg:circle-elements">3</a> untuk mempelajari makna bagian-bagian tersebut dalam lingkaran. Setelah mencoba tombol-tombol tersebut, diharapkan bagian-bagian dari lingkaran telah dapat dipahami.
+
+
+</body>
+
+</html>

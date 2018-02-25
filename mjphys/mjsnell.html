@@ -1,0 +1,121 @@
+<DOCTYPE html>
+<!--
+	snall1.html
+	Example of physics problem related to Snell's law
+	created using HTML and JavaScript (random)
+	
+	Sparisoma Viridi | dudung@gmail.com
+	
+	20171207
+	Create this HTML by advancing doppler2.html with
+	randInt(min, max) from mjgauss.html.
+-->
+<html>
+<head>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script>
+// Generate a random number in [min, max]
+function randInt(min, max) {
+	var len = max - min + 1;
+	var num = min + parseInt(Math.random() * len);
+	return num;
+}
+</script>
+
+<title>Contoh Soal Efek Doppler</title>
+
+</head>
+<body>
+
+<script>
+// Define global variables
+var n1 = 1; //
+var n2 = 1 + 0.1 * randInt(1, 9); //
+var theta1 = randInt(20, 70); // o
+var theta2 = Math.asin(n1 * Math.sin(theta1 / 180 * Math.PI) / n2); // rad
+theta2 = theta2 * 180.0 / Math.PI; // o
+
+// Write value to html
+function out(x, name, unit, digit) {
+	var xx = x.toFixed(digit);
+	var str = name + " = " + xx + " " + unit;
+	document.write(str);
+} 
+</script>
+
+<h1>Hukum Snell (soal acak)</h1>
+
+<p>
+<b>Soal 1</b>. Medium dari mana sinar datang memiliki indeks biar <script>out(n1, "$n_1$", "", 0);</script> dan medium ke mana sinar dibiaskan memiliki indeks bias <script>out(n2, "$n_2$", "", 2);</script>. Gambarkan jalannya sinar saat melewati batas medium bila sudut datangnya adalah <script>out(theta1, "$&theta;_1$", "&deg;", 0);</script>.
+</p>
+
+<p>
+<b>Jawab 1</b>. Hukum Snell menyatakan bahwa
+</p>
+
+\begin{equation}
+\frac{\sin \theta_1}{\sin \theta_2} = \frac{n_2}{n_1}.
+\label{eq:Snell-law}
+\end{equation}
+
+<p>
+Dengan menggunakan Persamaan \eqref{eq:Snell-law} dapat diperoleh sudut bias adalah <script>out(theta2, "$&theta;_2$", "&deg;", 2);</script>.
+</p>
+
+<p style="text-align: center;">
+<canvas id="gambar" width="200px" height="200px" style="border: 1px solid #ccf;">
+</canvas>
+</p>
+
+<script>
+var c = document.getElementById("gambar");
+var cx = c.getContext("2d");
+cx.fillStyle = "#dfd";
+cx.fillRect(0, 100, 200, 200);
+cx.fillStyle = "#000";
+cx.fillText("n1", 20, 80);
+cx.fillText("n2", 20, 120);
+var R = 100;
+var x1 = R * Math.sin(theta1 * Math.PI / 180);
+var y1 = R * Math.cos(theta1 * Math.PI / 180);
+var x2 = R * Math.sin(theta2 * Math.PI / 180);
+var y2 = R * Math.cos(theta2 * Math.PI / 180);
+
+cx.beginPath();
+cx.moveTo(100, 100);
+cx.lineTo(100 - x1, 100 - y1);
+cx.stroke();
+
+cx.beginPath();
+cx.moveTo(100, 100);
+cx.lineTo(100 + x2, 100 + y2);
+cx.stroke();
+
+cx.setLineDash([4, 4]);
+cx.strokeStyle = "#f00";
+cx.beginPath();
+cx.moveTo(100, 100);
+cx.lineTo(100 + x1, 100 + y1);
+cx.stroke();
+
+console.log(x1);
+console.log(y1);
+console.log(x2);
+console.log(y2);
+</script>
+
+</body>
+</html>
