@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20216311</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+
+
+
+<!-- Modify only below this line -->
+
+<h1>Simulasi Gerak Proyektil</h1>
+
+Dalam tugas ini dilakukan perhitungan gerak proyektil yang ditembakkan dengan sudut elevasi tertentu, proyektil membentuk lintasan parabola, 
+di mana akan dilakukan pengubahan variabel kecepatan awal dan sudut elevasi proyektil.
+<p></p>
+Tujuan dari tugas ini adalah dihasilkannya jarak terjauh yang bisa dicapai proyektil yang ditampilkan secara otomatis yang
+akan langsung ditampilkan di layar, kemudian hasil ini akan diverifikasi dengan simulasi gerak proyektil.
+
+<h2>Dasar Teori</h2>
+
+Berdasarkan Hukum II Newton, maka gaya yang bekerja pada proyektil dapat dituliskan sebagai berikut:
+
+\begin{equation}
+\vec{F} = m \vec{a}
+\end{equation}
+Oleh karena pengaruh gravitasi, maka gerak proyektil merupakan gerak parabola, 
+di mana gaya yang bekerja pada proyektil dipengaruhi oleh komponen gaya pada sumbu $x$ dan komponen gaya pada sumbu $y$.
+<p></p>
+Komponen gaya pada sumbu $x$ dapat ditulis $0= m \ddot{r}$ dan komponen gaya pada sumbu $y$ dapat ditulis 
+$-m g= m \ddot{y}$
+<p></p>
+
+Dengan mengasumsikan bahwa $x = y = 0$ saat $t=0$, 
+maka
+\begin{eqnarray}
+\ddot{x}&=&0 \\
+\dot{x}&=& v_0 \ cos \theta \\
+x&=& v_0 t \ cos \theta \\
+\end{eqnarray}
+dan
+\begin{eqnarray}
+\ddot{y}&=&-g \\
+\dot{y}&=&-gt + v_0 \sin \theta \\
+y&=&-\frac{1}{2}gt^2 + v_0 t \sin \theta \\
+\end{eqnarray}
+
+Sehingga kecepatan dan total perpindahan sebagai fungsi waktu dapat ditulis sebagai berikut:
+\begin{eqnarray}
+v &=& \sqrt{\dot{x}^2+\dot{y}^2} \\
+&=& (v_0^2 + g^2t^2 - 2v_0gt \sin \theta )^\frac{1}{2}
+\end{eqnarray}
+dan 
+\begin{eqnarray}
+r&=&\sqrt{x^2+y^2} \\
+&=&(v_0^2 t^2 + \frac{1}{4} g^2t^2 - v_0gt^3\sin \theta)^\frac{1}{2}
+\end{eqnarray}
+
+Dengan mengambil $y=0$ ketika proyektil kembali menyentuh tanah:
+\begin{equation}
+y=t(- \frac{gt}{2}+v_0 \sin \theta)=0
+\end{equation}
+
+Nilai $y=0$ yang pertama terjadi saat $t=0$ ketika proyektil pertama kali ditembakkan, 
+dan nilai $y=0$ yang kedua terjadi saat $t= T$, ketika proyektil kembali menyentuh tanah.
+\begin{eqnarray}
+-\frac{gT}{2}+v_0 \sin \theta &=& 0\\
+T&=&\frac{2v_0 \sin \theta}{g} \\
+\end{eqnarray}
+
+Sehingga diperoleh jarak terjauh $x$ yang bisa dicapai oleh proyektil adalah:
+\begin{eqnarray}
+x(T)&=&\frac{2v_0^2}{g} \sin \theta \cos \theta \\
+&=&\frac{v_0^2}{g} \sin 2\theta
+\end{eqnarray}
+
+Di mana jarak maksimum yang bisa dijangkau proyektil diperoleh saat $\theta = 45^0$
+
+<p></p>
+
+Sedangkan tinggi yang bisa dicapai oleh proyektil adalah:
+\begin{equation}
+H = \frac {v_0^2 \sin^2 \theta}{2g}
+\end{equation}
+
+
+<h2>Metode numerik</h2>
+
+Metode numerik yang digunakan: - 
+
+
+<h2>HTML dan JS</h2>
+
+
+<h3>Yang diperlukan</h3>
+
+<table style="width:100%">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	}
+th, td {
+    padding: 5px;
+    text-align: left;
+	}
+</style>
+  <tr>
+    <th>Tampilan</th>
+	<th>Elemen HTML</th>
+    <th>Keterangan</th> 
+  </tr>
+  <tr>
+    <th rowspan="1">Canvas</th>
+    <td>Simulasi</td>
+    <td>Untuk menampilkan gerak dari proyektil yang ditembakkan</td>
+  </tr>
+  <tr>
+    <th rowspan="4">Text Area</th>
+    <td>Kecepatan awal $v_0$</td>
+    <td>Untuk mengubah kecepatan awal proyektil ketika ditembakkan</td>
+  </tr>
+  <tr>
+    <td>Massa proyektil $m$</td>
+    <td>Untuk mengubah massa proyektil ketika dilakukan simulasi. Parameter massa proyektil digunakan untuk menunjukkan bahwa massa tidak 
+	berpengaruh terhadap jarak maksimum yang ditempuh poyektil
+	</td>
+  </tr>
+  <tr>
+    <td>Sudut $\theta$ </td>
+    <td>Untuk mengubah besar sudut yang digunakan saat proyektil ditembakkan</td>
+  </tr>
+  <tr>
+    <td>Percepatan gravitasi $g$</td>
+    <td>Menampilkan percepatan gravitasi yang ingin digunakan dalam simulasi gerak proyektil</td>
+  </tr>	
+</table>
+
+<h3>Yang telah diketahui</h3>
+
+Element HTML dan JS yang diperlukan untuk mengerjakan proyek ini berupa Canvas dan Text area, sedangkan penulisan persamaan menggunakan format MathJax.
+
+<h2>Tampilan simulasi</h2>
+<ul>
+<li> 
+Judul diletakkan di bagian atas (tengah)
+</li>
+
+<li> 
+Kecepatan awal $v_0$ diletakkan di bagian kiri atas
+</li>
+
+<li> 
+Sudut $\theta$ diletakkan di bawah kecepatan awal
+</li>
+
+<li> 
+Percepatan gravitasi $g$ diletakkan di bawah sudut 
+</li>
+
+<li> 
+Massa proyektil $m$ diletakkan di bawah percepatan gravitasi
+</li>
+
+<li> 
+Simulasi di letakkan di bawah judul
+</li>
+
+<li> 
+Hasil diletakkan di sebelah kanan simulasi, di mana hasil ini meliputi jarak terjauh dan tinggi maksimum yang  
+bisa dicapai oleh proyektil
+</li>
+
+
+</ul>
+
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>Thorton & Marion, Classical Dynamics of Particles and Systems, Fifth Edition [20180226]</li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
