@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217313</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Analisis Jenis Tumbukan berdasarkan Perubahan Ketinggian dan Koefisien Restitusi</h1>
+
+Tumbukan merupakan peristiwa yang sering kita jumpai dalam kehidupan sehari-hari. Dimana, terdapat 3 jenis dari tumbukan, yaitu tumbukan lenting sempurna, tumbukan lenting sebagian dan tumbukan tidak lenting sama sekali.
+Ketiga jenis ini, mempengaruhi kondisi pergerakan dan kecepatan yang dialami benda. Dengan adanya simulasi ini 
+ bertujuan untuk memberikan gambaran mengenai jenis-jenis tumbukan dalam bentuk visualisasi dan grafik 
+berdasarkan perubahan ketinggian dan koefisien restitusi. 
+Simulasi ini dirancang dengan mempertimbangkan konsep-konsep fisis yang 
+terkait, serta memungkinkan pengguna mengubah parameter ketinggian dan nilai koefisien restitusi benda.
+Perubahan kedua parameter tersebut dapat mengubah gerak tumbukan  yang dapat menentukan jenis tumbukan.
+
+<h2>Teori</h2>
+Tumbukan dapat diartikan sebagai interaksi antara dua benda yang berlangsung pada waktu yang relatif singkat (Zemansky, 2002). Saat benda bertumbukan maka selalu berlaku hukum kekekalan momentum tetapi tidak selalu berlaku hukum kekekalan energi kinetik. Karena sebagian energi kinetik diubah menjadi energi panas atau bunyi akibat adanya tumbukan. 
+<p>
+Besarnya momentum yang bekerja pada saat tumbukan dapat diketahui melalui persamaan
+</p>
+\begin{equation}
+	\vec{p}=\vec{p'}
+\end{equation}
+
+\begin{equation}
+	m_1\vec{v_1}+m_2\vec{v_2}=m_1\vec{v_1'}+m_2\vec{v_2'} 
+\end{equation}
+Berdasarkan sifat kelentingan atau elastisitas benda yang bertumbukan, tumbukan dapat dibedakan menjadi tiga jenis, yaitu tumbukan lenting sempurna, tumbukan lenting sebagian dan tumbukan tidak lenting sama sekali.
+Ketiga jenis tumbukan tersebut ditentukan oleh nilai koefisien restistusi (e) yang besarnya (0 ≤ e ≤ 1)
+<p>
+nilai koefesien restitusi dapat ditentukan dari persamaan berikut,
+</p>
+\begin{equation}
+e =-\frac {(\vec{v_2'}-\vec{v_1'})}{(\vec{v_1}-\vec{v_2})}
+\end{equation}
+
+
+
+<p>
+<b>Tumbukan Lenting Sempurna</b>
+</p>
+
+Tumbukan lenting sempurna merupakan jenis tumbukan yang terjadi ketika dua buah benda bertumbukan dengan nilai energi kinetik total kedua benda sebelum dan sesudah tumbukan tetap. Sehingga pada tumbukan lenting sempurna berlaku hukum kekekalan momentum dan hukum kekekalan energi kinetik serta kecepatan relatif benda sebelum dan sesudah tumbukan besarnya tetap tetapi arahnya berlawanan. Dengan perbandingan $v'$ dan $v$ adalah 1 yang dikenal dengan nilai koefisien restitusi (e). Seperti, tumbukan di antara atom-atom, inti atom, dan partikel-partikel lain yang seukuran dengan atom atau lebih kecil lagi.
+
+<p>
+<b>
+Tumbukan Lenting Sebagian
+</b>
+</p>
+
+Tumbukan lenting sebagian merupakan peristiwa tumbukan yang sering terjadi di alam dimana nilai energi kinetik berkurang selama tumbukan. Oleh karena itu, hukum kekekalan energi kinetik tidak berlaku. 
+
+Nilai koefisien restitusi ini adalah (0 ≤ e ≤ 1). 
+
+<p>
+Sebagai contoh, sebuah bola tenis dilepas dari ketinggian $h1$ di atas lantai. Setelah menumbuk lantai bola akan terpental setinggi $h2$, nilai $h2$ selalu lebih kecil dari $h1$.
+</p>
+Berdasarkan persamaan gerak jatuh bebas, besar kecepatan bola memenuhi persamaan
+
+\begin{equation}
+\vec{v} = \sqrt{2gh}
+\end{equation}
+
+untuk kecepatan lantai sebelum dan sesudah tumbukan sama dengan nol ($v2$ = $v2'$ = 0) dengan mensubsitusikan persamaan (4) ke persamaan (3) maka diperoleh persamaan, 
+
+\begin{equation}
+e =-\frac {(\vec{v_2'}-\vec{v_1'})}{(\vec{v_1}-\vec{v_2})}
+\end{equation}
+\begin{equation}
+e =-\frac {(0-\sqrt{2gh_2'})}{0-(-\sqrt{2gh_2})}
+\end{equation}
+
+\begin{equation}
+e =\frac {\sqrt{2gh_2'}}{\sqrt{2gh_2}}
+\end{equation}
+
+\begin{equation}
+e =\frac {\sqrt{h_2'}}{(\sqrt{h_2})}
+\end{equation}
+
+<p>
+<b>
+Tumbukan Tidak Lenting Sama Sekali
+</b>
+</p>
+Pada tumbukan jenis ini, kecepatan benda-benda sesudah tumbukan sama besar (benda yang bertumbukan saling melekat). Sebagai contoh tumbukan antara peluru dengan sebuah target di mana setelah tumbukan peluru menempel dalam target.
+Dengan nilai koefisien restitusi (e) = 0.
+
+<h2>Metode numerik</h2>
+<p>
+Metode numerik adalah teknik-teknik yang digunakan untuk merumuskan masalah-masalah
+matematika agar dapat diselesaikan dengan operasi-operasi aritmatika biasa.
+</p>
+<p>Dengan menggunakan konsep GLBB dan metode Euler dapat memberikan kecepatan dan ketinggian setelah tumbukan untuk arah $y$, untuk tiap tumbukan-i, 
+</p>
+
+Metode Euler dalam persamaan di dapat, untuk arah $y$
+\begin{equation}
+v_y(t+\Delta t) =v_y(t)+a_y(t)\Delta t
+\end{equation}
+
+\begin{equation}
+r_y(t+\Delta t) =r_y(t)+v_y(t)\Delta t
+\end{equation}
+
+Sehingga akan di dapat nilai koefisien restitusi 
+\begin{equation}
+e =\frac {\sqrt{h_n+1'}}{(\sqrt{h_n})}
+\end{equation}
+
+ dengan $hn$ adalah tinggi pantulan ke-n (n=0,1,2..)
+ 
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+<p>
+1. Canvas
+</p>
+<p>canvas id="canvas" width="400px" height="400px"/canvas
+</p>
+<p>
+canvas id="chartCanvas" width="600px" height="400px"/canvas
+</p>
+<p>
+2.Textarea
+</p>
+<p>textarea id="textarea"/textarea
+</p>
+3. Start Button
+<p>
+<p>button id="startButton" Start /button
+</p>
+4. Reset Button
+<p>button id="resetButton" Reset /button
+</p>
+5. Stop Button
+<p>button id="stopButton" Reset /button
+</p>
+<p>
+6. xychart
+</p>
+<p>script src="xychart.js"/script
+</p>
+
+<h3>Yang telah diketahui</h3>
+
+1. Title
+<p>
+title"Simulasi Tumbukan untuk Menentukan Jenis Tumbukan"/title
+</p>
+<p>
+2. xychart
+</p>
+<p>
+3. Textarea 
+</p>
+<p>
+4. Canvas
+</p>
+<p>
+6. Start Button
+</p>
+7. Reset Button
+<p>
+8. Stop Button
+</p>
+
+
+<h3></h3>
+
+<h2>Tampilan simulasi</h2>
+Untuk menampilkan simulasi ini, dibutuhkan beberapa tampilan dalam javascript yaitu, 
+terdapat kotak textarea untuk memasukkan data ketinggian awal dan koefisien restitusi,dilengkapi dengan tombol
+start dengan fungsi untuk memulai simulasi, tombol reset dengan fungsi untuk mengulang kembali input data jika diperlukan dan tombol stop dengan fungsi untuk menghentikan simulasi, yang disebelahnya terdapat canvas untuk menggambarkan pergerakan selama tumbukan terjadi, dan terdapat xychart atau grafik yang berfungsi untuk menunjukkan grafik ketinggian setelah tumbukan terhadap waktu.
+
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>Zemansky,Sears.2002.Fisika Universitas Jilid 1 Edisi Kesepuluh.Jakarta:Erlangga</li>
+<li>Tippler, P. A. (1998). Fisika untuk sains dan teknik (PP 344 – 345).</li>
+<li>Toto Budianto,Dora Andris,Roni Stiawan, Rany Nurainy,Lale Putri,Lely Nuraeni,Diana Safitri"Analisis bentuk orbit bumi mengelilingi matahari berdasarkan 1
+perubahan nilai posisi awal, kecepatan awal, dan massa matahari" dalam Komputasi Fisika 3:
+Simulasi dan Visualisasi Fisika dengan JavaScript oleh S. Viridi (editor), 2017,
+pp.12-24.</li>
+<li>Jesi Pebralia,Yunita Citra Dewi,Donny Dwiputra, Rouf"Orientasi Gerak Jatuh
+Bebas Sistem 3 Partikel" dalam Komputasi Fisika 1:
+Simulasi dan Visualisasi Fisika dengan JavaScript oleh S. Viridi (editor), 2015,
+pp.4-5.</li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
