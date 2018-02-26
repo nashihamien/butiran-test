@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217001</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Peluruhan Radioaktif</h1>
+
+Materi ini menarik untuk dibahas karena menjadi dasar teori bagi pengetahuan lanjut di bidang fisika nuklir dan fisika radiasi.
+
+<h2>Teori</h2>
+
+Peluruhan radioaktif adalah peristiwa pemancaran sinar radioaktif secara spontan. inti atom yang tidak stabil selalu memancarkan sinar radioaktif secara spontan sehingga akan diperoleh inti atom yang stabil. Unsur yang selalu memancarkan sinar radiasi tersebut dinamakan unsur radioaktif (isotop radioaktif).
+Misalkan pada isotop Nuklir uranium 235. Momen eksak peluruhan setiap partikel terjadi secara acak. Artinya, bilangan $\begin{equation} -dN(t)=N(t)-(t+dt)\end{equation}$ dari inti atom akan meluruh selama interval waktu $\begin{equation}dt\end{equation}$ harus proposional pada $\begin{equation}dt\end{equation}$ dan bilangan $\begin{equation}N(t)\end{equation}$ dari partikel pada waktu sekarang, $\begin{equation}t\end{equation}$. Misalnya:
+
+\begin{equation} 
+-dN(t) \propto N(t)dt
+\end{equation}
+
+dengan kata lain, probabilitas peluruhan per satuan waktu diberikan oleh $\begin{equation}(-dN(t)/N(t))/dt\end{equation}$ adalah konstan di mana kita notasikan kembali $\begin{equation}\frac{1}{\tau}\end{equation}$. Tanda minus (-) pada $\begin{equation}-dN(t)\end{equation}$ menunjukan nilai negatif, menandakan bahwa bilangan partikel berkurang seiring waktu. Kita tulis
+
+\begin{equation} 
+\frac{dN(t)}{dt} = - \frac{N(t)}{\tau}
+\end{equation}
+
+Solusi dari persamaan diferensial orde pertama diberikan oleh fungsi eksponensial sederhana
+
+\begin{equation} 
+N(t) = N_{0} \exp(-t/\tau)
+\end{equation}
+
+Bilangan $\begin{equation}N_{0}\end{equation}$ adalah bilangan partikel pada waktu $\begin{equation}t=0\end{equation}$. Waktu \tau disebut waktu paruh (\textit{mean lifetime}). Ini adalah waktu rata-rata untuk peluruhan. Adapun untuk contoh yang kita bahas yaitu uranium 235, waktu paruhnya adalah sekitar $10^{9}$ tahun.
+
+<h2>Metode numerik</h2>
+
+Pada perhitungan secara numerik, digunakan Algoritma Euler yang merupakan persamaan diferensial biasa orde ke satu, dimana bentuk umunya adalah:
+
+\begin{equation} 
+y'=\frac{dy}{dx}=f(x,y)
+\end{equation}
+
+dengan menerapkan kondisi batas nilai awal ($\textit{initial-value}$):
+
+\begin{equation} 
+y(x_{0})=y_{0}
+\end{equation}
+
+Pecahkan solusi $\begin{equation}y=y(x)\end{equation}$ dalam unit interval-x mulai dari x_{0}.
+Diskretisasi interval-x
+
+\begin{equation}
+x_{n} = x_{0} + n \Delta x, n = 0, 1, ...
+\end{equation}
+
+Algoritma Euler digunakan untuk mengganti fungsi $\begin{equation}f(x)\end{equation}$ pada interval $\begin{equation} [x_{n} = x_{n+1}] \end{equation}$ dengan garis lurus menghubungkan titik $\begin{equation}(x_{n},y_{n}\end{equation}$ dan $\begin{equation}(x_{n+1},y_{n+1}\end{equation}$. Hal ini datang dari dari definisi turunan pada titik $\begin{equation}x=x_{n}\end{equation}$ diberikan oleh
+
+\begin{equation} 
+\frac{y_{n+1}-y_{n}}{x_{n+1}-x_{n}} = f(x_{n},y_{n})
+\end{equation}
+
+<!-- Ini berarti mengganti persamaan diferensial orde pertama di atas dengan persamaan diferensial terbatas (limit)
+
+\begin{equation}
+y_{n+1} \simeq y_{n} + \Delta x f(x_{n}, y_{n})
+\end{equation}
+
+yang merupakan aproksimasi. Pembatasan galat diberikan aturan dalam ekspansi Taylor dari fungsi $\begin{equation}y(x)\end{equation}$ yang diberikan oleh
+
+\begin{equation}
+y_{n+1} \simeq y_{n} + \Delta x f(x_{n},y_{n} + \frac{1}{2} \Delta x^{2} \frac{df(x,y)}{dx} \mid_{x-x_{n}+ ...}
+\end{equation}
+
+galat kemudian membaca
+
+\begin{equation} 
+\frac{1}{2}\sqrt(\Delta x) \frac{df(x,y){dx} \mid_{x=x_{n}}
+\end{equation}
+
+Galat per langkah selanjutnya proporsional dengan $\begin{equation}(\Delta x)^{2}\end{equation}$. Pada unit interval kita akan lakukan langkah $\begin{equation}N= \frac{1}{\Delta x}\end{equation}$. Galat total sistematik selanjutnya proporsional dengan
+
+\begin{equation} 
+N(\Delta x)^{2} = \frac{1}{N}
+\end{equation}
+
+Persamaan (3) adalah solusi eksak yang kan dibandingkan dengan solusi numerik. Kita mulai dengan ekspansi Taylor
+
+\begin{equation}
+N(t+\Delta t) = N(t) + \Delta t \frac{dN}{dt} + \frac{1}{2} (\Delta t)^{2} \frac{d^{2} N}{dt^{2}} + ...
+\end{equation}
+
+kita batasi $\begin{equation}\Delta t \to 0\end{equation}$
+
+\begin{equation} 
+\frac{dN}{dt} = \lim_{\Delta t\to\infty} \frac{N(t+ \Delta t) - N(t)}{\Delta t}
+\end{equation}
+
+Kita ambil $\begin{equation}\Delta t\end{equation}$ yang kecil tapi bukan angka nol. Dalam kasus ini, kita ambil aproksimasi
+
+
+\begin{equation} 
+\frac{dN}{dt} \simeq \frac{N(t+ \Delta t) - N(t)}{\Delta t}
+\end{equation}
+
+ekivalen dengan
+
+\begin{equation}
+N(t+ \Delta t) \simeq N(t) + \Delta t \frac{dN}{dt}
+\end{equation}
+
+Dengan menggunakan persamaan (2), kita dapat
+
+\begin{equation}
+N(t+ \Delta t) \simeq N(t) - \Delta t \frac{dN}{\tau}
+\end{equation}
+
+Kita mulai dari jumlah partikel pada $\begin{equation}t=0\end{equation}$ diberikan oleh $\begin{equation}N(0) = N_{0}\end{equation}$ yang kita ketahui. Substitusi $\begin{equation}t=0\end{equation}$ pada persamaan (16) untuk mendapat $\begin{equation}N(2 \Delta t)=N(2)\end{equation}$, dan seterusnya. Selanjutnya kida mendapatkan diskretisasi waktu
+
+\begin{equation}
+t \equiv t(i) - i \Delta t, i = 0, ..., N
+\end{equation}
+
+dengan kata lain,
+
+\begin{equation}
+N(t)=N(i)
+\end{equation}
+
+Integer N menentukan waktu total untuk interval $\begin{equation}T=N \Delta t\end{equation}$, sehingga persamaan (16) bisa ditulis
+
+\begin{equation}
+N(i+1)=N(i)- \Delta t \frac{N(i)}{\tau}, i=0, ..., N
+\end{equation}
+
+Ini adalah algoritma Euler untuk peluruhan radioaktif. Agar lebih nyaman, kita geser integer i sehingga persamaan di atas mempunyai bentuk
+
+\begin{equation}
+N(i)=N(i-1)- \Delta t \frac{N(i-1)}{\tau}, i=1, ..., N+1
+\end{equation}
+
+sehingga kita punya persamaan baru $\begin{equation} \overset{^}{\N} (i) = N(i-1)\end{equation}$. Contoh: $\begin{equation}\overset{^}{\N} (1) = N(0)=N_{0}\end{equation}$. Kita dapat 
+
+\begin{equation}
+\overset{^}{\N} (i+1) = \overset{^}{\N} (i) - \Delta t \frac{\overset{^}{\N(i)}}{\tau}, i=1, ..., N+1
+\end{equation}
+
+sehingga waktu yang bersesuaian adalah
+
+\begin{equation}
+\overset{^}{\t} (i+1) = i \Delta t, i=1, ..., N+1
+\end{equation}
+
+waktu awal yang dari partikel pada waktu $\begin{equation} \overset{^}{\t} (1)=0\end{equation}$ adalah $\begin{equation}\overset{^}{\N} (1)=N_{0}\end{equation}$, sehingga solusi aproksimasi ini bisa dibandingkan dengan persamaan (3).
+
+-->
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+
+Perintah untuk memproses perhitungan menggunakan algoritma Euler, perintah untuk memunculkan grafik dengan warna yang bisa diatur.
+<h3>Yang telah diketahui</h3>
+
+Membuat toolbox, membuat perintah membuat tabel.
+<h2>Tampilan simulasi</h2>
+
+Akan ada text area untuk memamsukan nilai awal dari unsur yang meluruh dan waktu paruh, lengkap dengan tombol perintah 'hitung' dan 'bersihkan' (jika ingin menghapus semua nilai masukan sebelumnya). setelah itu ada kolom lain yang akan menampilkan tabel hasil perhitungan dan ada satu kolom lagi untuk melihat grafik peluruhan.
+<h2>Referensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li></li>
+<li></li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
