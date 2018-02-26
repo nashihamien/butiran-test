@@ -1,0 +1,186 @@
+<DOCTYPE html>
+<html>
+	<head>
+	<!--
+	proposal.html
+	Simulation free fall motion with air resistance
+	
+	Nurul Atiqah | nurulatiqah4693@gmail.com
+	
+	Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+
+		<title>proposal</title>
+		<!-- MathJax --->
+		<script type="text/javascript" async
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				TeX: { equationNumbers: { autoNumber: "AMS" } }
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});
+		</script>
+		<script>
+				function UpdateMath(id, TeX) {
+				// Set innerHTML
+				document.getElementById(id).innerHTML = TeX;
+
+				// Reprocess the element
+				MathJax.Hub.Queue(["Typeset", MathJax.Hub, id])
+			}
+		</script>
+		<!-- MathJax --->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		</script>
+		<style>
+			a {
+				text-decoration: none;
+				color: blue;
+			}
+			body {
+				text-align: justify;
+			}
+			h1 {
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+	
+<h1> Free fall motion with air resistance</h1>
+
+Nurul Atiqah | nurulatiqah4693@gmail.com | 20180226 <br/><br/>
+<h2>Teori</h2>
+Terdapat sebuah benda bermassa $m$ yang bergerak jatuh bebas dari suatu  ketinggian $h$ tertentu. Dalam gerak jatuh bebas ini hambatan udara ikut diperhitungkan,
+
+sehingga pergerakan ini dipengaruhi oleh dua buah gaya yaitu gaya berat (W) dan gaya hambatan udara (Fg)
+
+</script>
+
+\begin{equation}
+F_{grav} = mg,
+\label{eq:free-fall-motion}
+\end{equation}
+dengan Fgrav = gaya berat benda, m = massa benda dan g = percepatan gravitasi
+
+\begin{equation}
+F_{air} = kv,
+\label{eq:free-fall-motion2}
+\end{equation}
+dengan Fair = gaya hambatan udara, k = konstanta benda, dan v = kecepatan gerak benda.
+
+Gaya pada persamaan (\ref{eq:free-fall-motion}) dan (\ref{eq:free-fall-motion2}) dapat diuraikan dengan menggunakan Hukum II Newton sehingga dapat diperoleh bahwa:
+
+\begin{equation}
+\sum F = ma,
+\end{equation}
+\begin{equation}
+\Rightarrow F_{grav} - F_{air} = ma,
+\end{equation}
+\begin{equation}
+\Rightarrow mg - kv = ma,
+\label{eq:free-fall-motion3}
+\end{equation}
+
+Ingat a adalah diferensial dari v :
+
+\begin{equation}
+a = {\frac{dv}{dt}},
+\end{equation}
+
+Sehingga persamaan (\ref{eq:free-fall-motion3}) menjadi :
+\begin{equation}
+mg - kv = m \frac{dv}{dt},
+\end{equation}
+
+\begin{equation}
+\Rightarrow \frac {dv}{mg - kv} = \frac{dt}{m},
+\label{eq:free-fall-motion4}
+\end{equation}
+
+Dengan mengintegralkan kedua ruas pada persamaan (\ref{eq:free-fall-motion4}) diperoleh solusi :
+
+\begin{equation}
+v (t) = \frac {{mg} - C exp(-{\frac {k}m{t}})}{k}.
+\label{eq:free-fall-motion5}
+\end{equation}
+
+Ketika v (t = 0) = 0 maka dapat diperoleh nilai C pada persamaan (\ref{eq:free-fall-motion5}) sebagai berikut :
+
+\begin{equation}
+C = mg
+\label{eq:free-fall-motion6}
+\end{equation}
+
+dengan melakukan substitusi persamaan (\ref{eq:free-fall-motion6}) ke persamaan (\ref{eq:free-fall-motion5}) maka diperoleh solusi:
+\begin{equation}
+v (t) = (\frac {mg}{k}) (1 - exp(-{\frac {k}m{t}}))
+\end{equation}
+
+<h2>Metode numerik</h2>
+Metode simulasi distribusi dapat menyelesaikan persamaan diferensial parsial dengan kondisi awal dan batas. Dengan menggunakan metode beda hingga, turunan pertaman suatu fungsi dapat direpresentasikan dalam bentuk:
+\begin{equation}
+\frac{dx}{dt} \approx \frac{x(t + \Delta t) -  x(t)}{(\Delta t)},
+\label{eq:free-fall-motion7}
+\end{equation}
+
+yang akan membuat Persamaan (\ref{eq:free-fall-motion6}) menjadi
+
+\begin{equation}
+\frac{x(t + \Delta t) -  x(t)}{(\Delta t)} = (\frac {mg}{k}) (1 - exp(-{\frac {k}m{t}})),
+\end{equation}
+
+
+<div id="fg:analytical-solution"></div>
+<h2>HTML dan JS</h2>
+<h3>Yang diperlukan</h3>
+<li> div element
+<li>popup function digunakan untuk menginput parameter awal yang harus diketahui
+<li>set timeout digunakan untuk mengatur waktu penampilan animasi simulasi
+<li>function button start, stop digunakan untuk sebagai perintah memulai dan memberhentikan simulasi
+<li>display digunakan untuk menampilkan animasi
+<li>alert dialog box digunakan untuk dialog melanjutkan melihat hasil
+<li>function table digunakan untuk menampilkan tabel hubungan kecepatan dan waktu
+<li>draw canvas digunakan untuk membuat animasi dan grafik
+
+<h3>Yang telah diketahui</h3>
+<li> popop function
+<li> button function
+<li> alert dialog box
+
+<h2>Tampilan simulasi</h2>
+Tampilan simulasi yang diharapkan adalah disediakan pop up untuk menginput parameter yang dibutuhkan ($m$, $g$, dan $k$). 
+Setelah itu klik button start untuk memulai simulasi dan stop untuk memberhentikan simulasi. 
+Maka akan muncul pergerakan dari simulasi benda jatuh bebas tersebut.
+Setelah klik button stop akan ada perintah dialog box untuk melanjutkan step untuk melihat hasil. 
+Hasil yang diberikan akan berbentuk tabel hubungan antara $v$ dan $t$. Serta grafik $v$ vs $t$. Simulasi ini dapat digunakan berulang dengan nilai parameter yang berbeda sebagai bahan perbandingan
+
+<h2>Rereferensi</h2>
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180224]</li>
+<li>"Eloquent Javascript", URL <a href="http://eloquentjavascript.net/">http://eloquentjavascript.net/ </a> [20180224]</li>
+<li>"JavaScript Tutorial", URL <a href="https://javascript.info/">https://javascript.info/</a> [20180224]</li>
+<li> "Metode beda hingga, Sangadji, URL <a href="http://research-dashboard.binus.ac.id/uploads/paper/document/publication/Journal/MatsTat/Vol.%2008%20No.%202%20Juli%202008/04_Sangadji_Beda%20Hingga.pdf">http://research-dashboard.binus.ac.id/uploads/paper/document/publication/Journal/MatsTat/Vol.%2008%20No.%202%20Juli%202008/04_Sangadji_Beda%20Hingga.pdf </a> [20180224] </li>
+<ol>
+<script>
+
+	</body>
+</html>
