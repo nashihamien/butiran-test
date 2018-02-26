@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217011</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Pemodelan Distribusi Panas Dua Dimensi dengan Metode Beda Hingga</h1>
+
+Pemodelan distribusi panas ini cukup penting untuk dilakukan dan dipelajari mengingat konsep termodinamika yang sederhana 
+namun dapat diterapkan dalam berbagai aspek kehidupan sehari-hari seperti suhu api yang dibutuhkan pemantik dan lubang-lubang pada kompor gas
+agar menghasilkan suatu distribusi panas yang merata.
+
+<h2>Teori</h2>
+
+Kalor adalah energi, baik itu energi dalam maupun entalpi yang berpindah yang bergantung pada kondisi pengamatan [1]. 
+Kalor dapat diamati dalam wujud panas. Ada tiga jenis perpindahan panas, yaitu konduksi, konveksi, dan radiasi. 
+Radiasi merupakan perpindahan panas dalam bentuk emisi gelombang elektromagnet. Konduksi merupakan perpindahan panas akibat perbedaan temperatur pada suatu material. 
+Konveksi merupakan perpindahan panas akibat adanya perpindahan materi yang menyerap panas tersebut [1].
+
+\begin{equation}
+\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = 0
+\label{eq:laplace-eq}
+\end{equation}
+
+Persamaan (\ref{eq:laplace-eq}) dapat diselesaikan dengan menggunakan metode sparasi variabel [2]. Secara matematis dapat dituliskan
+
+\begin{equation}
+T(x,y) = X(x)Y(y)
+\label{eq:sparasi-var}
+\end{equation}
+
+Dengan solusi umum analitik dari persamaan (\ref{eq:laplace-eq}) adalah
+
+\begin{equation}
+X_n(x) = \sin \frac{n\pi}{\omega} x
+\label{eq:solution-x}
+\end{equation}
+
+\begin{equation}
+Y_n(y) = A_n \cosh \frac{n\pi}{\omega}y + B_n \sinh \frac{n\pi}{\omega}y
+\label{eq:solution-y}
+\end{equation}
+
+Solusi (\ref{eq:solution-x}) dan (\ref{eq:solution-y}) dapat dirumuskan pada solusi deret
+
+\begin{equation}
+T(x,y) = \sum b_n \left( \sinh \frac{\frac{n\pi(h-y)}{\omega}}{\frac{n\pi h}{\omega}} \right) \left( \sin \frac{n \pi}{\omega}\right)
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Penyelesaian persamaan (\ref{eq:laplace-eq}) secara numerik dapat digunakan metode <i>central finite difference</i> [3]
+
+\begin{equation}
+T_i,j = \frac{T_{i+1,j}+ T_{i-1,j} + T_{i, j+1} + T_{i, j-1}}{4}
+\end{equation}
+
+Selanjutnya penyelesaian solusi numerik dapat dilakukan dengan  beberapa cara. Salah satunya dapat dilakukan dengan memasukkan satu-persatu temperatur di setiap grid yang ada dan menyelesaikan sistem persamaan linear dalam bentuk matriks. 
+Penyelesaian sistem persamaan linear tersebut dapat menggunakan metode dekomposisi LU, Gauss-Seidel atau iterasi Jacobi. 
+Proses masukkan  temperatur pada  sistem persamaan linear ini dapat dengan mudah dilakukan jika sumber panas dletakkan di tepi sistem. Namun, pada simulasi ini ditinjau sebaran panas pada sistem dengan sumber panas diletakkan di dalam sistem. 
+Sehingga penentuan matriks yang akan dicari solusinya cukup sulit. 
+Maka dapat digunakan metode lain yang dapat mempermudah masukkan temperatur tiap elemen. Metode yang digunakan adalah metode <i>Liebmann</i> dengan pertimbangan efisiensi algoritma pada simulasi yang dilakukan [3].
+
+\begin{equation}
+T^{baru}_{i.j} = \lambda T^{baru}_{i,j} + (1-\lambda)T^{lama}_{i,j}
+\label{eq:Liebmann-eq}
+\end{equation}
+
+Persamaan (\ref{eq:Liebmann-eq}) merupakan rumusan matematis dari metode Liebmann dengan $\lambda$ adalah koefisien over relaksasi yang besarnya antara 1 dan 2. 
+Penggunaan koefisien relaksasi sebagai pemercepat proses iterasi dan menyatakan bahwa temperatur di suatu titik dipengaruhi oleh temperatur sekarang dan sebelumnya sesuai bobot yang diberikan.
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Pada projek ini, perintah HTML yang diperlukan adalah perintah looping atau iterasi untuk persamaan matematis yang telah didiskritisasi.
+Selain itu diperlukan juga perintah membaca elemen dari <i>div</i> sebagai data masukan <i>div</i> lain. Animasi bergerak yang menggambarkan proses penyebaran panas
+pada grid juga diperlukan.
+
+<h3>Yang telah diketahui</h3>
+
+Elemen yang telah diketahui untuk melakukan simulasi ini adalah iterasi dari persamaan matematis, deklarasi matriks dan geometri yang akan dibangun.
+
+<h2>Tampilan simulasi</h2>
+
+Tampilan simulasi yang diinginkan adalah terdapat gambar tiga dimensi dengan komponen x dan y adalah letak atau koordinat dari sistem yang dibangun.
+Komponen z sebagai data temperatur dalam sistem yang dibangun. 
+Selanjutnya menggunakan fungsi <i>drag</i> untuk menentukan titik pusat panas. Pusat panas tidak hanya satu titik namun minimal 5 titik. 
+Gambar tersebut merupakan satu kesatuan <i>div</i>. 
+Selanjutnya <i>div</i> lain terisi dengan tombol start sebagai penanda dimulainya program dan diberikan juga span dalam <i>div</i> sebagai data masukan temperatur sumber panas.
+Serta pada <i>div</i> lain akan ditampilkan hasil distribusi panas yang terbaca oleh sensor yang diletakkan secara permanen dalam geometri (memiliki koordinat tetap).
+
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li> Zemansky, Mark, W., and Dittman, Richard, H. <b>Heat and Thermodynamics</b>. McGraw-Hill Inc. Mc Graw Hill 1968.</li>
+<li> Solusi analitik distribusi panas. <a href = " http://www.math.uiuc.edu/~jlebl/286-dirich.pdf"> Tersedia : http://www.math.uiuc.edu/~jlebl/286-dirich.pdf </a> </li>
+<li> Setiawan, Agus, ST, MT. <b>Pengantar Metode Numerik</b>. Penerbit Andi 2006.</li>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180225]</li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
