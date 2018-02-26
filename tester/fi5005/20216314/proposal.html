@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>20216314</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+
+<body>
+<h1> Model Osilasi Sistem "Mass-Spring-Pendulum" dengan Variasi Laju Alir Fluida </h1>
+<h2>Teori</h2>
+
+Sistem "Mass-Spring-Pendulum" adalah sebuah sistem mekanik yang terdiri atas osilasi sebuah pendulum bermasa <b>m</b> secara vertikal yang digantungkan pada sebuah benda <b>M</b> yang juga 
+berosilasi dengan menggunakan pegas secara horizontal pada sebuah bidang tetap. Visualisasi gerak sistem dapat diketahui dengan terlebih dahulu menentukan persamaan gerak sistem 
+tersebut. Persamaan gerak sistem ini dapat diturunkan menggunakan persamaan Lagrange [2].
+
+\begin{equation}
+\frac {d}{dt} \frac{\partial {L}} {\partial {\dot{x}}} - \frac{\partial{L}}{\partial{x}}=0 \\
+\frac {d}{dt} \frac{\partial {L}} {\partial {\dot{\theta}}} - \frac{\partial{L}}{\partial{\theta}}=0 \\
+\end{equation}
+
+dengan
+
+\begin{equation}
+L=T-V
+\end{equation}
+
+dimana $L$ adalah lagrangian untuk sistem yang ditinjau, $T$ energi kinetik sistem, dan $V$ energi potensial sistem tersebut. Energi kinetik dan energi potensial sistem adalah
+
+\begin{equation}
+T=\frac{1}{2}M \dot{x}^2 + \frac{1}{2} m({\dot{x}^2 + l^2 \dot{\theta}^2 + 2l\dot{x} \dot{\theta}}\cos \theta) \\
+V=\frac{1}{2}k x^2 + mgl (1-\cos \theta) \\
+\end{equation}
+
+Sehingga lagrangian sistem dapat dinyatakan sebagai berikut.
+
+\begin{equation}
+L=\frac{1}{2}M \dot{x}^2 + \frac{1}{2} m({\dot{x}^2 + l^2 \dot{\theta}^2 + 2l\dot{x} \dot{\theta}}\cos \theta)-\frac{1}{2}k x^2 - mgl (1-\cos \theta)
+\end{equation}
+
+Dengan mensubsitusikan persamaan (4) ke persamaan (1) diperoleh
+
+\begin{equation}
+(M+m)\ddot{x} + ml\ddot{\theta}\cos\theta - ml\dot{\theta}^2\sin\theta + kx = 0
+\end{equation}
+
+dan dengan mensubsitusikan persamaan (4) ke persamaan (2) diperoleh
+
+\begin{equation}
+ml^2\ddot{\theta} + ml\ddot{x}\cos\theta + mgl\sin\theta=0
+\end{equation}
+
+<b>Urgensitas:</b> Sistem Mass-Spring-Pendulum ini dapat dimodivikasi sedemikian hingga untuk menjadi sebuah instrumen pengukuran <b>Flow Rate Fluida</b>. Instrumen yang ada saat ini yakni
+venturimeter pada prinsipnya hanya dapat digunakan secara efektif untuk fluida yang mendekati fluida ideal (tidak viskos). Hal ini dikarenakan prinsip kerja venturimeter itu sendiri
+didasarkan hukum Bernoulli yang merupakan salah satu hukum fisika untuk fluida ideal. Dengan menggunakan sistem Mass-Spring-Pendulum yang bekerja dengan prinsip mekaniknya, instrumen pengukuran laju alir 
+fluida dapat dilakukan secara general baik untuk fluida viskos maupun non viskos.
+
+<p></p>
+Untuk memodivikasi sistem Mass-Spring-Pendulum menjadi instrumen pengukuran flow rate fluida, dari bidang tetap pegas diberikan aliran fluida untuk mendorong massa <b>M</b> sehingga benda <b>M</b> bertranslasi
+dan pegas akan meregang. Aliran fluida ini tidak diberikan secara kontinu melainkan periodik terhadap waktu saat benda <b>M</b> mengkompresi pegas. Kamudian untuk mendekati sebuah sistem real gerakan translasi 
+<b>M</b> dihambat oleh gaya gesek permukaan tempat benda tersebut berada [3]. Apabila aliran fluida ini tidak ada memungkinkan sistem teredam dengan cepat dikarenakan perbedaan arah osilasi anatara pegas dengan pendulum
+dan juga karena gaya gesek permukaan lantai dengan benda <b>M</b>. Untuk membuat model osilasi sistem yang telah dimodifikasi ini haruslah diperoleh terlebih dahulu persamaan gerak yang baru yang disebabkan oleh penambahan
+gaya gesek dan gaya tekan fluida. Gaya gesek didefinisikan dengan persamaan $-bv$ dan gaya dorong fluida adalah gaya eksternal yang selanjutnya dilambangkan dengan $F(t)$ yang keduanya adalah gaya non konservatif. 
+Oleh karena itu formulasi lagrange akan berubah menjadi persamaan umum gaya.
+
+\begin{equation}
+\delta W^{nc} = \sum {f_i}^{nc} \delta{R_i} = \sum {Q_j} \delta \xi_j \\
+\delta W^{nc} = [-b\dot{x} + F(t)]\delta x +[0] \delta \theta \\
+Q_x = -b \dot{x} + F (t) \\
+Q_\theta = 0 \\
+\end{equation}
+
+Persamaan (5) akan berubah menjadi 
+\begin{equation}
+(M+m)\ddot{x} + ml\ddot{\theta}\cos\theta - ml\dot{\theta}^2\sin\theta + b\dot{x} +kx = F(t)
+\end{equation}
+
+sedangkan persamaan (6) tidak berubah (tetap).
+
+<h2>Metode Numerik</h2>
+
+Metoda numerik yang digunakan untuk menyelesaikan persamaan diferensial orde ke-2 pada persamaan (8) adalah metoda <b>Runge-Kutta</b>. Metoda ini dipilih karena persamaan orde-2 diatas berbentuk non-linear. Selain itu pemilihan ini
+bertujuan untuk menghasilkan perhitungan yang lebih teliti karena didasarkan pada pemanfaatan suku-suku orde yang lebih tinggi dalam ekspansi deret Taylor. Kemudian dalam prosesnya tidak diperlukan metode integrasi awal sebagai 
+kasus khusus dalam proses integrasinya. Dalam proyek ini hanya digunakan metoda Runge-Kutta orde ke-4. Metoda ini mempunyai bentuk umum sebagai berikut [4].
+
+\begin{equation}
+y_{i+1} = y_i + \frac {1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+\end{equation}
+
+dengan
+
+\begin{equation}
+k_1 = hf(x_i,y_i) \\
+k_2 = hf(x_i + \frac{1}{2} h,y_i + \frac{1}{2} k_1) \\ 
+k_3 = hf(x_i + \frac{1}{2} h,y_i + \frac{1}{2} k_2) \\
+k_4 = hf(x_i + h,y_i + k_3) \\
+\end{equation}
+
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang Diperlukan</h3>
+
+Elemen HTML yang diperlukan dalam proyek ini dijelaskan dalam tabel berikut.
+
+<h1 style="text-align:center; font-size:100%">Tabel 1. Elemen HTML Proyek</h1>
+<table style="width:100%">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	}
+th, td {
+    padding: 5px;
+    text-align: left;
+	}
+</style>
+  <tr>
+    <th>Tampilan</th>
+	<th>Elemen HTML</th>
+    <th>Keterangan</th> 
+  </tr>
+  <tr>
+    <th rowspan="3">Kanvas</th>
+    <td>Simulasi</td>
+    <td>Untuk menunjukan pola gerakan sistem berdasarkan solusi persamaan gerak sistem</td>
+  </tr>
+  <tr>
+    <td>Grafik</td>
+    <td>Untuk menunjukan grafik amplitudo dan phasa terhadap waktu pada osilasi benda M dan m</td>
+  </tr>
+  <tr>
+    <td>Grafik Berjalan</td>
+    <td>Untuk menunjukan grafik simpangan terhadap waktu masing-masing osilasi benda M dan m dalam waktu yang berjalan</td>
+  </tr>
+  <tr>
+    <th rowspan="7">Text Area</th>
+    <td>Parameter Benda M</td>
+    <td>Untuk menampilkan dan mengatur parameter-parameter yang dapat divariasikan pada osilasi benda M, yaitu massa benda M, konstanta pegas k, dan starting position x<sub>0</sub></td>
+  </tr>
+  <tr>
+    <td>Parameter Benda m</td>
+    <td>Untuk menampilkan dan mengatur parameter-parameter yang dapat divariasikan pada osilasi benda m, yaitu massa benda m, panjang tali yang digunakan l, dan starting position x<sub>0</sub></td>
+  </tr>
+  <tr>
+    <td>Amplitudo dan Waktu</td>
+    <td>Untuk menampilkan amplitudo masing-masing osilasi terhadap waktu yang telah direpresentasikan dalam grafik berjalan</td>
+  </tr>
+  <tr>
+    <td>Simpangan dan Waktu</td>
+    <td>Untuk menampilkan simpangan masing-masing osilasi terhadap waktu yang telah direpresentasikan dalam grafik berjalan</td>
+  </tr>
+  <tr>
+	<td>Flow Rate-Waktu</td>
+	<td>Untuk menampilkan laju alir fluida yang diberikan terhadap waktu yang berjalan</td> 
+	
+</table>
+
+<p></p>
+
+Sedangkan fungsi-fungsi Java Script (JS) yang dibutuhkan dalam proyek ini adalah sebagai berikut.
+
+<ol>
+	<li> Fungsi java script untuk menyelesaikan metoda numerik yang digunakan yaitu metoda Runge-Kutta.</li>
+	<li> Fungsi java script untuk membuat blok parameter dan menjadikannya minput dengan merubah parameter-parameter yang telah ditentukan pada osilasi benda M dan m.</li>
+	<li> Fungsi java script untuk membuat tombol "Run", "Reset", "Hint" dan "About" dan apabila di klik dapat menjalankan fungsinya.</li>
+	<li> Fungsi java script untuk memunculkan data simpangan, amplitudo, dan flowrate fluida terhadap waktu dari sistem yang di run. </li>
+	<li> Fungsi java script untuk dapat merepresentasikan solusi dari metoda Runge-Kutta yang telah di codding di JS dalam bentuk simulasi gerakan sistem (osiulasi M dan m). </li>
+	<li> Fungsi java script untuk dapat merepresentasikan data simpangan dan waktu dari proses koding sebelumnya dalam grafik animasi (grafik dinamis) simpangan terhadap waktu masing-masing osilasi.</li>
+	<li> Fungsi Java Script untuk menggambar grafik flow rate terhadap waktu yang berjalan.</li>
+	<li> Fungsi java Script untuk mengatur seluruh design tampilan di HTML.
+</ol>
+
+<h3>Yang Telah Diketahui</h3>
+
+Elemen HTML dan fungsi java script yang telah diketahui untuk proyek ini telah dijelaskan dalam tabel 1 diatas. Namun untuk fungsi java script belum diketahui secara spesifik.
+
+<h2>Tampilan simulasi</h2>
+
+Perencanaan tampilan simulasi untuk proyek ini digambarkan sebagai berikut.
+ <ol>
+	<li><i>Blok Judul</i>, diletakan di bagian paling atas dengan posisi berada di center. </li>
+	<li><i>Blok Parameter Osilasi Benda M</i>, diletakan pada sisi kiri di bawah judul. Didalamnya terdapat parameter-parameter yang dapat diubah nilainya (angka) yaitu massa M, konstanta pegas k, dan starting position x<sub>0</sub>. Area ini dilengkapi dengan roler untuk melihat parameter secara keseluruhan. Area ini dibatasi oleh kotak dengan warna garis hitam dan background putih.</li>
+	<li><i>Blok Parameter Osilasi Benda m</i>, diletakan pada sisi kiri di bawah area parameter osilasi benda M. Didalamnya terdapat parameter-parameter yang dapat diubah nilainya (angka) yaitu massa m, panjang tali l, dan starting position x<sub>0</sub>. Area ini dilengkapi dengan roler untuk melihat parameter secara keseluruhan. Area ini dibatasi oleh kotak dengan warna garis hitam dan background putih.</li>
+	<li><i>Blok Tombol Virtual</i>, diletakan pada sisi kiri di bawah parameter osilasi benda m yang terdiri atas tombol "Run" untuk menjalankan program, tombol "Reset" untuk memulai program kembali dari awal, tombol "Hint" yang berisi detil parameter yang digunakan, dan tombol "About" yang berisi data program dan pembuat program. Tombol virtual ini dibuat dalam bentuk kotak-kotak. </li>
+	<li><i>Blok Data Amplitudo-Waktu</i>, diletakan pada sisi kiri di bawah tombol virtual. Data ini berisi waktu yang berjalan saat tombol run diklik beserta data amplitudo osilasi benda M (Amplitudo 1) dan Amplitudo benda m (Amplitudo 2). Area ini dilengkapi dengan roler untuk data dari awal hingga data dari osilasi yang sedang berjalan. Area ini dibatasi oleh kotak dengan warna garis hitam dan background putih.</li>
+	<li><i>Blok Simulasi Gerakan Sistem</i>, diletakan dibagian center dibawah judul sejajar dengan area parameter osilasi. Area ini berfungsi untuk menampilkan simulasi gerak sistem seiring waktu ketika tombol run diklik. Area ini berisi ilustrasi gerakan osilasi sistem, massa M diberi warna merah dengan bentuk balok dan massa m diberi warna merah dengan bentuk bola, setiap tali dan pegas digambarkan dalam garis-garis hitam. Background area berwarna kuning dengan line border berwarna orange.</li>
+	<li><i>Blok Data Simpangan-Waktu</i>, diletakan di center di bawah area simulasi gerak sistem. Data ini berisi waktu yang berjalan (dalam satuan sekon) serta simpangan osilasi benda M dan m (x<sub>1</sub> dan x<sub>2</sub> dalam satuan centimeter). Area ini terdiri atas tiga kotak berwana hitam yang terpisah dengan nama data berada pada sisi-sisi sebelah kirinya.</li>
+	<li><i>Blok Grafik Berjalan</i>, diletakan di center di bawah data waktu-simpangan. Data ini berisi grafik simpangan masing-masing osilasi terhadap waktu yang berjalan setelah tombol run di klik dan merupakan representasi analitis untuk gerakan yang terjadi pada area simulasi (sumbu x dan sumbu y masing-masing adalah waktu dan simpangan). Sebelum dirun area ini hanya berupa kotak dengan line border berwarna biru dan background putih. Sumbu x dan y akan dibuat garis dan skala dengan hitam dan grafik yang terbentuk dibuat dengan warna merah untuk osilasi benda M, dan biru untuk osilasi benda m.</li>
+	<li><i>Blok Data Flow Rate-Waktu</i>, diletakan disebelah kanan sejajar dengan area simulasi. Area ini berbentuk kotak dan didesain sama dengan area amplitudo-waktu. Area ini berfungsi untuk menampilkan data flow rate fluida yang diberikan pada sistem (gara eksternal yang periodik pada balok M) terhadap waktu.</li>
+	<li><i>Blok Grafik Data Flow Rate-Waktu</i>, grafik ini adalah grafik Flow Rate terhadap waktu dari sistem yang dianalisa. Grafik dibuat dalam kotak dengan line border berwarna biru dengan sumbu y berupa flow rate dan phase serta sumbu x nya adalah waktu yang didesain dalam garis berwarna hitam. Garis grafik berwarna merah dan area grafik disertakan grid-grid berwarna biru.</li>
+</ol>
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Fowles Grant R., 1977, Analytical Mechanics Third Edition, New York: University of Utah"</li>
+<li>"Kamal Ahmad A., 1000 Solved Problems in Classical Physics, Texas: Springer.</li>
+<li>"John Butcher, Introduction to Runge-Kutta Method Second Edition, Wiley"</li>
+</ol>
+
+</body>
+
+</html>
