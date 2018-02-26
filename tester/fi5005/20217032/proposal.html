@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217032</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Rangkaian RLC</h1>
+
+Rangkaian RLC ini penting dipelajari. Materi ini mulai diperkenalkan pada siswa sekolah menengah pertama dan atas. Rangkaian RLC penting
+karena mempermudah kita dalam mengolah arus atau tegangan pada rangkaian elektronik <br>
+<h2>Teori</h2>
+Rangkaian RLC merupakan rangkaian elektronik yang terdiri dari resistor, induktor dan kapasitor.
+pada rangkaian RLC komponen yang mendisipasi daya adalah resistor, induktor dan kapasitor berfungsi sebagai penyimpan dan pelepas daya. 
+tiap komponen RLC memiliki karakteristik masing-masing. Resistor berfungsi untu mengatur arus, induktor berfungsi untuk menahan arus dan 
+kapasitor berfungsi untuk menyimpan muatan. Rangkaian elektronik menggunakan komponen seperti dioda yang memiliki batas operasional 
+yang harus dipenuhi berupa tegangan minimum, tegangan maksimum, arus minimum dan arus maksimum. secara matematis:<br/>
+
+<br/>
+untuk mencari tegangan total:
+\begin{equation}
+V=\sqrt{VR^2+(VL-VC)^2}\
+\end{equation}
+
+untuk mencari nilai impedansi:
+\begin{equation}
+Z = \sqrt{R^2+(XL-XC)^2}\
+\end{equation}
+
+untuk mencari besar arus:
+\begin{equation}
+I=\frac{V}{Z}
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Jika R, L dan C disusun secara seri dengan input tegangan, model matematikanya berbentuk persamaan diferensial linear orde dua.
+Persamaan matematika ini cukup panjang prosedurnya jika diselesaikan secara analitik oleh karena itu dilakukan pendekatan secara numerik untuk menyelesaikan permasalahan pada rangkaian RLC.
+persamaan orde dua pada rangkaian RLC seri:<br\>
+<br\>
+besarnya arus yang mengalir melalui resistor:
+\begin{equation}
+I=\frac {E(R)}{R}
+\end{equation}
+
+apabila induktor mempunyai induktansi sebesar L, maka:
+\begin{equation}
+{E(L)}=\frac{dI}{dt}
+\end{equation}
+
+hubungan resistor, induktansi, kapasitor dan elektromotif:
+\begin{equation}
+L\frac{dI}{dT}+{I}{R}+{E(c)}=E(t)
+\end{equation}
+
+persamaan rangkaian dengar arus sebagai peubah, dengan memanfaatkan hubugan arus dan tegangan kapasitor:
+\begin{equation}
+L\frac{dI}{dt}+{I}{R}+\frac{1 ( 0' I dt)}{C}={E(t)}
+\end{equation}
+
+diferensialkan persamaan di atas diperoleh:
+ 
+\begin{equation}
+{L}{I"} + {R}{I'}+ \frac {I} {C} = \frac{dE (t)}{dt}
+\end{equation}
+
+penyelesaian persamaan diatas dilakukan menggunakan pendekatan numerik dengan metode Runge Kutta:
+\begin{equation}
+y(n+1)=y(n)+\frac{1 (k1+2k2+2k3+k4)}{6}
+\end{equation}
+
+dengan:
+\begin{equation}
+k1={hf[xn,yn]}
+\end{equation}
+
+\begin{equation}
+k2={hf[xn+\frac {1}{2}h,yn+\frac{1}{2}k1]}
+\end{equation}
+
+\begin{equation}
+k3={hf[xn+\frac {1}{2}h,yn+\frac{1}{2}k2]}
+\end{equation}
+
+\begin{equation}
+k4={hf[xn+\frac {1}{2}h,yn+\frac{1}{2}k3]}
+\end{equation}
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+HTML yang diperlukan</p>
+Canvas digunakan untuk:<br> 1. membuat sebuah grafik hubungan perubahan waktu terhadap komponen RLC <br> 2. membuat kotak sebagai simulasi <br> 3. membuat button on click sebagai kontrol</p>
+</p>
+JS yang diperlukan:<br>
+menghitung respon karakterisitik rangkaian RLC dengan menggunakan metode runga kutta, dengan memanfaatkan elemen-elemen berikut:<br>
+1. function<br> 2. Math (operasi perhitungan)<br> 3. linechart(untuk menampilkan grafik)</p> 
+
+<h3>Yang telah diketahui</h3>
+HTML yang diketahui:<br> 1. div<br> 2. span
+
+</p>
+JS yang diketahui:<br> 1. div<br> 2. span <br> 3. var<br> 4. Math<br> 5. linechart</p>
+<h2>Tampilan simulasi</h2>
+
+<li> Pada tampilan simulasi terdapat tiga buah kotak </li>
+<li> kotak pertama berwarna biru, kotak ini berisi kondisi awal nilai rangkaian RLC dan pada kotak ini ada nilai tegangan, arus, dan jumlah iterasi yang kita inginkan</li>
+<li> kotak ke dua berwarna abu-abu terletak dibawah dengan kotak pertama. Pada kotak ini menampilkan button yang bisa kita gunakan sebagai kontrol untuk menghitung numerik, menampilkan grafik, dan menghapus</li>
+<li> kotak ketiga berada sejajar dengan kotak ke duanya yang berwarna coklat muda, kotak ini berisi tampilan grafik perubahan waktu terhadap respon rangkaian RLC</li>
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li></li> "Implementasi rangkaian RLC dengan metode runge kutta orde 4", Jurnal Fisika vol 02 no 01 2013 hal 01-07</li>
+<li></li> "APLIKASI METODE RUNGE KUTTA ORDE EMPAT PADA PENYELESAIAN  RANGKAIAN LISTRIK RLC", Jurnal Barekeng vol 08 no 1 2014 hal 39-43 </li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
+
