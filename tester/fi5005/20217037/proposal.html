@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>proposal</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Partikel Dalam Potensial Linier</h1>
+Rasito | rasito@batan.go.id | 20180226 |
+<p>
+Piranti semikonduktor semisal MOSFET memiliki potensial linier, untuk itu pemecahan persamaan Schroedinger untuk mendapatkan energi eigen cukup penting dilakukan. Persamaan Schroedinger secara eksak maupun numerik dapat dipecahkan dan energi eigen dari elektron yang terjebak di dalam potensial linier dapat diketahui.
+</p>
+<div id="fg:potensial-linier"></div>
+
+<h2>Teori</h2>
+<p>
+Bentuk umum dari persamaan Schroedinger bebas waktu untuk satu dimensi untuk kasus sebagaimana pada Gambar 1 adalah; 
+</p>
+\begin{equation}
+\frac{{\mathrm{d}}^2}{{\mathrm{d}}x^2} \Psi(x) + \frac{2m}{\hbar^2} \left({E}- V(x) \right) \Psi(x) = 0 \ ,
+\end{equation}
+atau 
+\begin{equation}
+\frac{{\mathrm{d}}^2}{{\mathrm{d}}x^2} \Psi(x) -k^2(x) \Psi(x) = 0 \ ,
+\end{equation}
+dengan $k^2(x)=\frac{2m}{\hbar^2} \left({E}- V(x) \right)$
+dan $V(x)$ adalah potensial linier antara $ x_0$ dan $ x_1$, dimana $ V_0 = V(x_0)$, dan  $ V_1 = V(x_1)$ yang dirumuskan sebagai;
+
+\begin{equation}
+V(x) = V_0 + (x - x_0)  \frac{V_1 - V_0}{x_1 - x_0}
+\end{equation}
+
+untuk  $ x_0 < x < x_1$. 
+
+Dengan menggunakan bearan sembarang 
+\begin{equation}
+\begin{array}{l}
+\displaystyle l       = - \left( \frac{\hbar ^ 2}{2m} \frac{x_1 - x_0}{V_1 - V_0} \right) ^ {1/3} \ , \\
+\displaystyle \lambda = - \left( \frac{2m}{\hbar^2}\right)^{1/3}  \left( \frac{x_1 - x_0}{V_1 - V_0}\right) ^{2/3}
+\left( {E}- V_0 + x_0  \frac{V_1 - V_0}{x_1 - x_0}\right) \ ,
+\end{array}
+\end{equation}
+
+dan  $ u(x) = \lambda - x / l$, maka bentuk dari persamaan (1) dapat diubah menjadi;
+\begin{equation}
+\frac{{\mathrm{d}}^2}{{\mathrm{d}}x^2} \Psi(x) -\frac{1}{l^2}  u(x)  \Psi(x) = 0 \ .
+\end{equation}
+dengan
+\begin{equation}
+\frac{{\mathrm{d}}^2}{{\mathrm{d}}x^2} \Psi(x) =
+\frac{{\mathrm{d}}}{{\mathrm{d}}u}  \frac{ {\mathrm{d}}u}{ {\mathrm{d}}x}  \left( \frac{{\mathrm{d}}}{  {\mathrm{d}}u}  \frac{ {\mathrm{d}}u}{{\mathrm{d}}x} \Psi\left(u(x)\right) \right) =
+\frac{1}{l^2} \frac{{\mathrm{d}}^2}{ {\mathrm{d}}u^2}\Psi\left(u(x)\right)
+\end{equation}
+Persamaan Scrhoedinger tersebut dapat diubah menjadi persamaan diferensial AIRY
+\begin{equation}
+\frac{ {\mathrm{d}}^2}{ {\mathrm{d}}u^2} \Psi\left(u(x)\right) - u(x) \Psi\left(u(x)\right) = 0 \ .
+\end{equation}
+Penyelesaian dari persamaan diferensial tersebut adalah fungsi AIRY $ {\mathrm{Ai}}\left(u(x)\right)$ dan  $ {\mathrm{Bi}}\left(u(x)\right)$. Bentuk fungsi gelombangnya merupakan superposisi linier dari fungsi AIRY tersebut
+\begin{equation}
+\Psi(x) = A  {\mathrm{Ai}}\left(u(x)\right) + B  {\mathrm{Bi}}\left(u(x)\right) \ ,
+\end{equation}
+dimana fungsi $ u(x)$ diberikan sebagai;
+\begin{equation}
+u(x) = - \left( \frac{2m}{\hbar^2} \right)^{1/3}  \left( \frac{x_1 - x_0}{V_1 - V_0} \right)^{2/3}  \left({E}- V(x) \right) \ .
+\end{equation}
+Sehingga diperoleh energi eigen yaitu;
+\begin{equation}
+E_i = V_0- z_i\left( \frac{\hbar^2}{2m} \right)^{1/3}  \left( \frac{V_1 - V_0}{x_1 - x_0} \right)^{2/3}   \ .
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Selain dengan cara analitik, solusi dari persamaan Schroedinger untuk kasus potensial linier juga dapat diperoleh secara numerik. Dengan metode Numerov $x$ didiskritisasi hingga ke $N$ titik, dipisahkan oleh jarak $l=\frac{1}{N-1}$, sehingga Pers (2) dapat di deskritisasi menjadi;
+\begin{equation}
+\frac{{\mathrm{d}}^2}{{\mathrm{d}}x^2} \Psi_n - k^2_n \Psi_n = 0 \ ,
+\end{equation}
+
+Akan diperoleh energi dari fungsi gelombang $\psi(x)$ dan turunannya $d\psi(x)/dx$ yang kontinyu dan memenuhi syarat batas  $\psi(0) = \psi(L) = 0$. ini merupakan energi terikat dari sistem.
+Dengan hasil penggabungan ekspansi deret Taylor terhadap $\psi(x)$ diperoleh;
+
+\begin{equation}
+\psi_{n+1} = \frac{2(1 - \frac{5}{12} l^2 k_n^2)\psi_n - (1+\frac{1}{12} l^2 k^2_{n-1})\psi_{n-1}}{\frac{1}{12} l^2 k^2_{n+1}}
+\end{equation}
+
+Kita dapat memperoleh $\psi_{n+1}$, dari hasil $\psi_n$ dan $\psi_{n-1}$. Dengan mengintegralkan fungsi gelombang menggunakan algoritma ini yaitu menemukan nilai grid berikutnya dari dua grid sebelumnya.
+<h2>Rereferensi</h2>
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>http://www.iue.tuwien.ac.at/phd/gehring/node47.html</li>
+<li>https://www.maths.tcd.ie/~dbennett/js/schro.pdf</li>
+</ol>
+<script>
+drawFigure1();
+
+function drawFigure1() {
+	var div = document.getElementById("fg:potensial-linier");
+	div.style.textAlign = "center";
+	div.style.padding = "10px";
+	var can = document.createElement("canvas");
+	can.width = "240";
+	can.height = "200";
+	can.style.width = "240px";
+	can.style.height = "200px";
+	can.style.background = "#fff";
+	div.appendChild(can);
+	var br = document.createElement("br");
+	div.appendChild(br);
+	var cap = document.createElement("text");
+	cap.innerHTML = "Gambar 1. Potensial linier."
+	div.appendChild(cap);
+	
+	var cx = can.getContext("2d");
+	cx.beginPath();
+	cx.strokeStyle = "blue";
+	cx.lineWidth = "3";
+	cx.moveTo(0, 0);
+	cx.lineTo(0, 200)
+	cx.lineTo(200, 0)
+	cx.stroke();
+	
+	cx.beginPath();
+	cx.strokeStyle = "red";
+	cx.lineWidth = "2";
+	cx.moveTo(0, 100);
+	cx.lineTo(100, 100);
+	cx.stroke();
+	
+	cx.beginPath();
+	cx.strokeStyle = "black";
+	cx.lineWidth = "2";
+	cx.moveTo(0, 200);
+	cx.lineTo(200, 200);
+	cx.stroke();
+	
+	cx.fillStyle = "#000";
+	cx.font = "italic 16px Times";
+	cx.textAlign = "center";
+	cx.fillText("V(x)", 150, 80);
+	cx.fillText("E", 30, 90);
+	cx.fillText("x", 190, 190);
+}
+</script>
+
+<!-- Modify only above this line -->
+</body>
+</html>
