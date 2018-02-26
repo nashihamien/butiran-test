@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>20217308</title>
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({TeX:{equationNumbers:{autonumber:"AMS"}}});
+		</script>
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax:{inlineMath:[['$','$'],['\\(','\\)']]}
+			});
+		</script>
+		<script type="text/javascript" asnyc src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+		</script>
+		<style>
+			a{text-decoration: none; color: blue;}
+			body{text-align: justify;}
+			h1 {text-align: left;}
+		</style>
+	</head>
+	<body>
+	
+		<h1>Menghitung Energi Rata-rata Gas Ideal</h1>
+		Judul ini menarik karena dapat digunakan secara umum untuk menjelaskan energi rata-rata suatu sistem gas ideal dengan volume tertentu, 
+		dan terdiri dari sejumlah partikel sejenis yang tidak saling berinteraksi yang diwakili oleh suatu persamaan Hamiltonian.
+		Kemudian kita dapat melihat dinamika energi dalam sistem jika salah satu parameter terkait diubah, dalam bentuk plot nilai energi dalam sistem terhadap
+		nilai parameter tersebut.
+	
+		<h2>Dasar Teori</h2>
+		Suatu sistem gas ideal memiliki volume $V$ temperatur $T$, dan terdiri dari $N$ partikel identik bermassa $m$, dan tidak saling berinteraksi.
+		Sistem tersebut diwakili oleh persamaan Hamiltonian:
+		
+		
+		$
+		\begin {equation}
+		H(p,q)=\sum_{i=1}^n \frac {p_i^2}{2m}
+		\label{eq:persamaan_Hamiltonian}
+		\end {equation}
+		$
+		
+		dari persamaan Hamiltonian di atas, diperoleh fungsi partisi kanonik untuk sistem $N$ partikel  sebagai berikut:
+		
+		$\begin{equation}
+		Q_n (V,T)=\frac{V^n}{N!h^3n}(2\phi m k T)^3N/2
+		\label {eq: fungsi_partisi_kanonik}
+		\end {equation}
+		$
+		
+		dan dengan menggunakan persamaan thermal wavelength
+		
+		$
+		\begin {equation}
+		\lambda (T)=[\frac{h}{(2\phi m k T)^1/2}]
+		\label {eq:thermal_wavelength}
+		\end{equation}
+		$
+		
+		dan persamaan energi rata-rata
+		
+		$
+		\begin{equation}
+		U=-\frac{\delta}{\delta \beta}(ln Q_n)
+		\label{eq: persamaan_energi_rata-rata}
+		\end {equation}
+		$
+		
+		dengan $Q_n$ telah didefinisikan pada persamaan (\ref{eq:fungsi_partisi_kanonik})
+		kemudian dengan mengingat bahwa
+		
+		$
+		\begin {equation}
+		\beta=\frac{1}{k T}
+		\end {equation}
+		$
+		
+		maka diperoleh nilai energi dalam untuk sistem Gas Ideal $N$ partikel $U$ adalah
+		
+		$
+		\begin{equation}
+		U=\frac{3}{2} N k T
+		\end {equation}
+		$
+		
+		<h3>Metode Numerik</h3>
+		Untuk menyelesaikan persamaan energi di atas, hanya diperlukan metode perkalian biasa, kecuali ketika nilai salah satu parameter,
+		$N$, $T$ atau keduanya diubah. Sehingga dihasilkan nilai $U_i$ $($N_i$,$T_i$)$ dan kemudian diplot menjadi suatu diagram 2D atau 3D.
+		
+		
+		<h2>HTML dan JS</h2>
+		<h3> Diperlukan </h3>
+		Element HTML yang diperlukan untuk mengerjakan proyek ini diantaranya elemen untuk menampilkan penurunan rumus,
+		memanggil rumus yang telah dituliskan sebelumnya, untuk melakukan plotting data yang diperoleh
+		serta untuk membuat tampilan simulasi dimana pengguna dapat melakukan
+		input data parameter terkait persamaan yang telah disebutkan di atas, misal memberi input jumlah partikel dan temperatur sistem.
+		Dalam hal ini pengguna dapat melakukan beberapa kali input sehingga diperoleh berbagai data untuk kemudian diplotting.
+		
+		<h3> Diketahui </h3>
+		Element untuk menampilkan rumus dan untuk memanggil rumus yang telah dituliskan sebelumnya, serta element untuk melakukan perhitungan
+		numerik.
+		
+		<h3>Belum Diketahui</h3>
+		Element untuk menerima input data dan menyimpannya untuk kemudian diplotting. Demikian pula element untuk melakukan plotting data menjadi
+		grafik 2D atau 3D menurut data yang diinputkan
+		
+		<h3>Tampilan simulasi</h3>
+		Bagian ini akan berisi textarea untuk memasukkan nilai i yaitu jumlah variasi parameter yang diinginkan oleh pengguna,
+		Di bagian bawahnya terdapat tombol untuk memunculkan textarea lain sejumlah i untuk menginput data parameter.
+		Kemudian di bagian bawahnya terdapat tombol untuk menjalankan perhitungan nilai energi dalam untuk masing-masing nilai parameter.
+		Jika tombol tersebut ditekan maka nilai hasil perhitungan akan dimunculkan dalam bentuk tabel.
+		Terakhir, terdapat bagian untuk memunculkan plot data pada tabel yang telah ditampilkan sebelumnya.
+		
+		
+		
+	</body>
+</html>
