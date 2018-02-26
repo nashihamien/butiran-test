@@ -1,0 +1,177 @@
+<DOCTYPE html>
+
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217302</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+20217302 |Fitria Penta Krisna
+<h1>PEGAS</h1>
+Pegas memiliki banyak manfaat dalam kehidupan, seperti pembuatan spring bed, shock-breaker kendaraan, ketapel, dan lain sebagainya.
+Pemahaman tentang pegas sangat penting untuk dipelajari, namun masih banyak orang tidak mengetahuinya. Oleh karena itu dalam pembahasan ini akan 
+dikaji lebih dalam terkait materi pegas, mulai dari pengertian pegas hingga osilasi pegas pada bidang horizontal. Sehingga diharapkan dapat memberikan
+gambaran yang jelas terkait pegas.
+
+<h4>1. Pengertian Pegas</h4>
+Pegas merupakan benda berbentuk spriral yang terbuat dari logam, yang memiliki sifat elastis.
+Elastis adalah kemampuan benda untuk kembali ke bentuk semula setelah gaya yang bekerja padanya
+dihilangkan.
+
+<h4>2. Gaya Pegas</h4>
+Bunyi Hukum Hooke
+	"Jika gaya tarik yang diberikan pada sebuah pegas tidak
+	melampaui batas elastis bahan maka pertambahan panjang
+	pegas berbanding lurus/sebanding dengan gaya tariknya"                
+<h1></h1>		
+Secara matematis $F:$ 
+\begin{equation}
+F = -k \Delta x
+\tag{1.1}
+\label{eq:kx}
+\end{equation}
+
+<h4>3. Osilasi Pegas Pada Bidang Horizontal</h4>
+Benda dikatakan berosilasi ketika benda tersebut bergerak bolak-balik disekitar titik setimbang.
+<h1></h1>
+Simpangan Pegas dinyatakan $x:$
+\begin{equation}
+x = A cos (ωt + ϕ_0)
+\tag{1.2}
+\label{eq:acoswt}
+\end{equation}
+
+Hubungan Frekuensi sudut bergantung pada konstanta pegas (k) dan massa benda (m)
+\begin{equation}
+ω = \sqrt \frac{k}{m}
+\tag{1.3}
+\label{eq:sqrt-k/m}
+\end{equation}
+
+Dari persamaan \eqref{eq:acoswt} kita dapat mengetahui persamaan kecepatan osilasi benda (v)
+\begin{equation}
+v = -v_0 sin(ωt + ϕ_0)
+\tag{1.4}
+\label{eq:vosinwt}
+\end{equation}
+
+Jika kecepatan maxsimum osilasi atau amplitudo kecepatan :
+\begin{equation}
+v_0 = Aω
+\tag{1.5}
+\label{eq:aω}
+\end{equation}
+
+Percepatan osilasi dapat ditentukan dengan menggunakan persamaan \eqref{eq:kx}
+ke persamaan hukum newton $F=ma$ :
+\begin{equation}
+ma = -kx,
+\tag{1.6}
+\label{eq:-kx}
+\end{equation}
+
+\begin{equation}
+a = \frac {-k}{m}x
+\tag{1.7}
+\label{eq:k/m}
+\end{equation}
+
+<h1> Metode numerik</h1>
+Metode numerik yang digunakan pada persamaan osilasi pegas adalah metode beda hingga
+dan metode euler
+\begin{equation}
+\frac{df}{dx} \approx \frac{f(x + \Delta x) - f(x)}{\Delta x},
+\tag{1.8}
+\end{equation}
+
+\begin{equation}
+v_1 = v_0 + \Delta t \frac{dv}{dt_0}
+\tag{1.9}
+\end{equation}
+
+\begin{equation}
+x_1 = x_0 + \Delta t \frac{dx}{dt_0}.
+\tag{2.0}
+\end{equation}
+
+\begin{equation}
+v_{N+1} = v_N - \frac{k}{m} x_N \Delta t
+\tag{2.1}
+\end{equation}
+
+\begin{equation}
+x_{N+1} = x_N + v_N \Delta t.
+\tag{2.2}
+\end{equation}
+
+keterangan : N mengacu kepada waktu ke-N, yang diasumsikan bahwa N
+waktu yang telah diketahui sedangkan N+1 merupakan waktu selanjutnya yang belum diketahui.
+
+<h1></h1>
+
+<h1>HTML dan JS</h1>
+
+<h4>1. Yang diperlukan</h4>
+Element HTML yang diperlukan dan perintah JavaScript yang diperlukan 
+yakni: canvas, desain pegas dan balok untuk simulasi, label, controls, perhitungan posisi
+redaman dan kecepatan, grafik sinussoidal.
+<h1></h1>
+<h4>2. Yang telah diketahui</h4>
+Element HTML dan JavaScript yang telah diketahui yakni : Perintah (if,for), memvariasikan variabel-variabel seperti Konstanta, Redaman, Frekuensi, Massa. 			
+<h1></h1>
+<h4>3. Tampilan simulasi</h4>
+Tampilan simulasi yang dirancang terdapat kotak persegi yang didalamnya berisikan 
+simulasi pegas yang dapat berubah bergantung pada variasi variabel-variabel yang digunakan.
+Dibawah kotak persegi terdapat empat buah div label textarea untuk memvariasikan 
+konstanta,redaman,frekuensi,serta massa. Jika variabel satu dibuat konstan dan yang lainnya dimanipulasi
+maka kotak persegi tersebut akan menampilkan respon dari simulasi pegas yang berbeda.
+Selanjutkan juga akan terlihat bentuk gelombang sinussoidal pada kota persegi yang berikutnya 
+<h1></h1>
+<h1>Rereferensi</h1>
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Numerical Methods For Differential Equations", faculty.olin.edu, URL <a href="http://faculty.olin.edu/bstorey/Notes/DiffEq.pdf">http://faculty.olin.edu/bstorey/Notes/DiffEq.pdf</a> [20180221]</li>
+<li>"Numerical Methods For Ordinary Differential Equations", atmos.umd.edu, URL <a href="http://www.atmos.umd.edu/~rjs/class/fall2016/readings/storey_ode_matlab.pdf">http://www.atmos.umd.edu/~rjs/class/fall2016/readings/storey_ode_matlab.pdf</a> [20180221]</li>
+</ol>
+</body>
+</html>
