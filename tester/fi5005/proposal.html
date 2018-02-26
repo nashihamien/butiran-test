@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217315</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Mencari posisi dan kecepatan pada suatu sistem tertentu</h1>
+
+	Bunyi merupakan gelombang yang bergerak melalui suatu medium ketika terjadi petir. 
+	Gelombang bunyi guntur mulai bergerak dari tempat terjadinya petir ke segala arah. 
+	Atom dan molekul udara yang dilalui oleh gelombang bunyi guntur, bergerak maju mundur. 
+	Ketika gelombang tersebut tiba pada kaca jendela, gerakan maju mundur atom dan molekul udara mendorong atom
+	dan molekul kaca jendela yang juga sedang bergetar. Seperti pada permukaan ayunan, dorongan atom dan molekul udara
+	seirama dengan getaran atom dan molekul kaca sehingga ampltudo getarannya dapat diamati.
+    Agar amplitudo getaran atom teratur maka harus ada gaya dorong yang seirama dengan getaran atom 
+	dan molekul tersebut. dari pergerakan maju mundur ini, gerak partikel/atom tersebut dapat diamati polanya dengan
+	menggunakan Hukum II Newton yang berkaitan dengan Hukum Hooke pada pegas. 
+
+<h2>Teori</h2>
+Dengan mempertimbangkan massa pada pegas, kecepatan massa bisa ditentukan dari persamaan dibawah ini. 
+Ada cara lain untuk menilai kualitas solusi: berdasarkan alasan fisik (fisika dasar). Ini bisa terjadi bahwa
+kuantitas tertentu tetap bisa dipakai hukumnya. Dalam situasi itu, sejauh mana kuantitas tersebut dihitung konstan adalah 
+indikasi kualitas solusi persamaan pada kasus tersebut.
+
+\begin{equation}
+\frac{dv}{dt}=\alpha= \frac{F}{m} = \frac {-kx}{m}
+\end{equation}
+
+Untuk lebih sederhana, massa dan konstanta gaya diasumsikan sama. Sehingga, kita mempunya persamaan:
+\begin{equation}
+\frac{dv}{dt}=-x
+\end{equation}
+
+Dari definisi kecepatan, diperoleh persamaan:
+\begin{equation}
+\frac{dx}{dt}=v
+\end{equation}
+
+Untuk selang waktu \delta, Pendekatan euler yang lebih sederhana terhadap solusi 
+untuk rangkaian persamaan ini adalah 
+\begin{equation}
+v((t_0)+\delta)=v(t_0)+\delta\frac{dv}{dt}=v(t_0)-\delta x(t_0)
+\end{equation}
+\begin{equation}
+x((t_0)+\delta)=x(t_0)+\delta\frac{dx}{dt}=x(t_0)+\delta v(t_0)
+\end{equation}
+
+Tetapi pada pegas, setidaknya yang ideal - adalah termasuk gaya konservatif sehingga energi sistem, 
+'rumus energi kinetik (belum dijabarkan)' adalah konstan . 
+Bayangkan bahwa sistem disetel dalam gerak pada t = 0 x = 0. 
+menggunakan langkah waktu delta (waktunya yang sangat kecil) = 0,1. persamaan bisa dipecahkan.
+dan solusinya ditentukan. 
+pertama kita harus menggunakan metode euler sederhana untuk aproximate v dan x 
+setengah jalan melalui tiap kenaikan waktunya. Persamaannya menjadi :
+\begin{equation}
+v((t_0)+\delta)=v(t_0)+\frac\delta{2}\frac{dv}{dt}=v(t_0)-\frac\delta{2} x(t_0)
+\end{equation}
+\begin{equation}
+x((t_0)+\delta)=x(t_0)+\frac\delta{2}\frac{dx}{dt}=x(t_0)+\frac\delta{2} v(t_0)
+\end{equation}
+Nilai ini kemudian digunakan selama kenaikan waktu untuk menentukan v dan x pada \begin{equation}
+t=t_0+\delta \end{equation}
+
+maka, diperoleh persamaan umum untuk menentukan v dan x nya adalah
+\begin{equation}
+
+v((t_0)+\delta)=v(t_0)+\frac\delta{2}\frac{dv}{dt}=v(t_0)-\frac\delta{2} x(t_0)
+\end{equation}
+\begin{equation}
+x((t_0)+\delta)=x(t_0)+\frac\delta{2}\frac{dx}{dt}=x(t_0)+\frac\delta{2} v(t_0)
+\end{equation}
+
+
+<h2>Metode numerik</h2>
+
+\begin{equation}
+\sum F = ma,
+\nonumber
+\end{equation}
+\begin{equation}
+-kx = ma,
+\nonumber
+\end{equation}
+
+persamaan matematisnya menjadi :
+\begin{equation}
+\frac{d^2x}{dt^2} + \frac {k}{m} x = 0,
+\label{eq:differential-equation}
+\end{equation}
+pada persamaan ini menggunakan metode beda hingga, persamaannya diperoleh :
+\begin{equation}
+\frac{d^2x}{dt^2} \approx \frac{x(t + \Delta t) - 2x(t) + x(t - \Delta t)}{(\Delta t)^2},
+\label{eq:finite-difference-second-order}
+\end{equation}
+
+\begin{equation}
+\frac{x(t + \Delta t) - 2x(t) + x(t - \Delta t)}{(\Delta t)^2} = -\frac{k}{m} x(t)
+\nonumber
+\end{equation}
+\begin{equation}
+\Rightarrow x(t + \Delta t) = [2 - (\Delta t)^2 \frac{k}{m}] x(t) - x(t - \Delta t),
+\label{eq:finite-difference-differential-equation}
+\end{equation}
+
+apabila
+
+\begin{equation}
+x(t) = x_0
+\label{eq:finite-difference-initial-condition-x0}
+\end{equation}
+
+dan
+
+\begin{equation}
+x(t - \Delta t) = x(t) - v_0 \Delta t = x_0 - v_0 \Delta t.
+\label{eq:finite-difference-initial-condition-v0}
+\end{equation}
+
+Untuk menentukan $\Delta t$ dapat dituliskan
+
+\begin{equation}
+t = 0 \ \ \Rightarrow \ \ x(\Delta t) = [2 - (\Delta t)^2 \frac{k}{m}^2] x_0 - (x_0 - v_0 \Delta t),
+\nonumber
+\end{equation}
+\begin{equation}
+t = \Delta t \ \ \Rightarrow \ \ x(2\Delta t) = [2 - (\Delta t)^2 \frac{k}{m}] x(\Delta t) - x_0,
+\nonumber
+\end{equation}
+\begin{equation}
+t = (n + 1)\Delta t \ \ \Rightarrow \ \ x((n + 2)\Delta t) = [2 - (\Delta t)^2 \frac{k}{m}] x((n + 1)\Delta t) - x(n\Delta t),
+\nonumber
+\end{equation}
+
+
+
+
+
+
+
+
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+<ol> 
+<li>canvas
+<li>bottom
+<li>textarea
+
+<h3>Yang telah diketahui</h3>
+<ol>
+<li>fungsi persamaan
+<li>functions and method
+
+
+<h2>Tampilan simulasi</h2>
+<ol>
+Dari persamaan yang di peroleh dengan variasi waktu (kenaikan t=0,1 s)pada grafik diperoleh posisi dan kecepatannya
+dengan melakukan iterasi sesuai yang diinginkan. 
+
+<h2>Rereferensi</h2>
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Physics for JavaScript-Games and Animation"</li>
+
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
