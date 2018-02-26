@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>202170003</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>SIMPLE ROLLLER COASTER</h1>
+
+Memecahkan persoalan gerak sebuah benda dalam bidang miring, pastinya sudah sering dilakukan. Namun, bagaiman jika sebuah benda bergerak bukan dalam bidang miring, melainkan dalam sebuah bidang yang lintasannya membentuk suatu lengkungan? Sama seperti memecahkan persoalan gerak benda pada bidang miring, prinsip yang sama juga berlaku untuk memecahkan persoalan gerak pada lintasan lengkung, namun gaya yang bekerja pada benda akan berubah seiring dengan perubahan kelengkungan lintasannya. Sehingga, penggunaan matematika untuk memecahkan persoalan gerak ini menjadi lebih menarik.
+
+
+<h2>Teori</h2>
+
+Dalam pembuatan $roller$ $coaster$, salah satu titik selalu dirancang lebih tinggi (misal titik A) daripada titik yang lainnya (misal titik B). Hal tersebut memungkinkan energi potensial di titik A lebih besar dari pada di titik B, sehingga benda yang melintasi titik tersebut mampu melintasi titik B dengan baik. Ketika $roller$ $coaster$ berada di titik terendah yaitu titik B, maka:
+
+\begin{equation}
+EM_B = EM_A
+\nonumber
+\end{equation}
+\begin{equation}
+Ek_B + Ep_B = Ep_A + Ep_A
+\nonumber
+\end{equation}
+\begin{equation}
+\frac{1}{2}mv_B^2 + mgh_B = \frac{1}{2}mv_A^2 + mgh_A
+\end{equation}
+
+<br>Karena gaya gesekan dalam sistem $roller$ $coaster$ ini diabaiakan, maka nilai energi mekanik sepanjang lintasan adalah konstan. Hal inilah yang menyebabkan $roller$ $coaster$ akan terus bergerak.</br>
+
+
+<br>Bayangkan sebuah bola yang bergerak dalam lintasan yang melengkung. Asumsikan bahwa bola tidak dapat meninggalkan lintasan, namun bebas bergerak sepanjang lintasannya. terdapat dua variabel dalam gerak ini, yaitu:</br>
+
+<br>$\vec{p}$ = posisi pada lintasan (diukur dengan panjang jalur sepanjang lintasan)</br>
+<br>$\vec{v}$ = kecepatan</br>
+
+<br>Misalkan $\vec{k}$ adalah kemiringan lintasan, dan $\theta$ adalah sudut kemiringan antara vektor gravitasi dan vektor kemiringan. Maka persamaan geraknya dapat ditulis sebagai berikut:</br>
+
+\begin{equation}
+\sum \vec{F} = m \vec{a} = m \vec{g}\cos \theta
+\label{eq:Gaya pada benda}
+\end{equation}
+
+dimana $m$ = massa, $a$ = percepatan, dan $g$ = konstanta gravitasi. Jika gaya gesekan tidak diabaikan, maka akan ada gaya redaman $(damping)$ yang sebanding dengan kecepatan, sehingga persamaan (\ref{eq:Gaya pada benda}) menjadi:
+
+\begin{equation}
+\sum \vec{F} = m \vec{a} = m \vec{g}\cos \theta - b\vec{v}
+\label{eq:Gaya pada benda dengan gesekan}
+\end{equation}
+
+dimana $b$ adalah konstanta yang menujukkan jumlah redaman. Nilai $\theta$ dapat ditentukan dengan menggunakan persamaan sudut antara dua vektor yang segaris $(\vec{A}, \vec{B})$ seperti berikut:
+
+\begin{equation}
+\cos \theta = \frac{\vec{A}.\vec{B}}{[\vec{A}][\vec{B}]}
+\label{eq:Menentukan nilai sudut}
+\end{equation}
+
+dengan:
+
+\begin{equation}
+\vec{A} = (1,\vec{k})
+\nonumber
+\end{equation}
+\begin{equation}
+\vec{B} = (0,-m\vec{g})
+\nonumber
+\end{equation}
+
+sehingga persamaan (\ref{eq:Menentukan nilai sudut}) menjadi:
+
+\begin{equation}
+\cos \theta = \frac{-\vec{k}m\vec{g}}{m\vec{g}\sqrt{(1k^2)}} = \frac{-\vec{k}}{\sqrt{(1k^2)}}
+\end{equation}
+
+dengan demikian, persamaan (\ref{eq:Gaya pada benda dengan gesekan}) dapat dituliskan sebagai berikut:
+
+\begin{equation}
+\vec{a} = \frac{-\vec{g}\vec{k}}{\sqrt{(1k^2)}} - \frac{b}{m}\vec{v}
+\label{eq:pers.gerak roller coaster}
+\end{equation}
+
+dimana kemiringan $\vec{k}$ merupakan fungsi dari posisi $\vec{k}$ $(p)$. Artinya, untuk menentukan posisi, perlu dicari terlebih dahulu kemiringannya. Persamaan (\ref{eq:pers.gerak roller coaster}) merupakan persamaan gerak untuk $roller$ $coaster$.
+<br>Jika lintasan $roller$ $coaster$ hampir mendekati garis vertikal, maka perlu perlakuan khusus karena adanya kemiringan yang tak terbatas, sehingga persamaan (\ref{eq:pers.gerak roller coaster}) menjadi:</br>
+\begin{equation}
+\vec{a} = -\vec{g}-\frac{b}{m}\vec{v}
+\label{eq:pers. gerak vertikal line}
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Metode numerik yang dapat digunakan untuk memecahkan persoalan gerak benda pada lintasan lengkung adalah dengan menggunakan metode $Runge-Kutta$ $numerical$ $solver$, dengan menggunakan dua persamaan berikut:
+
+\begin{equation}
+\vec{p}' = \vec{v}
+\end{equation}
+\begin{equation}
+\vec{v}' = \frac{-\vec{g}\vec{k}(\vec{p})}{\sqrt{1+k(\vec{p})^2}} - \frac{b}{m}\vec{v}
+\end{equation}
+
+dalam persamaan ini menujukkan bahwa kemiringan $\vec{k}$ adalah fungsi posisi $\vec{p}$ dengan notasi $\vec{k}$ $(\vec{p})$.
+<br>Metode $Runge-Kutta$ merupakan metode satu langkah yang memiliki ketleitian hasil yang lebih besar dan tidak memerlukan turunan dari fungsi. Metode ini memungkinkan kita untuk menyelesaikan persamaan diferensial dengan pendekatan secara numerik. Untuk persoalan variabel tunggal,</br>
+
+\begin{equation}
+x' = f(t,x)
+\end{equation}
+
+dengna kondisi awal $x(0)=x_0$. Misalkan $x_n$ adalah nilai variabel pada waktu $t_n$. Persamaan $Runge-Kutta$ mengambil $x_n$ dan $t_n$ dan menghitung perkiraan untuk $x_{n+1}$ pada waktu sesaat kemudian, $t_{n+h}$. Persamaan umum untuk metode $Runge-Kutta$ adalah:
+
+\begin{equation}
+x_{n+1} = x_n+\frac{h}{6}(a+2a+2b+2c+d)
+\label{eq:pers.Runge-Kutta}
+\end{equation}
+
+dimana:
+
+\begin{equation}
+a = f(t_n,x_n)
+\end{equation}
+\begin{equation}
+b = f(t_n+\frac{h}{2},x_n+\frac{h}{2}a)
+\end{equation}
+\begin{equation}
+c = f(t_n+\frac{h}{2},x_n+\frac{h}{2}b)
+\end{equation}
+\begin{equation}
+d = f(t_n+h,x_n+hc)
+\end{equation}
+
+Untuk memulai simulasi, mulai dengan $x_0$ dan temukan $x_1$ dnegan menggunakan persamaan (\ref{eq:pers.Runge-Kutta}). Kemudian, gunakan $x_1$ untuk mencari $x_2$ dan seterusnya.
+
+<h2>HTML dan JS</h2>
+Element HTML yang diperlukan adalah $canvas$, $textarea$, $action$ $button$, $div$, dan $insert picture$. Sedangkan untuk perintah JavaScript yang diperlukan adalah untuk penggunaan $function$.
+
+
+
+<h3>Yang telah diketahui</h3>
+Dari materi yang sudah dipelajari dan dipahami, HTML dan JS yang sudah saya ketahui adalah penulisan persamaan menggunakan mathjax, memodifikasi tampilan HTML.
+
+
+<h2>Tampilan simulasi</h2>
+
+Untuk mensimulasikan gerak $roller$ $coaster$ dalam berbagai macam bentuk lintasan, nantinya akan ada satu buah canvas yang akan menampilkan simulasi gerak sebuah benda (berbentuk lingkaran) pada lintasan yang telah ditentukan. Di bagian atas kanvas akan ada 3 tombol yang masing-masing fungsinya untuk memilih canvas mana saja yang ingin ditampilkan (simulasi, grafik posisi x dan y, dan grafik posisi y terhadap waktu). Di samping canvas, terdapat beberapa kotak text area untuk memasukkan data, seperti untuk memilih jenis lintasan, menentukan nilai gravitasi, posisi x dan y, dan besarnya gaya redaman. DI bagian bawah canvas, terdapat tombol $start$, $pause$, dan $stop$.
+
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"Roller Coaster" https://www.myphysicslab.com/roller/roller-single-en.htm
+</li>
+<li>"Runge-Kutta Algorithm" https://www.myphysicslab.com/explain/runge-kutta-en.html</li>
+<li>https://www.advernesia.com/blog/wordpress/menulis-rumus-matematika-di-wordpress-dengan-mathjax-latex/</li>
+<li>http://docs.mathjax.org/en/latest/tex.html</li>
+
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
