@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rany Khaeroni- 20217318</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+
+<h1>Menentukan Koefisien Viskositas Menggunakan Bola Jatuh dalam Fluida</h1>
+
+Sebuah benda ketika dijatuhkan ke dalam 
+suatu tabung yang berisi fluida, maka benda 
+tersebut akan tenggelam, melayang, atau megapung. 
+Hal ini disebabkan karena adanya perbedaan massa jenis 
+antara fluida dengan benda tersebut. Namun ketika benda dijatuhkan 
+dalam tabung yang berisi fluida yang sama terdapat perbedaan laju benda 
+ketika mencapai dasar tabung. Contohnya terdapat dua benda yang masing-masing 
+benda tersebut dijatuhkan dalam tabung yang masing-masing berisi minyak. Namun, ketika kedua 
+benda tersebut dijatuhkan ke dalam masing-masing tabung, benda yang pertama lebih cepat 
+mencapai dasar daripada benda kedua walaupun sama-sama 
+di jatuhkan pada waktu, ketinggia, dan jenis fluida yang 
+sama. 
+Peristiwa ini disebabkan karena adanya pengaruh perbedaan kekentalan dari kedua fluida tersebut yang disebut viskositas. 
+<br><br>
+Viskositas adalah sifat dari suatu fluida untuk mempertahankan alirannya terhadap pengaruh tekanan dan tegangan. Cara untuk
+ mempertahankan alirannya ialah dengan adanya gesekan antara molekul-molekul dalam fluida 
+dengan gaya kohesi atau gaya tarik-menarik antara molekul sejenis pada fluida tersebut. Gesekan- gesekan inilah yang menyebabkan
+perbedaan laju pada kedua benda tersebut ketika dijatuhkan ke dalam masing-masing tabung. 
+Viskositas setiap jenis fluida dapat dibandingkan satu sama lain dengan menggunakan koefisien viskositas. Koefisien 
+viskositas merupakan gaya tangensial per satuan luas yang dibutuhkan untuk mempertahankan perbedaan kecepatan alir fluida. 
+
+<h2>Teori</h2>
+Koefisien kekentalan fluida dapat diketahui dengan cara menjatuhkan suatu benda di dalam tabung yang berisi suatu fluida. 
+Ketika benda dijatuhkan dalam fluida tersebut terdapat gaya- gaya yang bekerja. Gaya- gaya tersebut ialah adanya gaya gesek, 
+gaya berat, dan gaya apung. Gaya gesek yang terjadi dalam fluida dapat dijelaskan dengan menggunakan hukum Stokes. <br><br>
+
+
+Hukum Stokes <br>
+Gaya gesek antara permukaan benda padat yang bergerak dalam fluida akan sebanding dengan kecepatan 
+relatif gerak benda terhadap fluida. Hambatan gerak benda di dalam fluida disebabkan oleh adanya gaya gesek 
+antara molekul-molekul fluida dengan permukaan benda. Gaya gesek yang terjadi ini sebanding
+dengan koefisien viskositas (&eta;) fluida. 
+<br><br>
+
+Menurut Stokes, gaya gesek adalah:
+
+\begin{equation}
+Fs = k \eta v
+\end{equation}
+
+k adalah bentuk geometri benda. Untuk bola nilai k adalah 6 &pi; r, sehingga persamaan di atas menjadi:
+\begin{equation}
+Fs = 6 \pi \eta r v
+\end{equation}
+
+Dimisalkan ketika benda berbentuk bola dijatuhkan ke 
+dalam tabung yang beris fluida, bola bergerak dipercepat karena adanya gaya berat dari bola. Namun, ketika kecepatan bola 
+bertambah, gaya gesek juga bertambah. Akibatnya, pada suatu saat bola mencapai keadaan seimbang sehingga bergerak dengan kecepatan konstan yang 
+disebut kecepatan terminal. 
+<br><br>
+
+Pada kecepatan terminal, resultan gaya yang bekerja pada bola sama dengan nol. Sehingga secara sistematis besar kecepatan terminal adalah
+\begin{equation}
+\sum Fy = 0 \end{equation}
+\begin{equation}
+Fa + Fs = W \end{equation}
+\begin{equation}
+\rho_f V_m  g + 6 \pi \eta r v = \rho_b V_m  g \end{equation}
+\begin{equation}
+v = \frac {2gr^2} {9 \eta}  (\rho_b - \rho_f) \end{equation}
+
+dengan:
+ <br>
+v = kecepatan terminal (m/s)<br>
+g = percepatan gravitas (9,8 m/s<sup>2</sup>) <br>
+r = jari-jari bola (m)<br>
+&rho;<sub>f</sub> = massa jenis fluida (kg/m<sup>3</sup>) <br>
+&rho;<sub>b</sub> = massa jenis benda (kg/m<sup>3</sup>)<br>
+&eta; = koefisien viskositas (Nsm<sup>2</sup>) <br> 
+<br>
+
+Karena kecepatan bola di dalam fluida konstan, maka nilai koefisien viskositas adalah:
+\begin{equation}
+\eta = \frac {2gr^2} {9 v}  (\rho_b - \rho_f) \end{equation}
+dengan 
+\begin{equation}
+v = \frac {\Delta h} {\Delta t} \end{equation}
+sedangkan massa jenis bola dapat diketahui dengan menggunakan persamaan sebagai berikut:
+\begin{equation} 
+\rho_b = \frac {m} {V} \end{equation}
+
+<h2>Metode numerik</h2>
+
+Metode numerik yang digunakan ialah metode beda hingga, yang persamaannya sebagai berikut:
+
+\begin{equation}
+\frac{df}{dx} \approx \frac{f(x + \Delta x) - f(x)}{\Delta x},
+\end{equation}
+
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+jari- jari bola, percepatan gravitasi, massa jenis fluida, massa bola, volume bola, dan ketinggian bola ketika dijatuhkan. <br><br>
+
+kecepatan bola dalam fluida diketahui dengan menggunakan metode beda hingga yang telah diketahui variabel ketinggiannya. Kemudian, 
+diperoleh nilai massa jenis bola dengan menggunakan persamaan massa dan volume bola. 
+Kemudian nilai kecepatan dan massa jenis bola ini dimasukkan ke persamaan koefisien viskositas untuk mengetahui nilai koefisien fluida.
+Ketika diperoleh hasil koefisien dperoleh juga gambar grafik yang menunjukkan hubungan antara variabel-variabelnya. 
+
+<h3>Yang telah diketahui</h3>
+
+Nilai Percepatan gravitasi dan nilai massa jenis fluida
+
+
+<h2>Tampilan simulasi</h2>
+
+Terdapat kotak textera untuk memasukkan data yang meliputi massa bola, jari-jari bola,dan ketinggian bola dalam tabung ketika akan dijatuhkan,
+kemudian ada dua tombol yang masing- masing fungsinya berbeda. 
+Tombol yang pertama untuk menampilkan halaman kerja atau halaman untuk memasukkan data sedangkan tombol yang kedua untuk menampilkan grafiknya.
+Kemudian di samping grafik terdapat dua tombol untuk mengubah parameter pada grafik. 
+Tombol pertama untuk mengetahui hubungan antara ketinggian terhadap waktu dan tombol kedua untuk mengetahui hubungan antara massa jenis bola
+ terhadap waktu.
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Makalah Viskositas", Academia, URL <a href="https://www.academia.edu/19882419/Makalah_Viskositas">https://www.academia.edu/19882419/Makalah_Viskositas</a> [20180221]</li>
+<li>"Kode HTML dan Latex Untuk Menampilkan Simbol Matematika", Alewoh, URL <a href="https://alewoh.com/kode-html-latex-untuk-menampilkan-simbol-matematika.php/">https://alewoh.com/kode-html-latex-untuk-menampilkan-simbol-matematika.php</a> [20180221]</li>
+<li>"Tutorial Text HTML Part 6: Cara Menulis Persamaan Matematis di dalam HTML (tag sup dan tag sub)", Duniailkom, URL <a href="https://www.duniailkom.com/tutorial-text-html-cara-menulis-persamaan-matematis-di-dalam-html-tag-sup-dan-tag-sub/">https://www.duniailkom.com/tutorial-text-html-cara-menulis-persamaan-matematis-di-dalam-html-tag-sup-dan-tag-sub/</a> [20180226]</li>
+</ol>
+
+</body>
+</html>
