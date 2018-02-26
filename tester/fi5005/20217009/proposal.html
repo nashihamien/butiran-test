@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217009</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Sistem Getaran Pegas Teredam</h1>
+
+Konsep gerak harmonis dan getaran teredam menarik untuk dibahas karena aplikasinya yang luas dalam kehidupan sehari-hari, misalnya untuk praktikum fisika dasar (seperti gerak osilasi air raksa, gerak horizontal/vertikal dari pegas, gerak bandul, dll), untuk aplikasi pada suspense berbagai kendaraan yang memanfaatkan redaman pada getaran, dll. Oleh karena itu, pengetahuan ini sangat diperlukan untuk dipelajari. 
+
+<h2>Teori</h2>
+
+Pegas yang digantung secara vertikal dengan beban bermassa $m$ pada ujung pegas dengan konstanta $k$ akan mengalami pertambahan panjang sebesar $x_0$ serta mencapai posisi kesetimbangan. <br/>
+</br>
+
+Gaya yang bekerja pada benda adalah
+
+\begin{equation}
+kx_0 = W = mg,
+\label{eq:gaya pegas}
+\end{equation}
+
+Ketika pegas ditarik dari posisi setimbang sejauh $x$ maka terjadi getaran pegas teredam dimana osilasinya akan semakin melemah (teredam) yang dipengaruhi oleh gaya redaman yang dapat berupa gaya gesek benda dengan lingkungan. Adanya gaya redaman menyebabkan amplitudo getaran berkurang secara perlahan terhadap waktu sampai akhirnya osilasi pada pegas berhenti. </br>
+
+<br/>
+Gaya yang bekerja pada benda dari Persamaan (\ref{eq:gaya pegas}) menjadi :
+\begin{equation}
+k(x_0 + x) = W + kx,
+\end{equation}
+
+</br>
+Gaya redaman dinyatakan dengan :
+<br/>
+\begin{equation}
+R = -bv,
+\end{equation}
+
+Dengan demikian, menurut Hukum II Newton maka persamaan gaya yang bekerja pada benda adalah:
+
+\begin{equation}
+\sum {F} = ma,
+\end{equation}
+\begin{equation}
+W - k(x + x_0) - bv = ma,
+\end{equation}
+\begin{equation}
+- kx - bv = ma,
+\label{eq:persamaan-pegas redaman}
+\end{equation}
+
+dengan $b$ adalah konstanta redaman positif dan $v$ adalah kecepatan benda.</br>
+</br> 
+Jika,
+\begin{equation}
+a = {\frac{d^2x}{dt^2}},
+\end{equation}
+\begin{equation}
+v = {\frac{dx}{dt}},
+\end{equation}
+
+maka Persamaan(\ref{eq:persamaan-pegas redaman}) menjadi :
+<br/>
+\begin{equation}
+m{\frac{d^2x}{dt^2}}+b{\frac{dx}{dt}}+kx = 0,
+\label{eq:pegas-teredam}
+\end{equation}
+\begin{equation}
+\Leftrightarrow \frac{d^2x}{dt^2} + r{\frac{dx}{dt}} + \omega^2 x = 0,
+\end{equation}
+
+dengan
+
+\begin{equation}
+r = {\frac{b}{m}}
+\end{equation}
+
+Pada kasus redaman kecil (underdamped, $b^2$ << 4$ω^2$), maka solusi untuk Persamaan (\ref{eq:pegas-teredam}) adalah
+
+\begin{equation}
+x = Ae^{-\frac{rt}{2}} \cos(\omega t + \phi),
+\label{eq:solusi-pegas teredam}
+\end{equation}
+\begin{equation}
+x = Ae^{-ct}\cos(\omega t + \phi)
+\end{equation}
+
+dengan
+\begin{equation}
+\omega = \sqrt{{\frac{k}{m}}-{c^2}}
+\end{equation}
+
+dengan $c = {\frac{r}{2}} = {\frac{b}{2m}}$ dan $Ae^{-ct}$ merupakan amplitudo yang berubah sebagai fungsi waktu.
+Syarat awal yang digunakan, yaitu $x_0=x(0)$ dan $v_0=v(0)$.</br>
+</br>
+saat $t=0$, diperoleh
+\begin{equation}
+x_0 = A \sin\phi
+\end{equation}
+dan
+\begin{equation}
+v={\frac{dx}{dt}}={\omega}A\cos(\omega t + \phi)
+\end{equation}
+sehingga,
+\begin{equation}
+v_0 = {\omega} A \cos\phi.
+\end{equation}
+
+Dari Persamaan $x_0$ dan $v_0$ di atas, diperoleh
+\begin{equation}
+\tan\phi = {\frac{v_0}{\omega x_0}}
+\end{equation}
+dan
+\begin{equation}
+A = {\frac{1}{\omega}}\sqrt{\omega^2 x_0^2 + v_0^2}
+\end{equation}
+
+<h2>Metode numerik</h2>
+Solusi penyelesaian getaran teredam secara numerik dilakukan dengan metode Runge-Kutta Order 4 (RK4).
+
+</br>
+Bentuk metode RK4, yaitu :
+
+\begin{equation}
+x_{i+1} = x_i + \frac{1}{6}h(k_1 + 2k_2 + 2k_3 + k_4),
+\label{eq:metode RK4}
+\end{equation}
+
+Agar dapat diselsaikan dengan menggunakan metode RK4, Persamaan (\ref{eq:pegas-teredam}) harus diubah menjadi sistem persaaan diferensial linier order satu.
+
+\begin{equation}
+\frac{dx}{dt} = v,
+\end{equation}
+\begin{equation}
+\frac{dv}{dt} = \frac{dx^2}{dt^2} = - \frac{b}{m} v - \frac{k}{m} x.
+\end{equation}
+
+sehingga diperoleh sistem persamaan diferensial linier order satu, sebagai berikut :
+
+\begin{equation}
+\frac{dx}{dt} = f(t,x,v) = v,
+\label{eq:turunan posisi}
+\end{equation}
+\begin{equation}
+\frac{dv}{dt} = g(t,x,v) = -\frac{b}{m} v - \frac{k}{m} x,
+\label{eq:turunan kecepatan}
+\end{equation}
+
+Pada kasus ini diterapkan posisi awal $x(t_0) = -1$, kecepatan awal $v(t_0) = 0$ dan nilai redaman divariasi dari 0, 0,2 dan 0,5. 
+Berdasarkan Persamaan (\ref{eq:metode RK4}), maka
+
+\begin{equation}
+x_{i+1} = x_i + \frac{1}{6}h(k_1 + 2k_2 + 2k_3 + k_4)
+\end{equation}
+\begin{equation}
+v_{i+1} = v_i + \frac{1}{6}h(l_1 + 2l_2 + 2l_3 + l_4)
+\end{equation}
+
+dengan,
+
+\begin{equation}
+k_1 = f(t,x,v) = v
+\end{equation}
+\begin{equation}
+l_1 = g(t,x,v) = - \frac{b}{m} v - \frac{k}{m} x
+\end{equation}
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Pada project ini diperlukan perintah HTML untuk memperoses perhitungan algoritma Runge-Kutta, perintah untuk membuat gambar dan grafik sistem osilasi pegas teredam.
+
+<h3>Yang telah diketahui</h3>
+elemen yang telah diketahui, yaitu nilai parameter-parameter yang diperlukan untuk melakukan simulasi osilasi pegas teredam
+		
+<h2>Tampilan simulasi</h2>
+
+Disini akan dilakuakn variasi nilai redaman, massa benda dan kecepatan awal benda dianggap tetap 
+akan ada textarea untuk memasukan data, canvas untuk menggambar grid, tombol proses untuk mencari hasil penyelesaian persamaan getaran pegas dengan faktor redaman, tombol reset untuk memulai kembali proses penyelesaian dari awal
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li></li>
+<li></li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
