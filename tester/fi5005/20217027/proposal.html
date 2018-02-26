@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217027</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>SIMULASI GERAK TIGA PENDULUM TERKOPEL OLEH PEGAS</h1>
+
+<h2>Teori</h2>
+Terdapat 3 tiga buah pendulum identik dengan panjang tali $l$ dan massa $m$ terkopel oleh dua pegas identik dengan konstanta $k$. Persamaan posisi setiap benda dalam koordinat kartesian adalah sebagai berikut.<br><br>
+
+<b>Posisi Benda 1 </b><br>
+\begin{equation}
+	x_1 = l \sin {\theta_1}
+	\label {eq: x-1}
+\end{equation}
+\begin{equation}
+	y_1 = l -l \cos {\theta_1}=l(1-\cos{\theta_1})
+	\label {eq: y-1}
+\end{equation}
+
+<b>Posisi Benda 2 </b><br>
+\begin{equation}
+	x_2 = l \sin {\theta_2}
+	\label {eq: x-2}
+\end{equation}
+\begin{equation}
+	y_2 = l -l \cos {\theta_2}=l(1-\cos{\theta_2})
+	\label {eq: y-2}
+\end{equation}
+
+<b>Posisi Benda 1 </b><br>
+\begin{equation}
+	x_3 = l \sin {\theta_3}
+	\label {eq: x-3}
+\end{equation}
+\begin{equation}
+	y_3 = l -l \cos {\theta_3}=l(1-\cos{\theta_3})
+	\label {eq: y-3}
+\end{equation}
+
+Berdasarkan persamaan tersebut maka akan diperoleh besarnya energi potensial dan energi kinetik.<br>
+\begin{equation}
+V = -\frac{1}{2}mgl\left({\theta_1}^2 + {\theta_2}^2 + {\theta_3}^2\right) + \frac{1}{2}kl^2\left[(\theta_2-\theta_1)^2 +(\theta_3-\theta_2)^2\right]
+	\label {eq: energi potensial}
+\end{equation}
+\begin{equation}
+T = -\frac{1}{2}ml\left({\theta_1}^2 + {\theta_2}^2 + {\theta_3}^2\right)
+	\label {eq: energi kinetik}
+\end{equation}
+
+<h2>Metode numerik</h2>
+Dalam menyelesaikan persamaan geraknya dapat menggunakan persamaan Lagrange dengan koordinat umum $\theta$. 
+\begin{equation}
+\frac{d}{dt}\frac{\partial{L}}{\partial{\dot{\theta}}}-\frac{\partial{L}}{\partial{\theta}}=0
+	\label {eq: lagrange}
+\end{equation}
+ 
+di mana $L = T-V$. <br>
+Dari persamaan lagrange tersebut akan didapatkan 3 persamaan percepatan $\ddot{\theta_1}$, $\ddot{\theta_2}$, dan $\ddot{\theta_1}$. Untuk mendapatkan persamaan geraknya dapat menggunakan matriks.
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Element HTML yang diperlukan dan perintah JavaScript diantaranya yaitu
+<ol>
+	<li> Olah <i>page</i> dan <i>text formatting</i> </li>
+	<li> <i>Button</i> </li>	
+	<li> <i>Textarea</i> </li>
+	<li> Gambar rangkaian menggunakan <i>coding</i> </li>
+	<li> Grafik hubungan menggunakan <i>coding</i> </li>
+	<li> <i>Conditioning</i> dan <i>looping</i></li>
+	<li> <i>Math function</i> </li>
+</ol> 
+
+<h3>Yang telah diketahui</h3>
+Tuliskan element HTML dan JS yang telah diketahui dan akan diperlukan untuk mengerjakan proyek ini.
+<ol>
+	<li> Olah <i>page</i> dan <i>text formatting</i> </li>
+	<li> <i>Button</i> </li>	
+	<li> <i>Textarea</i> </li>
+	<li> <i>Conditioning</i> dan <i>looping</i> </li>
+	<li> <i>Math function</i> </li>
+</ol>
+
+<h2>Tampilan simulasi</h2>
+Desain simulasi diawali dengan kotak <i>textarea</i> untuk masukan nilai $m$, $l$ dan $k$. Di bawah <i>textarea</i> terdapat tombol <button>Start</button>. Setelah tombol start diklik maka akan muncul simulasi dalam 2 bentuk yaitu
+<ol> 
+	<li> tampilan gerak pendulum</li>
+	<li> grafik waktu terhadap posisi dari masing masing benda</li>
+</ol>
+ 
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li> "Pendulum (Mathematics)", Wikipedia, URL<a href="https://en.wikipedia.org/wiki/Pendulum_(mathematics)#Coupled_pendulums"> https://en.wikipedia.org/wiki/Pendulum_(mathematics)#Coupled_pendulums </a> [20180225] </li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
