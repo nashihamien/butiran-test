@@ -1,0 +1,40 @@
+<!--DOCTYPE HTML-->
+<!--
+Zaky Yudha Rabbani - 20217322
+Version 1.0: 22/02/18
+--Created the base version
+-->
+<html>
+	<head>
+		<title>Double Pendulum Simulation</title>
+		<script src="pendulum.js"></script>
+		<script src="calculation.js"></script>
+		<script src="draw.js"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});
+		</script>
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	</head>
+	<body onload="onBrowserLoad()">
+		<div align="center" style="border:1px solid red; border-width:5px; padding-top:10px; padding-bottom:10px">
+			<canvas id="cvs" width="500px" height="500px" style="border:1px solid black"></canvas> <br>
+			$m_1$ <input value="1" type="number" id="m1" style="width:75px" min="0" step="any">
+			$m_2$ <input value="1" type="number" id="m2" style="width:75px" min="0" step="any">
+			$L_1$ <input value="10" type="number" id="L1" style="width:75px" min="0" step="any">
+			$L_2$ <input value="10" type="number" id="L2" style="width:75px" min="0" step="any">
+			$\Delta t$ <input value="0.01" type="number" id="dt" style="width:75px" min="0" step="any">
+			$\theta_1$ <input value="0.5" type="number" id="tht1" style="width:75px" step="any">
+			$\theta_2$ <input value="0.5" type="number" id="tht2" style="width:75px" step="any">
+			<br>
+			<div style="padding:10px">
+				<button id="btn1" onclick="buttonClick()">Start</button>
+				<button onclick="resetData()">Reset</button>
+			</div>
+		</div>
+	</body>
+</html>

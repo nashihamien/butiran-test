@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217322</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+	<!-- Modify only below this line -->
+
+	<h1>Double Pendulum Simulation</h1>
+
+	<p style="font-size:20px; text-align:justify">
+		Untuk tugas ini, akan dilakukan simulasi untuk gerak pendulum terkopel. Dimulai dari Lagrangian sistem pendulum tersebut
+		kemudian dicari percepatan sistem tersebut dan menggunakan Metoda Runge-Kutta akan dicari nilai posisinya. Runge-Kutta akan dilakukan
+		secara bertahap dan posisi hasil pertahapnya akan digunakan untuk menggambarkan pendulum di canvas
+	</p>
+
+	<h2>Teori</h2>
+
+	<p style="font-size:20px">
+		Tinjau suatu sistem pendulum terkopel seperti berikut: <br>
+		<img src="https://i.imgur.com/CaUQIKb.jpg"><br>
+		
+		Sehingga dapat didefinisikan fungsi posisi dari kedua bandul tersebut seperti berikut:
+		
+		\begin{equation}
+			\label{eq:1}
+			\begin{aligned}
+				&x_1 = L_1 sin(\theta_1)\\
+				&x_2 = L_1 sin(\theta_1)+L_2 sin(\theta_2)\\
+				&y_1 = -L_1 cos(\theta_1)\\
+				&y_2 = -(L_1 cos(\theta_1)+L_2 cos(\theta_2))
+			\end{aligned}
+		\end{equation}
+		
+		Berdasarkan definisi, Lagrangian ($\mathscr{L}$) dituliskan dengan persamaan berikut:
+		
+		\begin{equation}
+			\label{eq:2}
+			\mathscr{L} = T - V = \frac{1}{2}mv^2 - mgy = \frac{1}{2}m(\dot{x}^2+\dot{y}^2)-mgy
+		\end{equation}
+		
+		sehingga dengan memasukan Persamaan (1) kedalam Persamaan (2) akan didapat Lagrangian dari sistem seperti berikut:
+		
+		\begin{equation}
+			\label{eq:3}
+			\mathscr{L} = \frac{1}{2}(m_1+m_2)L_1^2\dot{\theta_1}^2 + \frac{1}{2}m_2L_2^2\dot{\theta_2}^2 + m_2L_1L_2\dot{\theta_1}\dot{\theta_2}cos(\theta_1-\theta_2) +
+							(m_1+m_2)gL_1cos(\theta_1)+m_2L_2gcos(\theta_2)
+		\end{equation}
+		
+		Kemudian dapat digunakan untuk mencari persamaan geraknya dengan menggunakan Persamaan Euler-Lagrange:
+		
+		\begin{equation}
+			\label{eq:4}
+			\frac{d}{dt}\left(\frac{\partial{\mathscr{L}}}{\partial{\dot{\theta}}}\right) - \frac{\partial{\mathscr{L}}}{\partial{\theta}} = 0
+		\end{equation}
+		
+		sehingga didapat persamaan untuk $\ddot{\theta_1}$ dan $\ddot{\theta_2}$ seperti berikut:
+		
+		\begin{equation}
+			\label{eq:5}
+			\ddot{\theta_2} = \frac{-L_1\ddot{\theta_1}cos(\theta_1-\theta_2)+L_1\dot{\theta_1}^2sin(\theta_1-\theta_2) - gsin(\theta_2)}{L_2}
+		\end{equation}
+		
+		\begin{equation}
+			\label{eq:6}
+			\ddot{\theta_1} = \frac{-m_2L_2\ddot{\theta_2}cos(\theta_1-\theta_2) - m_2L_2\dot{\theta_2}^2sin(\theta_1-\theta_2)-(m_1+m_2)gsin(\theta_1)}{(m_1+m_2)L_1}
+		\end{equation}
+		
+		Kedua persamaan diatas dapat digunakan untuk mencari nilai-nilai posisinya penyelesaian differensiasi numerik.
+	</p>
+
+	<h2>Metode numerik</h2>
+	<p style="font-size:20px">
+		Metoda numerik yang akan digunakan pada tugas ini adalah <i> 4th Order Runge-Kutta </i>. Misalkan terdapat sebuah persamaan differensial seperti berikut:
+		
+		\begin{equation}
+			\frac{dy(t)}{dt} = y'(t) = f(y(t),t)
+		\end{equation}
+		
+		Menggunakan Metoda Runge-Kutta, didapatkan aproksimasi $y(t)$-nya seperti berikut:
+		\begin{equation}
+			\begin{aligned}
+			y_{n+1} &= y_n + \frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)\\
+			t_{n+1} &= t_{n} + \Delta t 
+			\end{aligned}
+		\end{equation}
+		
+		dengan
+		
+		\begin{equation}
+			\begin{aligned}
+				k_1 &= f(t_n,y_n)\\
+				k_2 &= f\left(t_n + \frac{\Delta t}{2}, y_n + \Delta t\frac{k_1}{2}\right)\\
+				k_3 &= f\left(t_n + \frac{\Delta t}{2}, y_n + \Delta t\frac{k_2}{2}\right)\\
+				k_4 &= f(t_n + \Delta t, y_n + \Delta tk_3)
+			\end{aligned}
+		\end{equation}
+		
+	</p>
+	<h2>HTML dan JS</h2>
+		<p style="font-size:20px">
+		Element-element HTML yang dibutuhkan adalah <br>
+		1. Canvas (menggambar bandul) <br>
+		2. Tujuh buah element InputBox/TextArea $\left(\theta_1(0),\theta_2(0),\Delta t, L_1, L_2, m_1, m_2\right)$ <br>
+		3. Satu buah element Button untuk memulai dan menghentikan simulasi<br>
+		<br>
+		Fungsi-fungsi JS yang dibutuhkan adalah <br>
+		1. Perhitungan Runge-Kutta yang digunakan untuk menghitung kecepatan dan posisi pendulum perstep waktunya <br>
+		2. Draw-Erase-Draw interval yang digunakan untuk mensimulasi gerakan pendulum pada canvas <br>
+		3. Sebuah class untuk menggambarkan suatu objek pendulum. <br>
+		4. Sebuah fungsi yang akan digunakan pada event onClick pada Button <br>
+		5. Sebuah fungsi yang digunakan untuk mengambil nilai dari InputBox <br>
+		</p>
+	<h2>Tampilan simulasi</h2>
+		<p style="font-size:20px">
+		Tampilan dari simulasi akan berupa sebuah canvas dengan ukuran tertentu. Koordinat riil (0,0) akan berada di bagian atas tengah dari canvas.
+		Dibagian bawah canvas akan terdapat 7 buah InputBox/TextArea yang akan digunakan untuk memasukan data-data yang diperlukan dan menampilkan beberapa
+		data yang berubah seiring dengan berjalannya simulasi dan dibawah InputBox-InputBox tersebut akan ada sebuah Button yang berfungsi untuk menjalankan
+		dan menghentikan simulasi.
+ 		</p>
+	<h2>Rereferensi</h2>
+
+	<ol>
+	<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+	<li>"Double Pendulum", Josh Altic, URL <a href="http://sophia.dtp.fmph.uniba.sk/~kovacik/doublePendulum.pdf">http://sophia.dtp.fmph.uniba.sk/~kovacik/doublePendulum.pdf</a> [20180221]</li>
+	<li>"4th Order Runge-Kutta Method", Wikipedia, URL <a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods</a> [20180221]</li>
+	<li>"stackoverflow User's Forum", Stackoverflow, URL<a href="https://stackoverflow.com"> https://stackoverflow.com </a> [20180222]</li>
+	</ol>
+
+	<!-- Modify only above this line -->
+</body>
+</html>
