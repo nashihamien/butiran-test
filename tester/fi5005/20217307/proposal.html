@@ -62,13 +62,7 @@ Biasanya, muatan bebas $\rho$ dapat diabaikan, sehingga $\rho = 0$, menyebabkan 
 
 <h2>Metode numerik</h2>
 
-Metode finite element adalah metode numerik yang menggunakan diskritisasi untuk mengubah domain kontinu ke domain diskrit, untuk menyelesaikan persamaan differensial. Persamaan ini dihitung dalam domain-domain kecil dan setelah selesai dihitung, solusi merupakan superposisi dari domain-domain kecil ini.
-<br>
-<br>
-<div align="center"><img src='Sketch1.png' style="align:center" width="200px"><br><b>Gambar 1</b>. Ilustrasi pembagian elemen-elemen segitiga pada daerah solusi sembarang</div>
-<br>
-<br>
-Approksimasi untuk potensial $V_e$ untuk elemen $e$ dicari dan distribusi potensial pada berbagai elemen dihubungkan, sehingga potensial ini kontinu pada seluruh batas antar elemen. Solusi approksimasi pada seluruh daerah dapat dinyatakan dalam
+Metode finite element adalah metode numerik yang menggunakan diskritisasi untuk mengubah domain kontinu ke domain diskrit, untuk menyelesaikan persamaan differensial. Persamaan ini dihitung dalam domain-domain kecil dan setelah selesai dihitung, solusi merupakan superposisi dari domain-domain kecil ini. Approksimasi untuk potensial $V_e$ untuk elemen $e$ dicari dan distribusi potensial pada berbagai elemen dihubungkan, sehingga potensial ini kontinu pada seluruh batas antar elemen. Solusi approksimasi pada seluruh daerah dapat dinyatakan dalam
 \begin{equation}
 V(x,y) = \sum_{e=0}^{N} V_e(x,y)
 \end{equation}
@@ -82,7 +76,7 @@ Maka dari itu, medan listrik pada elemen segitiga adalah
 \begin{equation}
 E_e = -\nabla V_e
 \end{equation}
-	Sebagai contoh, tinjau titik ujung elemen segitiga (<i>nodes</i>) 2, 11, dan 13 pada gambar 1. Potensial $V_2$, $V_{11}$, dan $V_{13}$ didapat dengan menyelesaikan persamaan matriks, seperti di bawah ini
+	Sebagai contoh, tinjau titik ujung elemen segitiga (<i>nodes</i>) 2, 11, dan 13 pada suatu daerah solusi. Potensial $V_2$, $V_{11}$, dan $V_{13}$ didapat dengan menyelesaikan persamaan matriks, seperti di bawah ini
 \begin{equation}
 \begin{bmatrix}
 V_2 \\ V_{11} \\ V_{13}
