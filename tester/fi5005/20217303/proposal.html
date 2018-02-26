@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217303</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Gerak Jatuh Bebas</h1>
+
+Gerak jatuh bebas merupakan materi dasar pada fisika tentang gerak dimana gerak ini dipengaruhi oleh gravitasi.
+Banyak aplikasi yang dapat dikembangkan dari pengetahuan tentang gerak jatuh bebas ini, salah satunya yaitu dapat digunakan untuk menganalisis gerak benda yang dijatuhkan dari gedung tinggi, hingga analisis gerak peluru yang ditembakkan dengan lintasan parabola.
+
+<h2>Teori</h2>
+
+Persamaan yang digunakan pada topik gerak jatuh bebas yaitu persamaan Gerak Lurus Berubah Beraturan (GLBB)
+
+\begin{equation}
+v_t = v_0 - g t
+\end{equation}
+
+\begin{equation}
+h = h_0 + v_0 t - \frac{1}{2} g t^2
+\end{equation}
+
+\begin{equation}
+v_t^2 = v_0^2 - 2 g h
+\end{equation}
+
+
+<h2>Metode numerik</h2>
+
+Metode numerik yang digunakan pada persamaan gerak jatuh bebas adalah
+
+
+\begin{equation}
+\frac{df}{dx} \approx \frac{f(x + \Delta x) - f(x)}{\Delta x},
+\end{equation}
+
+
+
+\begin{equation}
+x_n+1 = x_n + \delta_t v_n
+\end{equation}
+\begin{equation}
+v_n+1 = v_n + \delta_t a_n
+\end{equation}
+
+yang merupakan metode beda hingga dan metode euler.
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+element HTML dan perintah JavaScript yang diperlukan adalah :
+<ol>
+<li>Canvas;
+<li>loop perhitungan ketinggian dan kecepatan
+<li>desain objek lingkaran untuk simulasi gerak jatuh bebas
+<li>membuat tombol untuk menjalankan simulasi
+</ol>
+
+<h3>Yang telah diketahui</h3>
+element HTML dan Perintah yang telah diketahui :
+<ol>
+<li>perintah loop (for, if)
+<li>input variabel
+<li>function
+</ol>
+
+<h2>Tampilan simulasi</h2>
+
+tampilan simulasi dirancang dengan tiga buah div yang didalamnya disimulasikan sebuah bola jatuh ke bawah pada ketinggian yang sama dengan kecepatan yang berbeda-beda.
+diatas tiap-tiap div terdapat kotak textarea untuk memasukkan data kecepatan awal dari bola. dibawah tiga div tersebut terdapat tiga buah div lagi untuk simulasi bola jatuh bebas
+dengan kecepatan awal sama. pada div pertama bola jatuh dan berhenti pada detik ke-5, pada div kedua bola jatuh dan berhenti pada detik ke-10, dan pada div ketiga bola jatuh dan berhenti
+pada detik ke-15. dibawah tampilan canvas ada tombol untuk menjalankan kedua jenis simulasi tersebut.
+
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Numerical Solutions of Classical Equation of Motion, BU Physics, URL <a href="http://physics.bu.edu/~py502/lectures3/cmotion.pdf">http://physics.bu.edu/~py502/lectures3/cmotion.pdf</a> [20180221] </li>
+<li>"How to Code: Gravity, Chris Courses, URL <a href="http://chriscourses.com/video/3b7FyIxWW94">http://chriscourses.com/video/3b7FyIxWW94</a> [20180221] </li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
