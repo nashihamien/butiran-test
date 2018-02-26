@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Proposal</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Pemodelan Pencairan Material</h1>
+
+Proses pencairan material membutuhkan perlakuan yang tepat. Setiap material memiliki karakteristik tertentu sehingga membutuhkan perlakuan yang spesifik. Suhu yang terlalu cepat dinaikkan dapat menyebabkan material hangus, hal ini berkaitan dengan konduktivitas bahan, semakin tidak konduktif suatu bahan seharusnya proses menaikkan suhu dilakukan secara lebih perlahan. Dalam eksperimen terkadang dibutuhkan proses pencairan material. Jika proses tersebut tidak dilakukan dengan tepat maka akan menimbulkan kerugian materi, waktu dan energi. Oleh sebab itu model pencairan material perlu untuk dikembangkan.
+
+<h2>Teori</h2>
+
+Metode Neuman
+
+\begin{equation}
+X (t) = 2 \lambda (\alpha_{s} t)^\frac{1}{2} 
+\end{equation}
+
+Metode Heat Balance.
+
+<h2>Metode numerik</h2>
+
+Metode Fixed Grid
+
+\begin{equation}
+T_{i,n+1} = T_{i,n} + (\frac{ \Delta t}{ \Delta x^2}) [T_{i-1,n} - 2T_{i,n} + T_{i+1,n}]    
+\end{equation}
+
+Metode Variabel Grid (1D)
+
+\begin{equation}
+\frac{dT}{dt} = \frac{x}{X(t)} \frac{dX}{dt} \frac{\partial T}{\partial x} + \frac{\partial^2 T}{\partial x^2}
+\end{equation}
+
+
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+<o1>
+<li>Operasi perkalian dan pembagian</li>
+<li>Deret</li>
+<li>Differensial</li>
+<li>Integral</li>
+
+
+<h3>Yang telah diketahui</h3>
+
+Operasi perkalian dan pembagian
+
+<h2>Tampilan simulasi</h2>
+
+Terdapat kotak text area untuk memasukkan data, di bawahnya terdapat canvas untuk menggambarkan hasil komputasi. 
+
+<h2>Rereferensi</h2>
+
+<o2>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Mathematical modelling of solidification and melting: a review"</li>
+<li></li>
+</o2>
+
+<!-- Modify only above this line -->
+</body>
+</html>
