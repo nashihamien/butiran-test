@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>p02yysnn</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Judul Proyek</h1>
+
+Pada dasarnya, prinsip termoelektrik dapat merubah energi kalor menjadi energi listrik atau sebaliknya dari energi listrik mejadi energi kalor.
+Prinsip kerja dari efek peltier menyatakan apabila kedua sambungannya diberi sumber listrik arus searah maka kedua sisi termoelektrik akan meghasilkan perbedaaan suhu.
+Salah satu aplikasi pengembangan dari sistem termoelektrik dapat digunakan pada sistem pemanas Electronic Nose (E-Nose) agar pembacaan data sensor gas menjadi lebih stabil.
+
+<h2>Teori</h2>
+
+Termoelektrik terdiri dari jumlah sambungan semikonduktor tipe-n dan tipe-p yang terhubung secara seri dari antarsambungan logam(dasar dari aliran listrik), dan terhubung paralel (dasar dari aliran kalor).
+Material semikonduktor tipe-p memiliki sedikit elektron dan kelebihan hole, sementara material tipe-n memiliki sedikit hole dan kelebihan elektron.
+Jika sumber tegangan DC diberikan ke material termoelektrik, kalor akan berpindah dari sisi yang satu ke sisi yang lain, sehingga salah satu permukaan materialnya menjadi dingin dan permukaan lainnya menjadi panas.
+Muatan elektron berpindah dari tingkat energi yang lebih rendah (elemen tipe-p) ke tingkat energi yang lebih tinggi (elemen tipe-n) melewati sambungan dingin, sehingga akan terjadi proses pendiginan pada sisi dingin material tersebut.
+Pada waktu yang bersamaan, muatan elektron membawa kalor yang terserap menuju sambungan bagian panas, kalor tersebut terdisipasi pada heatsink, elektron kembali pada tingkat energi yang lebih rendah dalam semikonduktor tipe-p.
+fenomena tersebut merupakan efek peltier.<br>
+Adanya perbedaan suhu antara sambungan dingin dan sambungan panas pada elemen tipe-n dan tipe-p menyebabkan munculnya tegangan listrik yang sebanding dengan perbedaan suhu tersebut.
+Persamaan (1) adalah energi kalor rata-rata pada suatu objek yang diberikan  
+
+\begin{equation}
+Q \approx I\pi +\, \frac{I^2R}{2} +\, K_p(T_p-T_o) +\, K_a(T_a-T_o)
+\end{equation}
+
+\(\pi\) = Koefisien peltier,<br> <i>I</i> = Arus listrik yang melewati piranti peltier,<br> 
+<i>R</i> = Hambatan listrik pada piranti peltier,<br> \(K_p\) = Koefisien konduksi panas, <br>
+\(K_a\) = Koefisien konveksi panas melalui medium udara, <br>
+\(T_o\) = Suhu benda, <br> 
+\(T_s\) = Suhu pada heatsink, <br>
+\(T_a\) = Suhu udara <br><br>
+
+ketika terjadi arus konstan <i>I</i>, suatu objek akan mencapai pada keseimbangan suhu \(T_{equ}\) dimana transfer panas disekitarnya menjadi seimbang.
+Pada titik <i>Q</i> = 0 dan \(T_{equ}\) dapat dijelaskan pada persamaan (2):
+
+\begin{equation}
+T_{equ} \approx \frac{I\pi +\, \frac{I^2R}{2} +\, K_pT_s +\, K_aT_a}{K_p +\, K_a}
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Untuk sebuah sistem termal sederhana, kecepatan dari perubahan suhu <i>dT/dt</i> adalah sebanding dengan suatu perbedaan antara suhu sekarang <i>T</i> dan 
+keseimbangan suhu \(T_{equ}\):
+\begin{equation}
+\frac{dT}{dt} \approx k(T_{equ}-T)
+\end{equation}
+
+Dengan demikian solusinya adalah
+\begin{equation}
+T \approx T_{equ} -\, (T_{equ} -T_0)e^{-t/{\tau}}
+\end{equation}
+Dimana
+\(\tau\) = 1/<i>k</i>, suhu awal adalah \(T_0\) pada saat \(t_0\) = 0.
+
+\begin{equation}
+T_{equ} \approx T_{n+1} +\, \frac{T_{n+2} -\, T_{n+1}}{1 -\, {\eta}}
+\end{equation}
+
+\begin{equation}
+{\eta} = \frac{T_{n+2} -\, T_{n+1}}{T_{n+1} -\, T_n}
+\end{equation}
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Tuliskan element HTML yang diperlukan dan perintah JavaScript [1] yang diperkirakan diperlukan fungsinya, walaupun dapat saja nama perintah tersebut belum diketahui.
+
+<h3>Yang telah diketahui</h3>
+
+Tuliskan element HTML dan JS yang telah diketahui dan akan diperlukan untuk mengerjakan proyek ini.
+
+<h2>Tampilan simulasi</h2>
+
+Tuliskan desain tampilan simulasi dengan menggunakan kata-kata, seperti terdapat kotak textarea untuk masukan data, di sebelahnya terdapat canvas untuk menggambarkan grid, ada dua tombol yang masing-masing fungsinya adalah...
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li></li>
+<li></li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
