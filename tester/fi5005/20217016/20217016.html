@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>20217016</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Menghitung Nilai Percepatan Gravitasi</h1>
+
+Materi ini perlu untuk dibahas karena materi ini berkaitan dengan salah satu praktikum Fisika Dasar, dan juga materi ini berkaitan dengan praktikum fisika SMA. Yang menarik pada materi ini adalah, dengan mempelajari materi ini, kita juga dapat mempelajari tentang gaya dan gerak harmonis sederhana. Selain itu, dengan membahas materi ini kemampuan dalam menganalisis juga dapat ditingkatkan.
+
+<h2>Teori</h2>
+Suatu sistem bandul sederhana terdiri atas sebuah benda yang digantung oleh tali ringan. Diagram gambar bandul sederhana dapat dilihat pada gambar 1
+<p><img src="bandul sederhana.jpg" height="250px" width="250 px" align="center"></p>
+<br> Gambar 1 Bandul Sederhana </br>
+<br> Gaya-gaya yang bekerja pada benda adalah gaya berat dan gaya tegangan tali. Pada gambar dapat dilihat benda mengalami gaya pemulih yang menyebabkan bandul bergerak bolak-balik (berosilasi).Gaya pemulih pada bandul sederhana memenuhi persamaan berikut [1]:</br>
+\begin{equation}
+\sum {F} = -m g sin \theta
+\end{equation}
+
+<p> dengan menggunakan Hukum II Newton</p>
+\begin{equation}
+\sum {F} = m a
+\end{equation}
+
+
+<p>dengan a merupakan turunan kedua dari jarak (s), sehingga diperoleh:</p>
+\begin{equation}
+-m g sin \theta = m.\frac{d^2s}{dt^2}
+\end{equation}
+
+dan karena 
+\begin{equation}
+s = L \theta
+\end{equation}
+
+dengan L adalah panjang tali dan tetap, maka persamaan gerak bandul dapat ditulis dalam bentuk persamaan diferensial orde dua:
+
+\begin{equation}
+\frac{d^2\theta}{dt^2}=\frac{-g}{L} sin\theta
+\label{eq:persamaan-kuadrat}
+\end{equation}
+
+ atau
+\begin{equation}
+g = \frac{-L}{sin\theta}\frac{d^2\theta}{dt^2}
+\label{eq:persamaan gravitasi}
+\end{equation}
+
+Persamaan (\ref{eq:persamaan-kuadrat}) sulit untuk dicari solusinya secara analitik, sehingga dilakukan asumsi bahwa sudutnya kecil. sehingga sapat dilakukan pendekatan
+
+\begin{equation}
+sin\theta\approx\theta
+\end{equation} 
+
+sehingga persamaan (\ref{eq:persamaan-kuadrat}) menjadi:
+
+\begin{equation}
+\frac{d^2\theta}{dt^2}=\frac{-g}{L}\theta
+\label{eq:persamaan-kuadrat2}
+\end{equation}
+
+
+persamaan (\ref{eq:persamaan-kuadrat2}) di atas mempunyai solusi:
+\begin{equation}
+\theta=\theta_{max}cos\omega t
+\end{equation}
+
+dengan 
+\begin{equation}
+\omega=\sqrt\frac{L}{g}
+\end{equation}
+
+
+<h2>Metode numerik</h2>
+Suatu fungsi f (x) dapat didefinisikan sebagai [3]
+
+\begin{equation}
+f'(x) = \lim_{x\to 0} \frac{f(x + h) - f(x)}{h},
+\end{equation}
+
+Jika persamaan f(x) diketahui secara eksplisit, maka dapat
+ditentukan fungsi turunannya, f’(x), f”(x), dst. Namun, apabila
+fungsi f(x) memiliki bentuk yang rumit sehingga sulit
+menentukan fungsi turunannya, ataupun kita tidak mengetahui
+f(x), namun hanya memiliki titik – titik data yang mewakili
+f(x), kita dapat menghitung turunan di suatu titik menggunakan
+metode turunan numerik. Jenis pendekatan yang digunakan adalah metode hampiran selisih pusat. 
+Untuk menghitung turunan di nilai x<sub>0</sub>, data yang dilihat adalah data sebelum dan sesudahnya, yaitu: x<sub>-2</sub>, x<sub>-1</sub>, x<sub>1</sub>, x<sub>2</sub>, dst. 
+<br>Pendekatan ini adalah dengan menjumlahkan beda depan dan beda belakang. untuk orde ke satu dapat menggunakan rumus berikut:<br>
+\begin{equation}
+f'(x)=\frac{f_{i + 1} - f_{i-1}}{2h}+O(h^2),
+\end{equation}
+dimana, 
+\begin{equation}
+O(h^2)=-\frac{h}{6} f^3(t)
+\end{equation}
+untuk perhitungan yang lebih teliti yang membutuhkan banyak titik data, dapat dihitung sebagai berikut:
+\begin{equation}
+f'(x)= \frac{-f_{i + 2} + 8f_{i+1}-8f_{i-1}+f_{i-2}}{12h}+O(h^4),
+\end{equation}
+
+turunan kedua dengan menggunakan metode ini dapat menggunakan rumus berikut:
+\begin{equation}
+f''(x)= \frac{-f_{i + 1} - 2f_{i}+f_{i-1}}{h^2}+O(h^2),
+\end{equation}
+dimana, 
+\begin{equation}
+O (h^2)=- \frac{h}{12 }f^4(t)
+\end{equation}
+untuk perhitungan yang lebih teliti yang membutuhkan banyak titik data, dapat dihitung sebagai berikut:
+\begin{equation}
+f''(x)=\frac{-f_{i + 2} + 16f_{i+1}-30f_{i}+16f_{i-1}-f_{i-2}}{12h^2}+O(h^4),
+\end{equation}
+
+Untuk menghitung percepatan gravitasi dengan metode ini, kita dapat mengunakan persamaan (\ref{eq:persamaan gravitasi}) yang mana nilai turunan kedua dari berbagai titik dihitung dengan metode numerik. 
+sehingga untuk selisih pusat orde O (h<sup>2</sup>) dapat ditulis sebagai berikut:
+\begin{equation}
+g = \frac{-L}{sin\theta}\frac{-t_{i + 1} - 2t_{i}+t_{i-1}}{h^2},
+\end{equation}
+dengan i=(1,...n-1) dan t adalah tabel yang menyimpan nilai sudut tiap-tiap titik yang didefinisikan
+dan untuk orde O (h<sup>4</sup>) adalah sebagai berikut:
+\begin{equation}
+g=\frac{-L}{sin\theta}\frac{-t_{i + 2} + 16t_{i+1}-30t_{i}+16t_{i-1}-t_{i-2}}{12h^2},
+\end{equation}
+dengan i=(2,...(n-2)
+<h2>HTML dan JS</h2>
+
+
+<h3>Yang diperlukan</h3>
+
+<p> Elemen HTML dan JS yang diperlukan adalah sebagai berikut:</p>
+1. JS yang diperlukan <br> a. function <br> b. Math <br> c. canvas <br> d. button on click <br> 
+<p>2. HTML yang diperlukan <br> a.  <br> b.</p>
+
+
+<h3>Yang telah diketahui</h3>
+
+<p> Elemen HTML dan JS yang sudah diketahui adalah sebagai berikut:</p>
+1. JS yang diketahui <br>a. div <br> b. inner HTML <br> c. var <br> d. document.getElementById <br> e. document.createElement
+<p>2. HTML yang diketahui <br> a. AppendChild <br> b.</p>
+
+
+<h2>Tampilan simulasi</h2>
+
+Pada tampilan simulasi, terdapat dua buah kotak teks yang mana kotak pertama berisikan animasi berupa gerak harmonik sederhana (bandul sederhana) yang disertai dengan analisis gambar. Pada bagian bawah kotak terdapat tiga buah kotak yang dapat di klik. Ketiga kotak tersebut adalah play, stop, dan tombol reset [4].
+Disamping ketiga tombol ini juga terdapat kotak masukan waktu, panjang tali, dan sudut. Sehingga besaran-besaran tersebut dapat diganti. Sedangkan satu kotak lagi menampilkan hasil perhitungan nilai percepatan gravitasi berdasarkan nilai besaran-besaran yang dimasukkan. 
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"Simple Harmonic Motion", URL <a href ="http://web.mit.edu/8.01t/www/materials/modules/chapter23.pdf"> http://web.mit.edu/8.01t/www/materials/modules/chapter23.pdf </a> [20180221] </li>
+<li>"Penggunaan Metode Numerik Untuk Mencari Nilai Percepatan Gravitasi", Makalah, URL <a href="http://informatika.stei.itb.ac.id/~rinaldi.munir/MetNumLan/2015-2016/Makalah2016/Makalah-MetnumLan-2016-10.pdf">http://informatika.stei.itb.ac.id/~rinaldi.munir/MetNumLan/2015-2016/Makalah2016/Makalah-MetnumLan-2016-10.pdf</a> [20180221]</li>
+<li>"Turunan Numerik", Bahan Kuliah, URL <a href="http://slideplayer.info/slide/2892799/">http://slideplayer.info/slide/2892799/</a> [20180226]</li>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li>"Simple pendulum JS Model", URL: <a href="https://www.compadre.org/osp/items/detail.cfm?ID=13373"> https://www.compadre.org/osp/items/detail.cfm?ID=13373 </a> [20180221</li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
