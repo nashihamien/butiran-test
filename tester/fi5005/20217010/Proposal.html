@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Nama 	: Yasni Novi Hendri
+Nim		: 20217010
+-->
+<title>20217010</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Pengisian dan Pengosongan Kapasitor</h1>
+
+Pada persoalan fisika banyak ditemukan pencarian solusi yang rumit dan complicated jika di selesaikan dengan cara analitik. Maka, agar terlihat lebih sederhana, persoalan tersebut dapat dimodelkan dan diselesaikan dengan menggunakan metode numerik. Adapun contoh fisika yang akan dibahas yaitu tentang pengisian Kapasitor.
+
+<h2>Teori</h2>
+
+Jika suatu kapasitor dengan kapasitansi C dihubungkan dengan suatu sumber tegangan V maka setelah beberapa waktu kapasitor akan terisi oleh muatan sebesar
+
+\begin{equation}
+Q = CV
+\end{equation}
+
+Katakanlah ada sebuah kapasitor dalam keadaan kosong dan belum dihubungkan dengan sumber tegangan. Kemudian saklar ditutup sehingga kapasitor terhubung dengan sumber tegangan. Kapasitor akan segera terisi muatan tetapi tidak langsung penuh. Perlu beberapa waktu agar kapasitor terisi penuh.
+Sehingga dalam rangkaian tersebut terdapat arus sama dengan laju peningkatan muatan kapasitor, dengan memanfaatkan hukum kirchof didapat hubungan seperti berikut.
+
+\begin{equation}
+i = \frac{dQ}{dt} 
+\end{equation}
+
+\begin{equation}
+E = iR + \frac{Q}{C} 
+\end{equation}
+
+dari persamaan (2) dan (3) di peroleh hubungan ;
+
+\begin{equation}
+CE- Q = RC \frac {dQ}{dt}
+\end{equation}
+
+dengan menggunakan pendekatan matematika yaitu hubungan diferensial dan mengintegrasikan nya dalam bentuk integral, maka dengan mudah diperoleh ;
+
+\begin{equation}
+Q(t) = CE (1- e ^-(\frac {t}{RC}))
+\label{eq:finite-difference-second-order}
+\end{equation}
+
+Contoh soal :
+Sebuah kapasitor yang tidak bermuatan dihubungkan secara seri dengan sebuah resistor dan 
+baterry. Diketahui E = 12 volt, C = 5,00 µF dan R = 8,00 ×10^5 Ω. Saat saklar dihubungkan (t=0), muatan belum ada (q=0)
+Berapakah muatan nya ?
+Maka persoalan ini dapat kita selesaikan dengan menggunakan metode numerik yaitu Metode Runge Kutta.
+
+<h2>Metode numerik : Runge Kutta </h2>
+
+Pada saat membahas metode Euler untuk penyelesaian persamaan diferensial, kita telah sampai
+pada kesimpulan bahwa
+truncation error metode Euler terus membesar seiring dengan
+bertambahnya iterasi (t
+). Dikaitkan dengan hal tersebut, metode Runge-Kutta Orde-4 menawarkan
+penyelesaian persamaan diferensial dengan pertumbuhan truncation error yang jauh lebih kecil.
+Persamaan-persamaan yang menyusun metode Runge-Kutta Orde-4 adalah
+
+\begin{equation}
+\omega_0\ = x,
+\end{equation}
+
+\begin{equation}
+k_1 = h f (t_i , \omega_i)
+\end{equation}
+
+
+\begin{equation}
+k_2 = h f (t_i + \frac{h}{2} , \omega_i + \frac{1}{2} k_1)
+\end{equation}
+
+\begin{equation}
+k_3 = h f (t_i + \frac{h}{2} , \omega_i + \frac{1}{2} k_2)
+\end{equation}
+
+\begin{equation}
+k_4 = h f (t_i, \omega_i +k_3)
+\end{equation}
+
+\begin{equation}
+\omega_{i+1}\ = \omega_i\ + \frac {1} {6} (k_1 + 2k_2 + 2k_3 + k_4)
+\end{equation}
+
+dimana fungsi f (t,w) adalah fungsi turunan.
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li> Suparno, supriyanto. Kompitasi untuk Sain dan Teknik, Departemen Fisika FMIPA UI : 2007 </li>
+<li></li>
+<li></li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
