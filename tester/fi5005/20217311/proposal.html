@@ -71,7 +71,7 @@ Nurul Atiqah | nurulatiqah4693@gmail.com | 20180226 <br/><br/>
 <h2>Teori</h2>
 Terdapat sebuah benda bermassa $m$ yang bergerak jatuh bebas dari suatu  ketinggian $h$ tertentu. Dalam gerak jatuh bebas ini hambatan udara ikut diperhitungkan,
 
-sehingga pergerakan ini dipengaruhi oleh dua buah gaya yaitu gaya berat (W) dan gaya hambatan udara (Fg)
+sehingga pergerakan ini dipengaruhi oleh dua buah gaya yaitu gaya berat (Fgrav) dan gaya hambatan udara (Fair)
 
 </script>
 
@@ -88,7 +88,6 @@ F_{air} = kv,
 dengan Fair = gaya hambatan udara, k = konstanta benda, dan v = kecepatan gerak benda.
 
 Gaya pada persamaan (\ref{eq:free-fall-motion}) dan (\ref{eq:free-fall-motion2}) dapat diuraikan dengan menggunakan Hukum II Newton sehingga dapat diperoleh bahwa:
-
 \begin{equation}
 \sum F = ma,
 \end{equation}
@@ -101,7 +100,6 @@ Gaya pada persamaan (\ref{eq:free-fall-motion}) dan (\ref{eq:free-fall-motion2})
 \end{equation}
 
 Ingat a adalah diferensial dari v :
-
 \begin{equation}
 a = {\frac{dv}{dt}},
 \end{equation}
@@ -117,14 +115,12 @@ mg - kv = m \frac{dv}{dt},
 \end{equation}
 
 Dengan mengintegralkan kedua ruas pada persamaan (\ref{eq:free-fall-motion4}) diperoleh solusi :
-
 \begin{equation}
 v (t) = \frac {{mg} - C exp(-{\frac {k}m{t}})}{k}.
 \label{eq:free-fall-motion5}
 \end{equation}
 
 Ketika v (t = 0) = 0 maka dapat diperoleh nilai C pada persamaan (\ref{eq:free-fall-motion5}) sebagai berikut :
-
 \begin{equation}
 C = mg
 \label{eq:free-fall-motion6}
@@ -143,11 +139,9 @@ Metode simulasi distribusi dapat menyelesaikan persamaan diferensial parsial den
 \end{equation}
 
 yang akan membuat Persamaan (\ref{eq:free-fall-motion6}) menjadi
-
 \begin{equation}
 \frac{x(t + \Delta t) -  x(t)}{(\Delta t)} = (\frac {mg}{k}) (1 - exp(-{\frac {k}m{t}})),
 \end{equation}
-
 
 <div id="fg:analytical-solution"></div>
 <h2>HTML dan JS</h2>
@@ -164,14 +158,13 @@ yang akan membuat Persamaan (\ref{eq:free-fall-motion6}) menjadi
 <h3>Yang telah diketahui</h3>
 <li> popop function
 <li> button function
-<li> alert dialog box
 
 <h2>Tampilan simulasi</h2>
 Tampilan simulasi yang diharapkan adalah disediakan pop up untuk menginput parameter yang dibutuhkan ($m$, $g$, dan $k$). 
 Setelah itu klik button start untuk memulai simulasi dan stop untuk memberhentikan simulasi. 
 Maka akan muncul pergerakan dari simulasi benda jatuh bebas tersebut.
 Setelah klik button stop akan ada perintah dialog box untuk melanjutkan step untuk melihat hasil. 
-Hasil yang diberikan akan berbentuk tabel hubungan antara $v$ dan $t$. Serta grafik $v$ vs $t$. Simulasi ini dapat digunakan berulang dengan nilai parameter yang berbeda sebagai bahan perbandingan
+Hasil yang diberikan akan berbentuk tabel hubungan antara $v$ dan $t$ serta grafik $v$ vs $t$. Simulasi ini dapat digunakan berulang dengan nilai parameter yang berbeda sebagai bahan perbandingan
 
 <h2>Rereferensi</h2>
 <ol>
