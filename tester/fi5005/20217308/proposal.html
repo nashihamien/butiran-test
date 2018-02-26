@@ -35,60 +35,61 @@
 		
 		
 		
-		\begin {equation}
+		\begin{equation}
 		H(p,q)=\sum_{i=1}^n \frac {p_i^2}{2m}
 		\label{eq:persamaan_Hamiltonian}
-		\end {equation}
+		\end{equation}
 		
 		
 		dari persamaan Hamiltonian di atas, diperoleh fungsi partisi kanonik untuk sistem $N$ partikel  sebagai berikut:
 		
 		\begin{equation}
-		Q_n (V,T)=\frac{V^n}{N!h^3n}(2\phi m k T)^3N/2
-		\label {eq: fungsi_partisi_kanonik}
-		\end {equation}
+		Q_n (V,T)=\frac{V^n}{N!h^3n}(2\pi m k T)^{3N/2}
+		\label{eq:fungsi_partisi_kanonik}
+		\end{equation}
 				
 		dan dengan menggunakan persamaan thermal wavelength
 		
-		\begin {equation}
-		\lambda (T)=[\frac{h}{(2\phi m k T)^1/2}]
-		\label {eq:thermal_wavelength}
+		
+		\begin{equation}
+		\lambda (T)=[\frac{h}{(2\pi m k T)^{1/2}}]
+		\label{eq:thermal_wavelength}
 		\end{equation}
-				
+		
 		dan persamaan energi rata-rata
 		
 		\begin{equation}
 		U=-\frac{\delta}{\delta \beta}(ln Q_n)
 		\label{eq: persamaan_energi_rata-rata}
-		\end {equation}
-				
+		\end{equation}
+		
 		dengan $Q_n$ telah didefinisikan pada persamaan (\ref{eq:fungsi_partisi_kanonik})
 		kemudian dengan mengingat bahwa
 		
-		\begin {equation}
+		\begin{equation}
 		\beta=\frac{1}{k T}
-		\end {equation}
-				
+		\end{equation}
+		
 		maka diperoleh nilai energi dalam untuk sistem Gas Ideal $N$ partikel $U$ adalah
 		
 		\begin{equation}
 		U=\frac{3}{2} N k T
-		\end {equation}
+		\end{equation}
 		
 		<h3>Metode Numerik</h3>
 		Untuk menyelesaikan persamaan energi di atas, hanya diperlukan metode perkalian biasa, kecuali ketika nilai salah satu parameter,
-		$N$, $T$ atau keduanya diubah. Sehingga dihasilkan nilai $U_i$ $($N_i$,$T_i$)$ dan kemudian diplot menjadi suatu diagram 2D atau 3D.
+		$N$, $T$ atau keduanya diubah. Sehingga dihasilkan nilai ${U_i}({N_i},{T_i})$ dan kemudian diplot menjadi suatu diagram 2D atau 3D.
 		
 		
 		<h2>HTML dan JS</h2>
-		<h3> Diperlukan </h3>
+		<h3>Diperlukan</h3>
 		Element HTML yang diperlukan untuk mengerjakan proyek ini diantaranya elemen untuk menampilkan penurunan rumus,
 		memanggil rumus yang telah dituliskan sebelumnya, untuk melakukan plotting data yang diperoleh
 		serta untuk membuat tampilan simulasi dimana pengguna dapat melakukan
 		input data parameter terkait persamaan yang telah disebutkan di atas, misal memberi input jumlah partikel dan temperatur sistem.
 		Dalam hal ini pengguna dapat melakukan beberapa kali input sehingga diperoleh berbagai data untuk kemudian diplotting.
 		
-		<h3> Diketahui </h3>
+		<h3>Diketahui</h3>
 		Element untuk menampilkan rumus dan untuk memanggil rumus yang telah dituliskan sebelumnya, serta element untuk melakukan perhitungan
 		numerik.
 		
