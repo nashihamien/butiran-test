@@ -1,0 +1,108 @@
+<DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+body {
+	text-align: justify;
+	padding: 10px;
+}
+a:visited, a:link {
+	color: #00f;
+	text-decoration: none;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Bandul Fisis</h1>
+
+Mardiana Napirah (20217005)$${}$$
+
+Suatu objek dapat dibuat berosilasi dengan cara yang sama dengan bandul sederhana.
+
+<h2>Teori</h2>
+
+Gerak osilasi dari bandul fisis ini dapat dijelaskan dengan Hukum II Newton untuk rotasi, yaitu Hukum II Newton yang diterapkan untuk benda berotasi dimana F, m dan a dari Hukum II Newton analog dengan $\tau$, I dan $\alpha$ pada Hukum II Newton untuk rotasi ini, yakni
+
+\begin{equation}
+\tau = I_{benda} \alpha,
+\label{eq:persamaan1}
+\end{equation}
+
+dimana torsi tersebut adalah
+
+\begin{equation}
+\tau = -mgL_{cm}sin\theta,
+\label{eq:persamaan2}
+\end{equation}
+
+dan momen inersia benda adalah terhadap titik pusat rotasinya. Momen inersia benda ini bergantung pada bentuk bendanya.$${}$$
+$${}$$
+Adapun persamaan gerak yang dihasilkan adalah
+
+\begin{equation}
+\alpha \approx \frac{mgL_{cm}}{I_{benda}} \theta,
+\label{eq:persamaan3}
+\end{equation}
+
+dimana untuk sudut kecil:
+\begin{equation}
+sin\theta \approx \theta,
+\label{eq:persamaan4}
+\end{equation}
+
+Perhitungannya identik dengan bentuk perhitungan untuk persamaan bandul sederhana dan diperoleh periode:
+
+\begin{equation}
+T = 2\pi\sqrt{\frac{I_{benda}}{mgL_{cm}}}.
+\label{eq:persamaan5}
+\end{equation}
+
+<h2>Metode numerik</h2>
+
+Metode numerik yang digunakan adalah Babylonian method [1] untuk menentukan akar kuadrat dari suatu fungsi.
+
+\begin{equation}
+x_{n+1} = \frac{1}{2} \left( x_n + \frac{S}{x_n} \right),
+\label{eq:persamaan6}
+\end{equation}
+
+dimana S merupakan suku dalam akar pada persamaan (\ref{eq:persamaan5}).
+
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Element HTML yang diperlukan adalah div, span, canvas, textarea dan button. Adapun perintah JavaScript yang akan diperlukan adalah perintah kondisional (if-else), looping, penggunaan functions, dan events seperti on-click events [2].
+
+<h3>Yang telah diketahui</h3>
+Element HTML dan JS yang akan dibutuhkan adalah div, canvas, textarea, dan button.
+
+<h2>Tampilan Simulasi</h2>
+
+Pada project ini akan dihitung besar periode dari bandul fisis dengan berbagai macam bentuk. Dengan demikian akan diperlukan elemen yang berfungsi sebagai 'button' untuk memilih bentuk bandul seperti apa yang ingin dihitung periode osilasinya. Perbedaan bentuk bandul akan berhubungan dengan perbedaan momen inersia yang akan dimasukkan ke dalam perhitungan. Selain itu juga akan diperlukan kotak 'textarea' untuk menginput nilai-nilai yang dibutuhkan untuk menghitung momen inersia seperti jari-jari, panjang dan massa. Diperlukan juga kotak untuk menampilkan output hasil perhitungan berupa periode bandul. Komponen lain yang juga akan dibutuhkan adalah canvas untuk menampilkan simulasi dari osilasi bandul fisis tersebut.
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"Babylonian method", Wikipedia, URL <a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method">https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method</a> [20180226]</li>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180226]</li>
+</ol>
+
+</body>
+
+</html>
