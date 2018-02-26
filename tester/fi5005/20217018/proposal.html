@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>p02yysnn</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Solusi Persamaan Poisson</h1>
+Dalam kajian fisika, sering kita menjumpai istilah besaran medan yang disebabkan oleh sumber baik itu massa ataupun muatan. Dalam elektrodinamika kita mengenal istilah medan elektrostatik yang disebabkan oleh muatan sumber. Medan ini menyebabkan muatan-muatan disekitarnya tertarik ataupun tertolak. Kemampuan muatan untuk menarik atau menolak muatan lain dari titik takhingga di ruang ke titik tertentu disebut sebagai potensial. Diperkenalkan kemudian sebuah ungkapan matematis yang digunakan untuk menjelaskan keterkaitan potensial dengan distribusi muatannya yang dikenal sebagai persamaan Poisson, diambil dari seorang matematikawan Prancis Simeon Denis Poisson. Persamaan Poisson ini juga merupakan bentuk umum dari persamaan Laplace.
+
+<h2>Teori</h2>
+
+Tinjau persamaan Poisson pada potensial listrik
+
+
+\begin{equation}
+\nabla^2V(r)=-4\pi\rho
+\label{eq:1}
+\end{equation}
+Karena potesial listrik pada simetri bola dan rapat muatan $\rho$ bergantung pada jarak $\rho(r)=\frac{1}{4\pi}e^{-r}$. Karena $ V$ hanya bergantung $r$ maka persamaan ($\ref{eq:1}$) dapat dinyatakan sebagai
+
+\begin{equation}
+\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dV}{dr}\right)=e^{-r}
+\label{eq:2}
+\end{equation}
+
+karena $\rho$ tidak tunggal di $r=0$ maka $V(0)$ bernilai ada di $r$ menuju $\infty$ yaitu $V(r\rightarrow\infty)$ sehingga ungkapan $V(r)$ sebagai solusi dari persamaan ($\ref{eq:2}$) adalah
+\begin{equation}
+V(r)=\frac{2}{r}-\frac{2+r}{r}e^{-r}
+\label{eq:3}
+\end{equation}
+
+Dalam kebanyakan kasusu penyelesaian persamaan diatas secara analitik tidak dapat selalu dilakukan hal ini karena persamaan diferensialnya terlalu sulit dan batasnya tidak sederhana. Maka kemudian akan digunakan metode numerik.
+Misalkan kita anggap $V(r)=\frac{\Phi(r)}{r}$, maka persamaan diferensialnya akan berbentuk
+\begin{equation}
+\frac{d^2\Phi}{dr^2}=-re^r
+\label{eq:4}
+\end{equation}
+
+Persamaan (\ref{eq:4}) dari segi komputasi sangat menguntungkan karena dapat diselesaikan dengan masalah syarat batas. Solusi numeriknya adalah
+\begin{equation}
+\Phi_{i-1}-2\Phi_{i}+\Phi_{i+1}=-h^2r_{i}e^{-r}
+\label{eq:5}
+\end{equation}
+
+ Dengan ungkapan syarat batas ini, dapat diselesaikan dengan menggunakan tiga metode yakni matrik, integrasi langsung dan metode shooting
+<h2>Metode numerik</h2>
+
+Metode Shooting pada permasalahan numerik yaitu penyelesaian persamaan diferensial yang terlebih dahulu diketahui syarat batasnya. Syarat batas tersebut kemudian digunakan menjadi syarat awal. Terdapat tiga teknik dalam menyelesaikan masalah syarat batas yaitu metode matriks, metode integrasi langsung dan metode iterasi. Untuk kali ini hanya akan digunakan metode integrasi numerik dan iterasi.
+Sebagai contoh kita meninjau sebuah persamaan diferensial sebagai berikut
+\begin{equation}
+\frac{d^2\Phi}{dr^2}=f(r)
+\label{eq:6}
+\end{equation}
+dengan $f(r)$ adalah suku yang tak homogen. Jika diselesaikan dengan cara numerik, maka terlebih dahulu diberikan syarat batas terhadap $\Phi$ yang kemudian kita gunakan untuk mengaproksimasi nilai penyelesaiannya. Untuk interval tertutup $r[r_0,r_N]$, kedua syarat batas dipilih $\Phi(r_0)=\Phi_0$ dan $\Phi_(r_N)=\Phi_N$ yang berturut-turut disebut batas atas dan batas bawah. Dengan menggunakan metode beda hingga, penyelesaian dari persamaan ($\ref{eq:6}$) dapat kita diskritisasi sebagai berikut
+\begin{equation}
+\Phi_{i-1}-2\Phi_{i}+\Phi_{i+1}=h^2f_{i},
+\label{eq:7}
+\end{equation}
+dengan $f_{i}=f(r_i)$, dan $h$ adalah jarak antara titik yang terdefenisi sebagai $h=r_{i+1}-r_i$ dengan $i=1,2,3,\dots ,N$. Selanjutnya dengan mudah kita bisa menghitung nilai $\Phi_i$ yang dihitung secara berulang-ulang sehingga konvergen pada sebuah nilai. 
+Untuk contoh kasus menghitung potensial dari persamaan Poisson, bentuk dari persamaan ($\ref{eq:5}$) dapat ditulis kembali sebagai berikut
+\begin{equation}
+\Phi_{i}=\frac{1}{2}(\Phi_{i-1}+\Phi_{i+1}+h^2r_{i}e^{-r})
+\label{eq:8}.
+\end{equation}
+Dari persamaan ($\ref{eq:8}$) ini, kita buat listing programnya kemudian kita input nilai $h$ dan cacah $N$ untuk mendapatkan nilai $\Phi_i$.   
+<h2>HTML dan JS</h2>
+
+<h3>Yang diperlukan</h3>
+Elemen HTML yang akan digunakan adalah langkah, listing program, hasil, grafik, pembahasan, kesimpulan. Untuk perintah JS yang akan digunakan adalah document.write(),console.log,mendefinisikan variable dengan menggunakan perintah var, dan canvas.
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"Poisson's Equation in Electrostatics", Jinn-Liang Liu, URL <a href="http://www.nhcue.edu.tw/~jinnliu/proj/Device/3DPoisson.pdf">http://www.nhcue.edu.tw/~jinnliu/proj/Device/3DPoisson.pdf</a> [20180226]</li>
+<li>Nurwantoro, Pekik. Dr. 2012. Petunjuk Praktikum Fisika Komputasi. Yogyakarta : Lab Atom Inti Prodi  Fisika FMIPA UGM </li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
