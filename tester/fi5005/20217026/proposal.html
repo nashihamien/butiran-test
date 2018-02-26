@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Modify filename and title according to student number (NIM) 
+p =
+	1: bachelor program
+	2: master program
+	3: doctoral program
+yy =
+	15: academic year 2015/2016
+	16: academic year 2016/2017
+	17: academic year 2017/2018
+s =
+	0: first semester entrance
+	3: second semester entrance
+nn =
+	01-99
+-->
+<title>Proposal</title>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		TeX: { equationNumbers: { autoNumber: "AMS" } }
+	});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+	a {
+		text-decoration: none;
+		color: blue;
+	}
+	body {
+		text-align: justify;
+	}
+	h1 {
+		text-align: left;
+	}
+</style>
+</head>
+<body>
+<!-- Modify only below this line -->
+
+<h1>Mengukur Viskositas Zat Cair</h1>
+
+Viskositas adalah besaran yang mengukur kekentalan fluida.
+hingga saat ini anggapan bahwa fluida ini diangap tidak memeiliki kekentalan, Namun pada dasarnya 
+fluida memeiliki kekentalan, termasuk gas. Semakin besar viskositas zat cair, maka semakin susah benda padat bergerak didalam zat cair tersebut. Viskositas dalam zat cair, yang berperan adalah gaya kohesi antar partikel zat cair.
+Viskositas dapat dinyatakan sebagai tahanan aliaran fluida yang merupakan gesekan antara molekul cairan satu dengan yang lain. 
+Suatu jenis cairan yang mudah mengalir, dapat dikatakan memiliki viskositas yang rendah, dan sebaliknya bahan-bahan yang sulit mengalir dikatakan memiliki viskositas yang tinggi. Hal ini sangat menarik untuk diperhatikan
+terutama untuk aplikasinya didalam kehidupan sehari - hari juga kebutuhan industri. Seperti halnya contoh penggunaan oil atau minyak pada kendaraan bermotor.
+Didalam penelitian dunia medis dalam organ tubuh manusia darah memiliki suatu zat kekentalan, darah akan berinteraksi dengan banyak jaringan tubuh, termasuk sel, seperti yang kita tahu fungsi darah ialah untuk mengangkut
+sari - sari makanan kedalam tubuh, mengagkut oksigen, air kedalam tubuh manusia, hormon dan proses pengangkut atau tranpostasi zat dalam tubuh lainya. Oleh karena itu prinsip viskositas ini menarik untuk di pelajari lebih lanjut
+<h2>Teori</h2>
+
+<h3>1. Hukum Stokes</h3>
+	Hukum stokes adalah salah satu cara untuk menentukan koofisien viskositas fluida. sebuah benda yang bergerak dalam fluida akan mendapatkan gaya gesekan dimana arah geraknya berlawanan dengan arah gerak benda yang besarnya bergantung 
+	pada kecepatan relatif bedan terhada fluida serta bentuk benda. Untuk benda berbentuk bola besarnya gaya memenuhi hukum stokes sebagai berikut :
+
+	\begin{equation}
+	F =6 \pi \eta r v
+	\end{equation}
+	dengan 
+
+
+	<br> F = Gaya Gesekan </br> 
+	<br> r = Jari-jari Bola </br>
+	<br> v = Laju bola relatif terhadap Fluida </br>
+
+
+<h3> 2. Kecepatan Terminal </h3>
+	Jika benda berbentuk bola dijatuhkan dalam fluida dasarnya bedna akan turun bergerak dengan kecepatan yang makin besar akibatnya 
+	adanya percepatan gravitasi. pada saat kecepatan tidak berubah lagi kecepatan ini selanjutnya di sebut kecepatan terminal. Gaya yang bekerja pada benda selama 
+	bergerak jatuh kebawah ialah adanya gaya angkat Archimedes ke atas dan Gaya Stokes yang melawan arah gerak, saat tercapai 
+	kecepatan terminal inilah saatnya ketiga gaya tersebut seimbang. makan berdasarkan kecepatan terminal bola untuk menentukan viskositas 
+	fluida adalah menggunakan persamaan berikut :
+
+	Saat benda berada dalam kecepatan terminal maka akan mengalami keseimbangan dan meemenuhi persamaan berikut 
+	
+	\begin{equation}
+	W = F_A + F_s 
+	\end{equation}
+	sehingga 
+	
+	\begin{equation}
+	\rho_b \frac {4 \pi }{3} r^3 g = \rho_f \frac {4 \pi }{3} r^3 g + 6 \pi \eta r v
+	\end{equation}
+
+	maka :
+	
+	\begin{equation}
+	\frac {4 \pi }{3} r^3 (\rho_b-\rho_f) = 6 \pi \eta r v
+	\end{equation}
+	
+	atau
+
+	\begin{equation}
+	\rho_b-\rho_f = \frac {9 \eta v} {2 r^2}
+	\end{equation}
+
+<h2>Metoda Numerik</h2>
+
+Dengan menggunakan metoda Rangekutta ke 4 maka
+
+sistem persamaan ini akan diselesaikan dengan metode numerik Range Kutta orde 4 sebagai berikut. Didefinisikan vektor u sebagai : 
+
+\begin{equation}
+\vec {u}(t) = \binom {y(t)}{v(t)}
+\end{equation}
+
+sehingga dengan definisi vektor u menjadi 
+
+\begin{equation}
+\frac{d \vec {u}(t)}{dt}= \vec{f}(t,\vec{u}(t))= \binom{v(t)}{\Big( 1-\frac{\rho_f}{\rho_b}\Big)g- \frac {9\eta} {2\rho_b r^2} v(t)} 
+\end{equation}
+
+solusi pendekatan untuk vektor u(t+dt) secara rangke kuta orde empat diseleasikan dengan persamaan berikut 
+\begin{equation}
+
+\vec{u}(t+dt)= \frac{\vec{u}(t)+dt(\vec{k_1}+2\vec{k_2}+2\vec{k_3}+\vec{k_4})}{6}
+
+\end{equation}
+
+dengan 
+\begin{equation}
+\vec{k_1}= \vec{f}(t,\vec{u}(t)) \\
+\vec{k_2}=\vec{f}(t+dt/2.\vec{u}(t)+\vec{k_1} dt/2) \\
+\vec{k_3}=\vec{f}(t+dt/2.\vec{u}(t)+\vec{k_2} dt/2)  \\
+\vec{k_4}=\vec{f}(t+dt/2.\vec{u}(t)+\vec{k_3} dt)   \\
+\end{equation}
+
+
+
+
+<h2>HTML dan JS</h2>
+
+<h3>Element HTML</h3>
+<pre><code>
+	canvas id
+	canvas.width 
+	div class
+	label
+	input 
+	span
+</code></pre>
+
+
+<h3>Element JS</h3>
+
+
+<pre><code>
+	var rho_b 
+	var force
+	var eta
+	var radius
+	var r_ball = ball.radius
+	var xball=vall.x
+	var yball=ball.y
+	var v
+	var gravity = Forces.constantGravity(m,g)
+	var upthrutst(rho, V, g)
+	ball.pos2D = new Vector2D(50,50);
+	ball.velo2D = new Vector2D(40,-20)
+</code></pre>	
+<h3>Element yang Telah Diketahui</h3>
+<pre><code>
+	var rho_b 
+	var force
+	var eta
+	var radius
+	var v
+	canvas id
+	canvas.width 
+	div class
+	label
+	input 
+	span
+</code></pre>	
+
+<h2>Tampilan simulasi</h2>
+Pada saat Simulasi atau ketika program dijalankan akan ditampilan suatu objek tempat fluida dengan massa jenis tertenu didalam sebuah wadah tertentu dan sebuah bola besi dengan ukuran dan radius yang bisa ditentukan melalui tombol, sehingga 
+dalam proses simulasi ini ada beberapa variabel yang bisa divariasikan untuk mengukur derajat kekentalan dari sebuah fluida zat cat air. untuk memulai simulasi proses pertama
+yang harus dilakukan adalah setting beberapa parameter sebagai input atau masukan disediakan tombol geser untuk setting simulasi atau pemograman seperti mengatur ketinggian awal, radius bola, massa jenis, massa bola 
+dan tombol start untuk memulai program. Proses interfacing akan menggunakan program tambahan lain seperti css untuk membuat tampilan simulasi. Berikut adalah contoh model awal tampilan mode setting percobaan menggunakan html.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Attach External Files</title>
+		
+	</head>
+		<p>
+			<canvas id="canvas" width=100 height=200></canvas>
+        <div class="controls">
+            <div>
+                <label>radius bola<span id="k_slider_label"></span> (m)</label> 
+                <input id="k_slider" type="range" min=0 max=100 value=20></input>
+            </div>
+            <div>
+				<label>massa jenis<span id="b_slider_label"></span> (kg/m<sup>3</sup>)</label> 
+                <input id="b_slider" type="range" min=0 max=10 value=0.5 step=0.1></input>
+            </div>
+            <div>
+                <label>kecepatan<span id="f_slider_label"></span>(m/s)</label> 
+                <input id="f_slider" type="range" min=0 max=15 value=0 step=0.1></input>
+            </div>
+            <div>
+                <label>ketinggian<span id="m_slider_label"></span>(m)</label> 
+                <input id="m_slider" type="range" min=0.1 max=10 value=0.5 step=0.1></input>
+            </div>
+		</p>
+
+<h2>Rereferensi</h2>
+
+<ol>
+<li>"JavaScript Tutorial", W3Schools, URL <a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a> [20180221]</li>
+<li> Dev Ramtal and Adrian Dobre. 2011. Physics for JavaScript Games, Animation, and Simulation with HTML5 Canvas;  Apress</li>
+<li> Mikrajudin Abdullah. 2012. Fisika Dasar 1. Penerbit ITB press</li>
+</ol>
+
+<!-- Modify only above this line -->
+</body>
+</html>
